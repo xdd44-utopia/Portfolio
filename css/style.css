@@ -11,14 +11,18 @@
 	box-sizing: border-box;
 }
 
+h1 {
+	font-size: 40px;
+}
+
 body {
 	font-family: Artifakt, sans-serif;
 	background: #242424;
 }
 
 nav {
+	background: #242424;
 	position: fixed;
-	background: #000000;
 	height: 29px;
 	width: 100%;
 	box-shadow: 0 5px 10px #000000;
@@ -46,7 +50,7 @@ nav ul li a{
 }
 
 a.active, a:hover {
-	background: #242424;
+	background: #000000;
 	transition: .25s;
 }
 
@@ -85,11 +89,6 @@ nav ul li:hover .external-link-sub li:hover {
 	transition: .25s;
 }
 
-nav ul li:hover .external-link-sub li:hover a {
-	background: #000000;
-	transition: .25s;
-}
-
 /*MyLogo*/
 
 .MyLogo {
@@ -101,6 +100,7 @@ nav ul li:hover .external-link-sub li:hover a {
 	border-width: 10px;
 	border-style: solid;
 	border-radius: 5px;
+	border-color: #242424;
 	height: 120px;
 	box-shadow: 5px 5px 10px #000000;
 }
@@ -110,3 +110,29 @@ nav ul li:hover .external-link-sub li:hover a {
 .Main {
 	height: 5000px;
 }
+
+.title {
+	box-sizing: content-box;
+	margin-left: 5%;
+	margin-right: 25%;
+	margin-top: -36%;
+	width : 45%;
+	color: #fff;
+	text-shadow: 3px 3px 10px #000000;
+}
+
+.title h1 {
+	text-align: center;
+}
+
+.title h2 {
+	text-align: right;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+}
+

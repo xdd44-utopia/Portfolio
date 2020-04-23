@@ -1,0 +1,112 @@
+@font-face { font-family: Artifakt; src: url('../font/Artifakt\ Element\ Regular.ttf'); } 
+@font-face { font-family: Artifakt; font-weight: bold; src: url('../font/Artifakt\ Element\ Bold.ttf');}
+@font-face { font-family: Artifakt; font-style: italic; src: url('../font/Artifakt\ Element\ Italic.ttf');}
+@font-face { font-family: Artifakt; font-weight: bold; font-style: italic; src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');}
+
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Artifakt, sans-serif;
+	background: #242424;
+}
+
+nav {
+	position: fixed;
+	background: #000000;
+	height: 29px;
+	width: 100%;
+	box-shadow: 0 5px 10px #000000;
+}
+
+nav ul {
+	float: right;
+	font-size: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+nav ul li {
+	display: inline-block;
+	margin-top: -1px;
+	margin-right: 10px;
+	line-height: 30px;
+}
+
+nav ul li a{
+	color: #cccccc;
+	margin-bottom: -4px;
+	height: 50px;
+	padding: 0 5px;
+}
+
+a.active, a:hover {
+	background: #242424;
+	transition: .25s;
+}
+
+.external-link-sub {
+	display: none;
+	position: absolute;
+	margin-top: -1px;
+	margin-right: 30px;
+	background: #242424;
+	box-shadow: 5px 5px 10px #000000;
+}
+
+.external-link-sub ul {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.external-link-sub ul li {
+	margin-right: 0;
+	width: 100%;
+	border-width: 2px 0 0 0;
+	border-style: solid;
+	border-color: #000000;
+	background: transparent;
+	border-radius: 0;
+	text-align: left;
+}
+
+nav ul li:hover .external-link-sub {
+	display: block;
+	position: absolute;
+}
+
+nav ul li:hover .external-link-sub li:hover {
+	background: #000000;
+	transition: .25s;
+}
+
+nav ul li:hover .external-link-sub li:hover a {
+	background: #000000;
+	transition: .25s;
+}
+
+/*MyLogo*/
+
+.MyLogo {
+	display: block;
+	position: fixed;
+	float: left;
+	margin-top: 5px;
+	margin-left: 40px;
+	border-width: 10px;
+	border-style: solid;
+	border-radius: 5px;
+	height: 120px;
+	box-shadow: 5px 5px 10px #000000;
+}
+
+/*Main*/
+
+.Main {
+	height: 5000px;
+}

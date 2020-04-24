@@ -49,6 +49,11 @@ nav ul li a{
 	padding: 0 5px;
 }
 
+nav ul li a img {
+	display: inline-block;
+	height: 15px;
+}
+
 a.active, a:hover {
 	background: #000000;
 	transition: .25s;
@@ -126,4 +131,59 @@ nav ul li:hover .external-link-sub li:hover {
 
 .MyLogo:hover > .LogoDsc {
 	display: block;
+}
+
+/*Footer*/
+
+footer {
+	background: #000000;
+	color: #cccccc;
+	width: 100%;
+}
+
+.footer {
+	margin-left: 10%;
+	padding-top: 75px;
+	width: 80%;
+}
+
+.footer div {
+	padding-bottom: 25px;
+}
+
+footer div img {
+	display: block;
+	width: 15%;
+}
+
+.contact li {
+	margin-top: 10px;
+}
+
+.contact li a {
+	color: #cccccc;
+}
+
+.contact li a img {
+	display: inline-block;
+	margin-bottom: -5px;
+	width: 20px;
+	height: 20px;
+}
+
+
+footer hr {
+	border: 1px solid #cccccc;
+	margin-bottom: 25px;
+}
+
+.statement {
+	font-size: 12px;
+}
+
+.copyright {
+	font-size: 12px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }

@@ -1,12 +1,19 @@
-.Main {
-	height: 5000px;
+.CoverImg {
+	overflow: hidden;
+}
+
+.CoverImg img {
+	display: block;
+	height: auto;
 }
 
 .title {
+	position: absolute;
+	float: left;
 	box-sizing: content-box;
 	margin-left: 5%;
 	margin-right: 25%;
-	margin-top: -36%;
+	margin-top: 250px;
 	width : 45%;
 	color: #fff;
 	text-shadow: 3px 3px 10px #000000;
@@ -40,3 +47,14 @@
 	}
 }
 
+.Main {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 80%;
+}
+
+.Main h1 {
+	color: #cccccc;
+}

@@ -101,38 +101,29 @@ nav ul li:hover .external-link-sub li:hover {
 	border-style: solid;
 	border-radius: 5px;
 	border-color: #242424;
-	height: 120px;
+	background: #242424;
+	width: 120px;
 	box-shadow: 5px 5px 10px #000000;
 }
 
-/*Main*/
-
-.Main {
-	height: 5000px;
+.MyLogo img {
+	display: block;
+	width: 100%;
 }
 
-.title {
-	box-sizing: content-box;
-	margin-left: 5%;
-	margin-right: 25%;
-	margin-top: -36%;
-	width : 45%;
-	color: #fff;
-	text-shadow: 3px 3px 10px #000000;
-}
-
-.title h1 {
+.MyLogo div {
+	display: none;
+	color: #cccccc;
+	width: 100%;
+	margin: 5px 0 -3px 0;
 	text-align: center;
 }
 
-.title h2 {
-	text-align: right;
+.MyLogo:hover {
+	width: 200px;
+	transition: .25s;
 }
 
-.title img {
+.MyLogo:hover > .LogoDsc {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 200px;
 }
-

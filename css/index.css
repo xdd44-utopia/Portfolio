@@ -1,0 +1,42 @@
+.Main {
+	height: 5000px;
+}
+
+.title {
+	box-sizing: content-box;
+	margin-left: 5%;
+	margin-right: 25%;
+	margin-top: -36%;
+	width : 45%;
+	color: #fff;
+	text-shadow: 3px 3px 10px #000000;
+}
+
+.title h1 {
+	text-align: center;
+}
+
+.title h2 {
+	text-align: right;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	animation: opa 1.5s;
+	animation-iteration-count: infinite;
+}
+@keyframes opa {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+

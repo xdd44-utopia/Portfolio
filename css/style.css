@@ -102,12 +102,12 @@ nav ul li:hover .external-link-sub li:hover {
 	float: left;
 	margin-top: 5px;
 	margin-left: 40px;
-	border-width: 10px;
+	border-width: 5px;
 	border-style: solid;
 	border-radius: 5px;
 	border-color: #242424;
 	background: #242424;
-	width: 120px;
+	width: 3vw;
 	box-shadow: 5px 5px 10px #000000;
 }
 
@@ -153,7 +153,7 @@ footer {
 
 footer div img {
 	display: block;
-	width: 15%;
+	width: 200px;
 }
 
 .contact li {

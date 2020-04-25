@@ -1,5 +1,6 @@
 .CoverImg {
 	overflow: hidden;
+	height: 60vw;
 }
 
 .CoverImg img {
@@ -13,7 +14,7 @@
 	box-sizing: content-box;
 	margin-left: 5%;
 	margin-right: 25%;
-	margin-top: 250px;
+	margin-top: 20vw;
 	width : 45%;
 	color: #fff;
 	text-shadow: 3px 3px 10px #000000;
@@ -21,17 +22,20 @@
 
 .title h1 {
 	text-align: center;
+	font-size: 2vw;
 }
 
 .title h2 {
 	text-align: right;
+	font-size: 1.25vw;
 }
 
 .title img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 200px;
+	margin-top: 13vw;
+	width: 4vw;
 	animation: opa 1.5s;
 	animation-iteration-count: infinite;
 }
@@ -47,14 +51,42 @@
 	}
 }
 
-.Main {
+#Main {
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	padding-top: 100px;
 	margin-bottom: 50px;
 	width: 80%;
 }
 
-.Main h1 {
+#Main h1 {
 	color: #cccccc;
+}
+
+#Main hr {
+	border: 1px solid #cccccc;
+	margin-top: 25px;
+}
+
+#Main p {
+	margin-top: 22px;
+	color: #cccccc;
+	font-size: 25px;
+	width: 56vw;
+}
+
+b {
+	font-size: 30px;
+}
+
+.selfportrait {
+	margin-top: 30px;
+	margin-left: 25px;
+	display: block;
+	float: right;
+	width: 20vw;
+	border-width: 5px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #cccccc;
 }

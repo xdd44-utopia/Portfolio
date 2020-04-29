@@ -75,6 +75,11 @@
 	width: 56vw;
 }
 
+#Main p a {
+	text-decoration: underline;
+	color: #cccccc;
+}
+
 b {
 	font-size: 30px;
 }

@@ -6,8 +6,8 @@
 		<meta name="keywords" content="Photography, Gallary, Architecture, Computer Science">
 		<meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="shortcut icon" href="image/Website icon.png">
+		<link rel="stylesheet" type="text/css" href="css/gallary.css">
+		<link rel="shortcut icon" href="image/icons/Website icon.png">
 		<title>Gallary&nbsp;|&nbsp;xdd44's Collections</title>
 	</head>
 	<body>
@@ -33,6 +33,37 @@
 			<div class="LogoDsc">Chenyue&nbsp;&quot;xdd44&quot;&nbsp;DAI</div>
 		</div>
 
+		<div class="CoverImg">
+			<div class="slideshow-container" id="cover">
+
+				<div id="first-slide" class="mySlides fade" id="slide1">
+				  <img src="image/gallary/Slide1.jpg">
+				  <div class="text">Caption Text</div>
+				</div>
+				
+				<div class="mySlides fade" id="slide2">
+				  <img src="image/gallary/Slide2.jpg">
+				  <div class="text">Caption Two</div>
+				</div>
+				
+				<div class="mySlides fade" id="slide3">
+				  <img src="image/gallary/Slide3.jpg">
+				  <div class="text">Caption Three</div>
+				</div>
+				
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				
+			</div>
+		</div>
+		<div id="slide-selector" style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span> 
+			<span class="dot" onclick="currentSlide(2)"></span> 
+			<span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+		<div id="Main">
+			<p>Coming soon</p>
+		</div>
 
 		<footer>
 			<div class="footer">
@@ -54,6 +85,7 @@
 			</div>
 		</footer>
 
-		<script src="bower_components/jquery/jquery.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/gallary.js"></script>
 	</body>
 </html>

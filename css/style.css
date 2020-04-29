@@ -18,6 +18,8 @@ h1 {
 body {
 	font-family: Artifakt, sans-serif;
 	background: #242424;
+	width: 100vw;
+	overflow-x: hidden;
 }
 
 nav {

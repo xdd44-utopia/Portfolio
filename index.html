@@ -29,7 +29,7 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="MyLogo">
+		<div class="MyLogo" onmouseenter="mouseEnterLogo()" onmouseleave="mouseLeaveLogo()">
 			<img src="image/logo 3.0.1.jpg" alt="xdd44">
 			<div class="LogoDsc">Chenyue&nbsp;&quot;xdd44&quot;&nbsp;DAI</div>
 		</div>
@@ -45,15 +45,24 @@
 			<h1>Greetings from an Internet-addicted boy!</h1>
 			<hr>
 			<img class="selfportrait" src="image/selfportrait.jpg" alt="selfportrait">
-			<p><b>Hello!</b>&nbsp;My name is <b>Chenyue DAI</b>&nbsp;and I always use <b>&quot;xdd44&quot;</b> as a nickname online.</p>
-			<p>I'm currently studying Bachelor degree in <b>Computer Science</b> at <b>City University of Hong Kong</b>. But actually my dream is to become an <b>architect</b>.</p>
-			<p>I'd like to say that there're so many things in the world I deeply love to do. I love learning Computer Science at my university and coding day to night. I love exploring lines and shapes and even cultures through my extracurricular study in architecture. I love taking photos trying to show the beauty of objects, streets, nature and people through my camera. Sometimes I may have a try on painting or video editing... There's never been enough time for me to spend.</p>
-			<p>The free uviversity life allows me to devote myself to all these things I love, where I made many tries and realized many ideas. Some of them are of some value, some are useless, but I'd consider all of them meaningful to me. So I create this website as a portfolio to show you what I've done when I'm indulged in these works.</p>
-			<p><a href="gallary.html">Click here</a> to view the gallary, a featured collection of my photography and some other works presented as pictures.</p>
-			<p><a href="project.html">Click here</a> to view the collection of my projects, including detailed description and presentation of all the valued architecture and other projects I've worked on.</p>
-			<p>Or scroll down to expolre more about me!</p>
+			<p class="selfIntro"><b>Hello!</b>&nbsp;My name is <b>Chenyue DAI</b>&nbsp;and I always use <b>&quot;xdd44&quot;</b> as a nickname online.</p>
+			<p class="selfIntro">I'm currently studying Bachelor degree in <b>Computer Science</b> at <b>City University of Hong Kong</b>. But actually my dream is to become an <b>architect</b>.</p>
+			<p class="selfIntro">I'd like to say that there're so many things in the world I deeply love to do. I love learning Computer Science at my university and coding day to night. I love exploring lines and shapes and even cultures through my extracurricular study in architecture. I love taking photos trying to show the beauty of objects, streets, nature and people through my camera. Sometimes I may have a try on painting or video editing... There's never been enough time for me to spend.</p>
+			<p class="selfIntro">The free university life allows me to devote myself to all these things I love, where I made many tries and realized many ideas. Some of them are of some value, some are useless, but I'd consider all of them meaningful to me. So I create this website as a portfolio to show you what I've done when I'm indulged in these works.</p>
 			<hr>
-			<p>Coming soon</p>
+			<h2>Some guidance of this website</h2>
+			<p><a href="gallary.html">Click here</a> to view the <b>gallary</b>, a featured collection of my photography and some other works presented as pictures.</p>
+			<p><a href="project.html">Click here</a> to view the collection of my <b>projects</b>, including detailed description and presentation of all the valued architecture and other projects I've worked on.</p>
+			<p>Or <a href="project.html">scroll down</a> to explore more about <b>me</b>.</p>
+			<p>Or explore this website freely as it is also one of my project <b>designed and written by myself</b>.</p>
+			<hr>
+			<h2>About my logo</h2>
+			<p>As you may have already noticed, there's a triangle in the icon at top left of this website (mouse over to zoom it) and also in favicon/website icon. This triangle is what I always used as my logo.</p>
+			<img class="logo" src="image/logo/logo.png">
+			<p>The design of this logo began when I was doing some painting in junior high. One day I came up with the idea that I need a logo as a signature for these paints and this triangle shape just came out of nowhere.</p>
+			<img class="logo" src="image/logo/logo-scratch.png">
+			<p>I thought this triangle is pretty good with color of ballpen blue I used, so I decided to use it gave it a geometrical definition. I'd like to underline that this pattern is truly meaningless. I always think it's unnecessary to find explanations for everything in life. Things may pop up for no reason and I'm glad to accept them as inspirations.</p>
+			<img class="logo" src="image/logo/logo 1.png">
 		</div>
 
 		<footer>
@@ -71,7 +80,7 @@
 					</ul>
 				</div>
 				<hr>
-				<div class="statement">All materials contained on this site are protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any enquiries.<br><br></div>
+				<div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any request of use permission and other enquiries.<br><br></div>
 				<div class="copyright">Copyright © 2020 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
 			</div>
 		</footer>
@@ -80,5 +89,6 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/aos.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/shared.js"></script>
 	</body>
 </html>

@@ -63,15 +63,24 @@
 	color: #cccccc;
 }
 
+#Main h2 {
+	color: #cccccc;
+	margin-top: 25px;
+	font-size: 35px;
+}
+
 #Main hr {
 	border: 1px solid #cccccc;
 	margin-top: 25px;
 }
 
 #Main p {
-	margin-top: 22px;
+	margin-top: 20px;
 	color: #cccccc;
 	font-size: 25px;
+}
+
+.selfIntro {
 	width: 56vw;
 }
 
@@ -94,4 +103,13 @@ b {
 	border-style: solid;
 	border-radius: 5px;
 	border-color: #cccccc;
+}
+
+.logo {
+	display: block;
+	text-align: center;
+	height: 10vw;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
 }

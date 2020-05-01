@@ -2,7 +2,6 @@
 @font-face { font-family: Artifakt; font-weight: bold; src: url('../font/Artifakt\ Element\ Bold.ttf');}
 @font-face { font-family: Artifakt; font-style: italic; src: url('../font/Artifakt\ Element\ Italic.ttf');}
 @font-face { font-family: Artifakt; font-weight: bold; font-style: italic; src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');}
-
 * {
 	padding: 0;
 	margin: 0;
@@ -48,7 +47,8 @@ nav ul li a{
 	color: #cccccc;
 	margin-bottom: -4px;
 	height: 50px;
-	padding: 0 5px;
+	padding: 0 3px;
+	font-size: 16px;
 }
 
 nav ul li a img {

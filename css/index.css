@@ -56,7 +56,8 @@
 	margin-right: auto;
 	padding-top: 100px;
 	margin-bottom: 50px;
-	width: 80%;
+	height: 3000px;
+	overflow: hidden;
 }
 
 #Main h1 {
@@ -66,50 +67,47 @@
 #Main h2 {
 	color: #cccccc;
 	margin-top: 25px;
-	font-size: 35px;
 }
 
-#Main hr {
-	border: 1px solid #cccccc;
-	margin-top: 25px;
+#developer {
+	background: #000;
+	float: left;
+	width: 45vw;
+	height: 3000px;
 }
 
-#Main p {
-	margin-top: 20px;
+#developer p, #architect p {
 	color: #cccccc;
-	font-size: 25px;
-}
-
-.selfIntro {
-	width: 56vw;
-}
-
-#Main p a {
-	text-decoration: underline;
-	color: #cccccc;
-}
-
-b {
-	font-size: 30px;
-}
-
-.selfportrait {
-	margin-top: 30px;
-	margin-left: 25px;
-	display: block;
-	float: right;
-	width: 20vw;
-	border-width: 5px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: #cccccc;
-}
-
-.logo {
-	display: block;
 	text-align: center;
-	height: 10vw;
-	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	width: 40vw;
+}
+
+#architect {
+	background: #000;
+	float: left;
+	width: 45vw;
+	height: 3000px;
+}
+
+#developerTitle, #architectTitle {
+	display: block;
+	float: left;
+	width: 5vw;
+	transition: margin-top 0.25s;
+	animation: titleFlash 5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes titleFlash {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+	}
 }

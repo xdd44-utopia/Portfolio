@@ -5,11 +5,11 @@ The website is still under developing and haven't been published.
 I will publish it as soon as I think the basic development is completed.  
 
 ## Current progress:
-Self introduction added.
-Cover of Gallary added.
+Thinking Home page design TOO BOOOOOOOOORING.
+Start redesigning.
 
 ## Next:
-Continue writing content of Home page.  
+Continue designing Home page.  
 Continue planning the organization of Gallary and Project page.  
 Considering a resume page.  
 

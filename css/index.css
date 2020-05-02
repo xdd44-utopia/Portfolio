@@ -51,6 +51,20 @@
 	}
 }
 
+#Intro {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logo {
+	height: 7.5vw;
+}
+
 #Main {
 	margin-left: auto;
 	margin-right: auto;
@@ -58,6 +72,8 @@
 	margin-bottom: 50px;
 	height: 3000px;
 	overflow: hidden;
+	display: flex;
+	flex-direction: row;
 }
 
 #Main h1 {
@@ -69,35 +85,63 @@
 	margin-top: 25px;
 }
 
-#developer {
-	background: #000;
-	float: left;
-	width: 45vw;
+#developer, #architect {
+	background: #242424;
+	width: 90vw;
 	height: 3000px;
+	transition: margin-left 0.5s;
 }
 
 #developer p, #architect p {
 	color: #cccccc;
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: 40vw;
+	font-size: 30px;
+	margin-bottom: 50px;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	width: 80vw;
 }
 
-#architect {
-	background: #000;
-	float: left;
-	width: 45vw;
+#developer p a, #architect p a {
+	color: #cccccc;
+	font-size: 30px;
+	text-decoration: underline;
+}
+
+#titleContainer {
+	display: flex;
+	flex-direction: row;
+	margin-top: -100px;
+	width: 10vw;
 	height: 3000px;
+	transition: background-color 0.25s;
+}
+
+#titleContainer:hover{
+	background-color: #000;
 }
 
 #developerTitle, #architectTitle {
-	display: block;
-	float: left;
 	width: 5vw;
-	transition: margin-top 0.25s;
-	animation: titleFlash 5s;
+	transition: opacity 0.25s;
+}
+
+#slideLeft, #slideRight {
+	width: 2vw;
+	margin-left: 1.5vw;
+	margin-right: 1.5vw;
+	animation: titleFlash 2s;
 	animation-iteration-count: infinite;
+}
+
+#slideLeft {
+	margin-left: 1.5vw;
+	margin-right: 0.5vw;
+}
+
+#slideRight {
+	margin-left: 0.5vw;
+	margin-right: 1.5vw;
 }
 
 @keyframes titleFlash {

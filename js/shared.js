@@ -32,10 +32,10 @@ function logoControl(){
 	if (scrollDist > $(window).width() * 0.6 && !isLogoOver) {
 		document.getElementsByClassName("LogoDsc")[0].style.color="rgba(204, 204, 204, 0)";
 		document.getElementsByClassName("LogoDsc")[0].style.display="none";
-		document.getElementsByClassName("MyLogo")[0].style.width="3vw";
+		document.getElementsByClassName("MyLogo")[0].style.width="5vw";
 	}
 	else {
-		document.getElementsByClassName("MyLogo")[0].style.width="7.5vw";
+		document.getElementsByClassName("MyLogo")[0].style.width="10vw";
 		document.getElementsByClassName("LogoDsc")[0].style.color="rgba(204, 204, 204, 1)";
 		document.getElementsByClassName("LogoDsc")[0].style.display="block";
 	}

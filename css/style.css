@@ -124,7 +124,7 @@ nav ul li:hover .external-link-sub li:hover {
 	color: #cccccc;
 	width: 100%;
 	margin: 5px 0 -3px 0;
-	font-size: 0.7vw;
+	font-size: 0.9vw;
 	text-align: center;
 	transition: color 0.25s;
 }
@@ -158,6 +158,11 @@ footer div img {
 
 .contact li a {
 	color: #cccccc;
+	transition: color 0.1s;
+}
+
+.contact li a:hover {
+	color: #fff;
 }
 
 .contact li a img {
@@ -167,6 +172,14 @@ footer div img {
 	height: 20px;
 }
 
+footer div h2 a {
+	color: #cccccc;
+	transition: color 0.1s;
+}
+
+footer div h2 a:hover {
+	color: #fff;
+}
 
 footer hr {
 	border: 1px solid #cccccc;

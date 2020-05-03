@@ -1,42 +1,42 @@
 .CoverImg {
 	overflow: hidden;
-	height: 60vw;
+	height: 180vw;
 }
 
 .CoverImg img {
 	display: block;
-	width: 100vw;
-	height: auto;
+	width: 315vw;
+	margin-left: -150vw;
 }
 
 .title {
 	position: absolute;
-	float: left;
 	box-sizing: content-box;
-	margin-left: 5%;
-	margin-right: 25%;
-	margin-top: 20vw;
-	width : 45%;
+	margin-top: 60vw;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	width : 80vw;
 	color: #fff;
-	text-shadow: 3px 3px 10px #000000;
+	text-shadow: 5px 5px 20px #000000;
 }
 
 .title h1 {
 	text-align: center;
-	font-size: 2vw;
+	font-size: 10vw;
 }
 
 .title h2 {
-	text-align: right;
-	font-size: 1.25vw;
+	margin-top: 100px;
+	text-align: center;
+	font-size: 4vw;
 }
 
 .title img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 13vw;
-	width: 4vw;
+	margin-top: 25vw;
+	width: 20vw;
 	animation: opa 1.5s;
 	animation-iteration-count: infinite;
 }
@@ -50,20 +50,6 @@
 	100% {
 		opacity: 0;
 	}
-}
-
-#Intro {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	padding-top: 50px;
-	padding-bottom: 50px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.logo {
-	height: 7.5vw;
 }
 
 #Main {

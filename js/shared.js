@@ -16,15 +16,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* control the logo on top left of the page */
 var isLogoOver = false;
+var mq = window.matchMedia( "screen and (max-device-width: 450px) and (max-device-height: 900px)" );
 
 function mouseEnterLogo() {
 	isLogoOver = true;
-	logoControl();
+	if(mq.matches) {
+		mobileLogoControl();
+	}
+	else {
+		logoControl();
+	}
 }
 
 function mouseLeaveLogo() {
 	isLogoOver = false;
-	logoControl();
+	if(mq.matches) {
+		mobileLogoControl();
+	}
+	else {
+		logoControl();
+	}
 }
 
 function logoControl(){
@@ -41,6 +52,34 @@ function logoControl(){
 	}
 }
 
+function mobileLogoControl(){
+	var scrollDist = $(window).scrollTop();
+	if (scrollDist > $(window).width() * 0.6 && !isLogoOver) {
+		document.getElementsByClassName("LogoDsc")[0].style.color="rgba(204, 204, 204, 0)";
+		document.getElementsByClassName("LogoDsc")[0].style.display="none";
+		document.getElementsByClassName("MyLogo")[0].style.width="15vw";
+	}
+	else {
+		document.getElementsByClassName("MyLogo")[0].style.width="25vw";
+		document.getElementsByClassName("LogoDsc")[0].style.color="rgba(204, 204, 204, 1)";
+		document.getElementsByClassName("LogoDsc")[0].style.display="block";
+	}
+}
+
 window.addEventListener("scroll", coverScroll);
-window.addEventListener("scroll", logoControl);
-window.addEventListener("load", logoControl);
+window.addEventListener("scroll", function(){
+	if(mq.matches) {
+		mobileLogoControl();
+	}
+	else {
+		logoControl();
+	}
+});
+window.addEventListener("load", function(){
+	if(mq.matches) {
+		mobileLogoControl();
+	}
+	else {
+		logoControl();
+	}
+});

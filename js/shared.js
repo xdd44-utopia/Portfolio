@@ -54,7 +54,7 @@ function logoControl(){
 
 function mobileLogoControl(){
 	var scrollDist = $(window).scrollTop();
-	if (scrollDist > $(window).width() * 0.6 && !isLogoOver) {
+	if (scrollDist > $(window).width() * 1.5 && !isLogoOver) {
 		document.getElementsByClassName("LogoDsc")[0].style.color="rgba(204, 204, 204, 0)";
 		document.getElementsByClassName("LogoDsc")[0].style.display="none";
 		document.getElementsByClassName("MyLogo")[0].style.width="15vw";

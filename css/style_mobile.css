@@ -131,7 +131,7 @@ nav ul li:hover .external-link-sub li:hover {
 	color: #cccccc;
 	width: 100%;
 	margin: 5px 0 -3px 0;
-	font-size: 0.9vw;
+	font-size: 2.25vw;
 	text-align: center;
 	transition: color 0.25s;
 }

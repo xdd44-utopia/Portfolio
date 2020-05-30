@@ -120,33 +120,83 @@
 #Main {
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 100px;
-	margin-bottom: 50px;
-	width: 80%;
-	height: 3000px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	width: 82vw;
 }
 
 #Main h1 {
-	color: #cccccc;
+	color: #fff;
 }
 
 #Main hr {
-	border: 1px solid #cccccc;
+	border: 1px solid #fff;
 	margin-top: 25px;
 }
 
-#Main p {
-	margin-top: 22px;
-	color: #cccccc;
+#Main > p {
+	margin-bottom: 50px;
+	margin-left: 1vw;
+	width: 80vw;
+	color: #fff;
 	font-size: 25px;
-	width: 56vw;
 }
 
 #Main p a {
 	text-decoration: underline;
-	color: #cccccc;
+	color: #fff;
 }
 
 b {
 	font-size: 30px;
+}
+
+/* gallary links */
+
+#gallary-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 82vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gallary-link-container {
+	width: 40vw;
+	height: 28.5vw;
+	margin-left: 0.5vw;
+	margin-right: 0.5vw;
+	margin-top: 2vw;
+	overflow: hidden;
+}
+
+.gallary-photo {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.gallary-link-container:hover .gallary-photo {
+	opacity: 0.3;
+}
+
+.gallary-description {
+	height: 20vw;
+	margin-top: -30vw;
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.gallary-link-container:hover .gallary-description {
+	opacity: 1;
+}
+
+.gallary-description > p {
+	text-align: center;
+	font-size: 5vw;
+	margin-left: auto;
+	margin-right: auto;
 }

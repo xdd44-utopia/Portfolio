@@ -1,0 +1,68 @@
+.Mylogo {
+	width: 5vw;
+}
+
+.LogoDsc {
+	display: none;
+}
+
+/*Main part*/
+
+#Main {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 7.5vw;
+	padding-bottom: 50px;
+	width: 80vw;
+}
+
+#Main h1 {
+	font-size: 75px;
+	color: #fff;
+}
+
+#Main > p {
+	margin-bottom: 50px;
+	width: 80vw;
+	color: #fff;
+	font-size: 20px;
+}
+
+#Main p a {
+	text-decoration: underline;
+	color: #fff;
+}
+
+/*containers*/
+
+.container {
+	width: 80vw;
+	background-color: black;
+	margin-bottom: 50px;
+}
+
+.photocontainer {
+	display: inline-block;
+	width: 49.4vw;
+	overflow-y: hidden;
+	vertical-align: text-top;
+}
+
+.photocontainer > img {
+	display: block;
+	width: 49.4vw;
+}
+
+.dsccontainer {
+	display: inline-block;
+	padding-top: 2vw;
+	margin-left: 2.5vw;
+	width: 27.5vw;
+	margin-top: 0;
+	vertical-align: text-top;
+}
+
+.dsccontainer > p {
+	color: #fff;
+	font-size: 20px;
+}

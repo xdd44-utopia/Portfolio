@@ -103,33 +103,70 @@
 #Main {
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 100px;
+	padding-top: 50px;
 	margin-bottom: 50px;
 	width: 80%;
-	height: 3000px;
 }
 
 #Main h1 {
-	color: #cccccc;
+	color: #fff;
 }
 
 #Main hr {
-	border: 1px solid #cccccc;
+	border: 1px solid #fff;
 	margin-top: 25px;
 }
 
-#Main p {
-	margin-top: 22px;
-	color: #cccccc;
-	font-size: 25px;
-	width: 56vw;
+#Main > p {
+	margin-bottom: 20px;
+	color: #fff;
+	font-size: 20px;
+	width: 100%;
 }
 
 #Main p a {
 	text-decoration: underline;
-	color: #cccccc;
+	color: #fff;
 }
 
 b {
 	font-size: 30px;
+}
+
+/* gallary links */
+
+#gallary-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 80vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gallary-link-container {
+	width: 80vw;
+	height: 60vw;
+	margin-top: 2vw;
+	overflow: hidden;
+}
+
+.gallary-photo {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0.3;
+}
+
+.gallary-description {
+	height: 20vw;
+	margin-top: -50vw;
+	color: #fff;
+	opacity: 1;
+}
+
+.gallary-description > p {
+	text-align: center;
+	font-size: 50px;
+	margin-left: auto;
+	margin-right: auto;
 }

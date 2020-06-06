@@ -6,12 +6,23 @@
 	display: none;
 }
 
+#banner {
+	width: 100vw;
+	height: 15vw;
+	overflow: hidden;
+}
+
+#banner > img {
+	display: block;
+	width: 100vw;
+}
+
 /*Main part*/
 
 #Main {
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 7.5vw;
+	padding-top: 2.5vw;
 	padding-bottom: 50px;
 	width: 80vw;
 }
@@ -19,10 +30,11 @@
 #Main h1 {
 	font-size: 75px;
 	color: #fff;
+	margin-bottom: 30px;
 }
 
 #Main > p {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	width: 80vw;
 	color: #fff;
 	font-size: 20px;
@@ -41,28 +53,58 @@
 	margin-bottom: 50px;
 }
 
-.photocontainer {
+.landscapecontainer, .portraitcontainer{
 	display: inline-block;
-	width: 49.4vw;
 	overflow-y: hidden;
 	vertical-align: text-top;
 }
-
-.photocontainer > img {
-	display: block;
+.landscapecontainer {
 	width: 49.4vw;
 }
+.portraitcontainer {
+	width: 30.6vw;
+}
 
-.dsccontainer {
+.landscapecontainer > img, .portraitcontainer > img {
+	display: block;
+}
+.landscapecontainer > img {
+	width: 49.4vw;
+}
+.portraitcontainer > img {
+	width: 30.6vw;
+}
+
+.landscapedsc, .portraitdsc {
 	display: inline-block;
 	padding-top: 2vw;
 	margin-left: 2.5vw;
-	width: 27.5vw;
 	margin-top: 0;
 	vertical-align: text-top;
 }
 
-.dsccontainer > p {
+.landscapedsc {
+	width: 27.5vw;
+}
+
+.portraitdsc {
+	width: 44.4vw;
+}
+
+.landscapedsc > p, .portraitdsc > p {
 	color: #fff;
 	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.landscapedsc > p {
+	width: 25vw;
+}
+
+b {
+	font-size: 25px;
+}
+
+i {
+	font-size: 15px;
 }

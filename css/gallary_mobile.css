@@ -28,8 +28,8 @@
 
 .mySlides img {
 	display: block;
-	width: 315vw;
-	margin-left: -103vw;
+	width: 360vw;
+	margin-left: -110vw;
 }
 
 /* Next & previous buttons */
@@ -61,7 +61,7 @@
 .text {
 	position: relative;
 	color: #fff;
-	margin-top: -100vw;
+	margin-top: -115vw;
 	font-size: 10vw;
 	bottom: 8px;
 	width: 100%;
@@ -151,10 +151,19 @@ b {
 }
 
 .gallary-photo {
-	width: 100%;
+	height: 60vw;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	opacity: 0.3;
+}
+
+#photo1 {
+	margin-left: -12vw;
+}
+
+#dsc1 {
+	margin-top: -36vw;
 }
 
 .gallary-description {
@@ -166,7 +175,7 @@ b {
 
 .gallary-description > p {
 	text-align: center;
-	font-size: 50px;
+	font-size: 10vw;
 	margin-left: auto;
 	margin-right: auto;
 }

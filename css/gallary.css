@@ -176,10 +176,19 @@ b {
 
 .gallary-photo {
 	display: block;
+	height: 28.5vw;
 	margin-left: auto;
 	margin-right: auto;
 	opacity: 1;
 	transition: opacity 0.3s;
+}
+
+#photo1 {
+	margin-left: -5vw;
+}
+
+#dsc1 {
+	margin-top: -18vw;
 }
 
 .gallary-link-container:hover .gallary-photo {

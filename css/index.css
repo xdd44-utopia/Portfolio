@@ -161,9 +161,8 @@
 }
 
 .gallary-photo {
-	width: calc(100vw/3 - 0.5vw);
-	margin-left: auto;
-	margin-right: auto;
+	height: calc(100vw/3 - 0.5vw);
+	text-align: center;
 	opacity: 1;
 	transition: opacity 0.3s;
 }
@@ -173,8 +172,6 @@
 }
 
 .gallary-description {
-	width: calc(100vw/3 - 0.5vw);
-	height: calc(100vw/3 - 0.5vw);
 	margin-top: -25vw;
 	color: #fff;
 	opacity: 0;
@@ -186,9 +183,8 @@
 }
 
 .gallary-description p {
+	width: calc(100vw/3 - 0.5vw);
 	text-align: center;
-	font-size: 5vw;
+	font-size: 4vw;
 	width: 20vw;
-	margin-left: auto;
-	margin-right: auto;
 }

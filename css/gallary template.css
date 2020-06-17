@@ -33,6 +33,12 @@
 	margin-bottom: 30px;
 }
 
+#Main h2 {
+	font-size: 40px;
+	color: #fff;
+	margin-bottom: 30px;
+}
+
 #Main > p {
 	margin-bottom: 20px;
 	width: 80vw;

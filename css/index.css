@@ -183,8 +183,7 @@
 }
 
 .gallary-description p {
-	width: calc(100vw/3 - 0.5vw);
+	width: calc(100vw/3 - 1vw);
 	text-align: center;
 	font-size: 4vw;
-	width: 20vw;
 }

@@ -191,6 +191,14 @@ b {
 	margin-top: -18vw;
 }
 
+#photo2 {
+	margin-left: -5vw;
+}
+
+#dsc2 {
+	margin-top: -18vw;
+}
+
 .gallary-link-container:hover .gallary-photo {
 	opacity: 0.3;
 }

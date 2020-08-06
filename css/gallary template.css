@@ -99,7 +99,7 @@
 
 .landscapedsc > p, .portraitdsc > p {
 	color: #fff;
-	font-size: 20px;
+	font-size: 1vw;
 	margin-bottom: 20px;
 }
 
@@ -112,9 +112,9 @@
 }
 
 b {
-	font-size: 25px;
+	font-size: 2vw;
 }
 
 i {
-	font-size: 15px;
+	font-size: 0.5vw;
 }

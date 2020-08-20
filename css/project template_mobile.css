@@ -1,0 +1,38 @@
+#banner {
+	width: 100vw;
+	height: 25vw;
+	overflow: hidden;
+}
+
+#Main {
+	margin-top: 5vw;
+}
+
+#Main > p {
+	font-size: 14px;
+}
+
+.container {
+	width: 80vw;
+	margin-left: 0;
+	background-color: black;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.landscapecontainer, .portraitcontainer {
+	width: 80vw;
+}
+
+.landscapecontainer > img, .portraitcontainer > img {
+	width: 80vw;
+}
+
+.landscapedsc {
+	width: 75vw;
+}
+
+.landscapedsc > p {
+	width: 75vw;
+	font-size: 23px;
+}

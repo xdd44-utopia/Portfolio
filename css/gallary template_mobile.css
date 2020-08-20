@@ -9,7 +9,7 @@
 }
 
 #Main > p {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .landscapecontainer, .portraitcontainer {
@@ -27,4 +27,9 @@
 
 .landscapedsc > p, .portraitdsc > p {
 	width: 75vw;
+	font-size: 13px;
+}
+
+i {
+	font-size: 11px;
 }

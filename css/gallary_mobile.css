@@ -1,10 +1,58 @@
 .CoverImg {
-	width: 100vw;
 	overflow: hidden;
 	height: 180vw;
 }
 
-/*slideshow*/
+.CoverImg img {
+	display: block;
+	width: 360vw;
+	margin-left: -150vw;
+}
+
+.title {
+	position: absolute;
+	box-sizing: content-box;
+	margin-top: 60vw;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	width : 80vw;
+	color: #fff;
+	text-shadow: 5px 5px 20px #000000;
+}
+
+.title h1 {
+	text-align: center;
+	font-size: 10vw;
+}
+
+.title h2 {
+	margin-top: 100px;
+	text-align: center;
+	font-size: 4vw;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25vw;
+	width: 20vw;
+	animation: opa 1.5s;
+	animation-iteration-count: infinite;
+}
+@keyframes opa {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/*slideshow
 
 .slideshow-container {
 	width: 300vw;
@@ -32,7 +80,7 @@
 	margin-left: -110vw;
 }
 
-/* Next & previous buttons */
+ Next & previous buttons 
 .prev, .next {
 	cursor: pointer;
 	position: absolute;
@@ -57,7 +105,7 @@
 	background-color: rgba(0,0,0,0.8);
 }
   
-/* Caption text */
+ Caption text 
 .text {
 	position: relative;
 	color: #fff;
@@ -69,7 +117,7 @@
 	text-shadow: 3px 3px 10px #000000;
 }
   
-/* The dots/bullets/indicators */
+ The dots/bullets/indicators 
 #slide-selector {
 	position: absolute;
 	width: 50vw;
@@ -93,10 +141,11 @@
 	background-color: #fff;
 }
   
-/* On smaller screens, decrease text size */
+ On smaller screens, decrease text size 
 @media only screen and (max-width: 300px) {
 	.prev, .next,.text {font-size: 11px}
 }
+*/
 
 /*Main part*/
 
@@ -155,39 +204,27 @@ b {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	opacity: 0.3;
+	opacity: 1;
+	transition: none;
 }
 
+/* 16:9 */
 #photo1 {
-	margin-left: -12vw;
+	margin-left: -14vw;
 }
 
 #dsc1 {
-	margin-top: -36vw;
+	margin-top: -37vw;
 }
 
-#photo2 {
-	margin-left: -12vw;
-}
-
-#dsc2 {
-	margin-top: -36vw;
-}
-
-#photo3 {
-	margin-left: -12vw;
-}
-
-#dsc3 {
-	margin-top: -36vw;
-}
+/* 3:2 */
 
 #photo4 {
-	margin-left: -12vw;
+	margin-left: -5vw;
 }
 
 #dsc4 {
-	margin-top: -36vw;
+	margin-top: -37vw;
 }
 
 .gallary-description {
@@ -195,6 +232,7 @@ b {
 	margin-top: -50vw;
 	color: #fff;
 	opacity: 1;
+	transition: none;
 }
 
 .gallary-description > p {

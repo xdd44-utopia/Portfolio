@@ -182,9 +182,9 @@ b {
 	font-size: 30px;
 }
 
-/* gallary links */
+/* gallery links */
 
-#gallary-container {
+#gallery-container {
 	display: flex;
 	flex-flow: row wrap;
 	width: 80vw;
@@ -192,14 +192,14 @@ b {
 	margin-right: auto;
 }
 
-.gallary-link-container {
+.gallery-link-container {
 	width: 80vw;
 	height: 60vw;
 	margin-top: 2vw;
 	overflow: hidden;
 }
 
-.gallary-photo {
+.gallery-photo {
 	height: 60vw;
 	display: block;
 	margin-left: auto;
@@ -227,7 +227,7 @@ b {
 	margin-top: -37vw;
 }
 
-.gallary-description {
+.gallery-description {
 	height: 20vw;
 	margin-top: -50vw;
 	color: #fff;
@@ -235,7 +235,7 @@ b {
 	transition: none;
 }
 
-.gallary-description > p {
+.gallery-description > p {
 	text-align: center;
 	font-size: 10vw;
 	margin-left: auto;

@@ -247,6 +247,16 @@ b {
 	margin-top: -18vw;
 }
 
+/* 3:4 */
+#photo2 {
+	height: auto;
+	width: 40vw;
+}
+
+#dsc2 {
+	margin-top: -43vw;
+}
+
 /* 3:2 */
 
 #photo4 {

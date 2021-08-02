@@ -1,163 +1,187 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="description" content="xdd44's Portfolio Website">
-		<meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
-		<meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 900px)" href="../css/style_mobile.css" />
-		<link rel="stylesheet" type="text/css" href="../css/index.css">
-		<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 900px)" href="../css/index_mobile.css" />
-		<link rel="stylesheet" type="text/css" href="../css/aos.css">
-		<link rel="shortcut icon" href="../image/icons/Website icon.png">
-		<title>Home&nbsp;|&nbsp;xdd44's Collections</title>
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li><a class="active" href="#">Home</a></li>
-				<li><a href="gallery.html">gallery</a></li>
-				<li><a href="project.html">Project</a></li>
-				<li><a href="#">Media</a>
-					<div class="external-link-sub">
-						<ul>
-							<li><a href="https://github.com/xdd44-utopia" target="_blank"><img src="../image/icons/github.png">GitHub</a></li>
-							<li><a href="https://www.instagram.com/xdd44.utopia" target="_blank"><img src="../image/icons/instagram.png">Instagram</a></li>
-							<li><a href="https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg" target="_blank"><img src="../image/icons/youtube.png">YouTube</a></li>
-							<li><a href="https://space.bilibili.com/22729170" target="_blank"><img src="../image/icons/bilibili.png">Bilibili</a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</nav>
-		<div class="MyLogo" onmouseenter="mouseEnterLogo()" onmouseleave="mouseLeaveLogo()">
-			<img src="../image/selfportrait.jpg" alt="xdd44">
-			<div class="LogoDsc">Chenyue&nbsp;&quot;xdd44&quot;&nbsp;DAI</div>
-		</div>
-		<div id="title" class="title">
-			<h1>"Best things come to those who wait."</h1>
-			<h2>— <i>Sorry for now</i>&nbsp;&nbsp;by Linkin Park, 2017</h2>
-			<a href="#Main"><img src="../image/icons/slide_down_icon.png" alt="slide down" class="center"></a>
-		</div>
-		<div class="CoverImg">
-			<img id="cover" src="../image/Home_BKG.jpg" alt="bkg">
-		</div>
-		
-		<div id="Main">
-			<div id="developer">
-				<p><b>Hi there!</b></p>
-				<p>I'm <b>Chenyue DAI</b> with English name <b>Leo</b></p>
-				<p>I always use <b>&quot;xdd44&quot;</b> as nickname online</p>
-				<p>I'm currently studying <b>Bachelor of Computer Science</b></p>
-				<p>At <b>City Universtiy of Hong Kong</b></p>
-				<p>Influenced by <a href="#" onclick="switchPage()">the other half of me</a></p>
-				<p>I can come up with more colorful ideas and apply them to my development</p>
-				<p>I'm now working hard trying to be a professonal <b>developer</b></p>
-				<p>See my <a href="../files/Resume_Chenyue_DAI.pdf" target="_blank">resume</a> if you're interested</p>
-			</div>
-			<div id="titleContainer" onclick="switchPage()">
-				<div>
-					<img id="developerTitle" src="../image/icons/Developer.png">
-					<img id="slideLeft" src="../image/icons/slide_left_icon.png">
-				</div>
-				<div>
-					<img id="architectTitle" src="../image/icons/Architect.png">
-					<img id="slideRight" src="../image/icons/slide_right_icon.png">
-				</div>
-			</div>
-			<div id="architect">
-				<p><b>Hi there!</b></p>
-				<p>I'm <b>Chenyue DAI</b> with English name <b>Leo</b></p>
-				<p>I always use <b>&quot;xdd44&quot;</b> as nickname online</p>
-				<p>I'm currently studying <b>Architecture</b> knowledge out of school</p>
-				<p>And explorating other forms of art on my free time</p>
-				<p>Influenced by <a href="#" onclick="switchPage()">the other half of me</a></p>
-				<p>I can come up with more colorful ideas and apply them to my design</p>
-				<p>And work hard trying to earn an opportunity of studying <b>Master of Architecture</b></p>
-				<p>See my <a href="#">portfolio</a> if you're interested</p>
-			</div>
-		</div>
 
-		<div id="gallery">
-			<div id="gallery-title">
-				<h1>gallery</h1>
-			</div>
-			<div id="gallery-container">
-				<a class="gallery-link-container" href="living-things.html" target="_blank">
-					<img class="gallery-photo" src="../image/living-things/30-6-20-6.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
-					<div class="gallery-description" style="
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="xdd44's Portfolio Website">
+    <meta name="keywords" content="Photography, Gallery, Architecture, Computer Science">
+    <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 900px)" href="../css/style_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 900px)" href="../css/index_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aos.css">
+    <link rel="shortcut icon" href="../image/icons/Website icon.png">
+    <title>Home&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="#">Media</a>
+                <div class="external-link-sub">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/xdd44-utopia" target="_blank"><img src="../image/icons/github.png">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/realxdd44/" target="_blank"><img src="../image/icons/instagram.png">Instagram</a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg" target="_blank"><img src="../image/icons/youtube.png">YouTube</a>
+                        </li>
+                        <li>
+                            <a href="https://space.bilibili.com/22729170" target="_blank"><img src="../image/icons/bilibili.png">Bilibili</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="MyLogo" onmouseenter="mouseEnterLogo()" onmouseleave="mouseLeaveLogo()">
+        <img src="../image/selfportrait.jpg" alt="xdd44">
+        <div class="LogoDsc">Chenyue&nbsp;&quot;xdd44&quot;&nbsp;DAI</div>
+    </div>
+    <div id="title" class="title">
+        <h1>"Best things come to those who wait."</h1>
+        <h2>— <i>Sorry for now</i>&nbsp;&nbsp;by Linkin Park, 2017</h2>
+        <a href="#Main"><img src="../image/icons/slide_down_icon.png" alt="slide down" class="center"></a>
+    </div>
+    <div class="CoverImg">
+        <img id="cover" src="../image/Home_BKG.jpg" alt="bkg">
+    </div>
+
+    <div id="Main">
+        <div id="developer">
+            <p><b>Hi there!</b></p>
+            <p>I'm <b>Chenyue DAI</b> with English name <b>Leo</b></p>
+            <p>I always use <b>&quot;xdd44&quot;</b> as nickname online</p>
+            <p>I'm currently studying <b>Bachelor of Computer Science</b></p>
+            <p>At <b>City Universtiy of Hong Kong</b></p>
+            <p>Influenced by <a href="#" onclick="switchPage()">the other half of me</a></p>
+            <p>I can come up with more colorful ideas and apply them to my development</p>
+            <p>I'm now working hard trying to be a professonal <b>developer</b></p>
+            <p>See my <a href="../files/Resume_Chenyue_DAI.pdf" target="_blank">resume</a> if you're interested</p>
+        </div>
+        <div id="titleContainer" onclick="switchPage()">
+            <div>
+                <img id="developerTitle" src="../image/icons/Developer.png">
+                <img id="slideLeft" src="../image/icons/slide_left_icon.png">
+            </div>
+            <div>
+                <img id="architectTitle" src="../image/icons/Architect.png">
+                <img id="slideRight" src="../image/icons/slide_right_icon.png">
+            </div>
+        </div>
+        <div id="architect">
+            <p><b>Hi there!</b></p>
+            <p>I'm <b>Chenyue DAI</b> with English name <b>Leo</b></p>
+            <p>I always use <b>&quot;xdd44&quot;</b> as nickname online</p>
+            <p>I'm currently studying <b>Architecture</b> knowledge out of school</p>
+            <p>And explorating other forms of art on my free time</p>
+            <p>Influenced by <a href="#" onclick="switchPage()">the other half of me</a></p>
+            <p>I can come up with more colorful ideas and apply them to my design</p>
+            <p>And work hard trying to earn an opportunity of studying <b>Master of Architecture</b></p>
+            <p>See my <a href="#">portfolio</a> if you're interested</p>
+        </div>
+    </div>
+
+    <div id="gallery">
+        <div id="gallery-title">
+            <h1>Gallery</h1>
+        </div>
+        <div id="gallery-container">
+            <a class="gallery-link-container" href="living-things.html" target="_blank">
+                <img class="gallery-photo" src="../image/living-things/30-6-20-6.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
+                <div class="gallery-description" style="
 					margin-top: -20.5vw;">
-						<p>Living things</p>
-					</div>
-				</a>
-				<a class="gallery-link-container" href="hometown.html" target="_blank">
-					<img class="gallery-photo" src="../image/hometown/Mong Kok (2).jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
-					<div class="gallery-description" style="
+                    <p>Living things</p>
+                </div>
+            </a>
+            <a class="gallery-link-container" href="hometown.html" target="_blank">
+                <img class="gallery-photo" src="../image/hometown/Mong Kok (2).jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
+                <div class="gallery-description" style="
 					margin-top: -20.5vw;">
-						<p>&quot;Hometown&quot;</p>
-					</div>
-				</a>
-				<a class="gallery-link-container" href="from-above.html" target="_blank">
-					<img class="gallery-photo" src="../image/from-above/selfie.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
-					<div class="gallery-description" style="
+                    <p>&quot;Hometown&quot;</p>
+                </div>
+            </a>
+            <a class="gallery-link-container" href="from-above.html" target="_blank">
+                <img class="gallery-photo" src="../image/from-above/selfie.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
+                <div class="gallery-description" style="
 					margin-top: -20.5vw;">
-						<p>From above</p>
-					</div>
-				</a>
-				<a class="gallery-link-container" href="microhk.html" target="_blank">
-					<img class="gallery-photo" src="../image/MicroHK/20190517.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -8.5vw">
-					<div class="gallery-description" style="
+                    <p>From above</p>
+                </div>
+            </a>
+            <a class="gallery-link-container" href="microhk.html" target="_blank">
+                <img class="gallery-photo" src="../image/MicroHK/20190517.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -8.5vw">
+                <div class="gallery-description" style="
 					margin-top: -20.5vw;">
-						<p>MicroHK</p>
-					</div>
-				</a>
-				<a class="gallery-link-container" href="macrohk.html" target="_blank">
-					<img class="gallery-photo" src="../image/MacroHK/20200610-2.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
-					<div class="gallery-description" style="
+                    <p>MicroHK</p>
+                </div>
+            </a>
+            <a class="gallery-link-container" href="macrohk.html" target="_blank">
+                <img class="gallery-photo" src="../image/MacroHK/20200610-2.jpg" style="height: calc(100vw/3 - 0.5vw); margin-left: -12.76vw">
+                <div class="gallery-description" style="
 					margin-top: -20.5vw;">
-						<p>MacroHK</p>
-					</div>
-				</a>
-				<a class="gallery-link-container" href="shotoniphone.html" target="_blank">
-					<img class="gallery-photo" src="../image/shotoniphone/20200622.jpg" style="width: calc(100vw/3 - 0.5vw); height: calc((100vw/3 - 0.5vw)*4/3); margin-top: -4vw">
-					<div class="gallery-description" style="
+                    <p>MacroHK</p>
+                </div>
+            </a>
+            <a class="gallery-link-container" href="shotoniphone.html" target="_blank">
+                <img class="gallery-photo" src="../image/shotoniphone/20200622.jpg" style="width: calc(100vw/3 - 0.5vw); height: calc((100vw/3 - 0.5vw)*4/3); margin-top: -4vw">
+                <div class="gallery-description" style="
 					margin-top: -26.5vw;">
-						<p>#shotoniphone</p>
-					</div>
-				</a>
-			</div>
-		</div>
+                    <p>#shotoniphone</p>
+                </div>
+            </a>
+        </div>
+    </div>
 
-		<footer>
-			<div class="footer">
-				<div><img src="../image/logo 3.1.png" alt="xdd44"></div>
-				<hr>
-				<div>
-					<h2>Contact & Connect</h2>
-					<ul class="contact">
-						<li><a href="mailto: xdd44.utopia@gmail.com" target="_blank"><img src="../image/icons/email.png">&nbsp;xdd44.utopia@gmail.com</a></li>
-						<li><a href="https://www.linkedin.com/in/cyleodai" target="_blank"><img src="../image/icons/linkedin.png">&nbsp;Chenyue DAI</a></li>
-						<li><a href="https://github.com/xdd44-utopia" target="_blank"><img src="../image/icons/github.png">&nbsp;xdd44-utopia</a></li>
-						<li><a href="https://www.instagram.com/xdd44.utopia" target="_blank"><img src="../image/icons/instagram.png">&nbsp;xdd44.utopia</a></li>
-						<li><a href="https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg" target="_blank"><img src="../image/icons/youtube.png">&nbsp;xdd 44</a></li>
-						<li><a href="https://space.bilibili.com/22729170" target="_blank"><img src="../image/icons/bilibili.png">&nbsp;xdd44_</a></li>
-					</ul>
-				</div>
-				<hr>
-				<div>
-					<h2><a href="https://github.com/xdd44-utopia/Portfolio">See this website on GitHub</a></h2>
-				</div>
-				<hr>
-				<div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any request of use permission and other enquiries.<br><br></div>
-				<div class="copyright">Copyright © 2020 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
-			</div>
-		</footer>
+    <footer>
+        <div class="footer">
+            <div><img src="../image/logo 3.1.png" alt="xdd44"></div>
+            <hr>
+            <div>
+                <h2>Contact & Connect</h2>
+                <ul class="contact">
+                    <li>
+                        <a href="mailto: xdd44.utopia@gmail.com" target="_blank"><img src="../image/icons/email.png">&nbsp;xdd44.utopia@gmail.com</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cyleodai" target="_blank"><img src="../image/icons/linkedin.png">&nbsp;Chenyue DAI</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/xdd44-utopia" target="_blank"><img src="../image/icons/github.png">&nbsp;xdd44-utopia</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/realxdd44/" target="_blank"><img src="../image/icons/instagram.png">&nbsp;xdd44.utopia</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg" target="_blank"><img src="../image/icons/youtube.png">&nbsp;xdd 44</a>
+                    </li>
+                    <li>
+                        <a href="https://space.bilibili.com/22729170" target="_blank"><img src="../image/icons/bilibili.png">&nbsp;xdd44_</a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                <h2><a href="https://github.com/xdd44-utopia/Portfolio">See this website on GitHub</a></h2>
+            </div>
+            <hr>
+            <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
+                the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any request of use permission and other enquiries.<br><br></div>
+            <div class="copyright">Copyright © 2020 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
+        </div>
+    </footer>
 
 
-		<script src="../js/jquery.js"></script>
-		<script src="../js/aos.js"></script>
-		<script src="../js/index.js"></script>
-		<script src="../js/shared.js"></script>
-	</body>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/shared.js"></script>
+</body>
+
 </html>

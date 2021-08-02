@@ -1,0 +1,100 @@
+@font-face {
+    font-family: Artifakt;
+    src: url('../font/Artifakt\ Element\ Regular.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    src: url('../font/Artifakt\ Element\ Bold.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Italic.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+/*Footer*/
+
+footer {
+    background: #000000;
+    color: #cccccc;
+    width: 100%;
+}
+
+.footer {
+    margin-left: 10%;
+    padding-top: 75px;
+    width: 80%;
+}
+
+.footer div {
+    padding-bottom: 25px;
+}
+
+footer div img {
+    display: block;
+    width: 200px;
+}
+
+.contact li {
+    margin-top: 10px;
+}
+
+.contact li a {
+    color: #cccccc;
+    transition: color 0.1s;
+}
+
+.contact li a:hover {
+    color: #fff;
+}
+
+.contact li a img {
+    display: inline-block;
+    margin-bottom: -5px;
+    width: 20px;
+    height: 20px;
+}
+
+footer div h2 a {
+    color: #cccccc;
+    transition: color 0.1s;
+}
+
+footer div h2 a:hover {
+    color: #fff;
+}
+
+footer hr {
+    border: 1px solid #cccccc;
+    margin-bottom: 25px;
+}
+
+.statement {
+    font-size: 12px;
+}
+
+.copyright {
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

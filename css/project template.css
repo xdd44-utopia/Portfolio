@@ -1,90 +1,99 @@
 .Mylogo {
-	width: 5vw;
+    width: 5vw;
 }
 
 .LogoDsc {
-	display: none;
+    display: none;
 }
 
 #banner {
-	width: 100vw;
-	height: 15vw;
-	overflow: hidden;
+    margin-left: 130px;
+    width: calc(100% - 130px);
+    height: 90vh;
+    overflow: hidden;
 }
 
-#banner > img {
-	display: block;
-	width: 100vw;
+#banner>img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
 }
+
 
 /*Main part*/
 
 #Main {
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 2.5vw;
-	padding-bottom: 50px;
-	width: 80vw;
+    overflow: hidden;
 }
 
 #Main h1 {
-	font-size: 75px;
-	color: #fff;
-	margin-bottom: 30px;
+    font-size: 75px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 #Main h2 {
-	font-size: 40px;
-	color: #fff;
-	margin-bottom: 30px;
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 30px;
 }
 
-#Main > p {
-	margin-bottom: 20px;
-	width: 80vw;
-	color: #fff;
-	font-size: 20px;
+#Main>p {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
 }
 
 #Main p a {
-	text-decoration: underline;
-	color: #fff;
+    text-decoration: underline;
+    color: #fff;
+}
+
+#Main p a:hover {
+    text-decoration: underline;
+    color: #000;
 }
 
 hr {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 
 /*containers*/
 
 .container {
-	width: 50vw;
-	margin-left: 15vw;
-	background-color: black;
-	margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    background-color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .landscapecontainer {
-	display: inline-block;
-	overflow-y: hidden;
-	vertical-align: text-top;
-	width: 50vw;
+    vertical-align: text-top;
 }
 
-.landscapecontainer > img {
-	display: block;
-	width: 50vw;
+.landscapecontainer>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    height: 36vw;
+    overflow-y: hidden;
+    object-fit: cover;
 }
+
 .landscapedsc {
-	display: inline-block;
-	padding-top: 1vw;
-	padding-bottom: 1vw;
-	margin-left: 1vw;
-	vertical-align: text-top;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.landscapedsc > p {
-	color: #fff;
-	font-size: 18px;
-	width: 48vw;
+.landscapedsc>p {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
 }

@@ -1,204 +1,180 @@
-@font-face { font-family: Artifakt; src: url('../font/Artifakt\ Element\ Regular.ttf'); } 
-@font-face { font-family: Artifakt; font-weight: bold; src: url('../font/Artifakt\ Element\ Bold.ttf');}
-@font-face { font-family: Artifakt; font-style: italic; src: url('../font/Artifakt\ Element\ Italic.ttf');}
-@font-face { font-family: Artifakt; font-weight: bold; font-style: italic; src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');}
+@font-face {
+    font-family: Artifakt;
+    src: url('../font/Artifakt\ Element\ Regular.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    src: url('../font/Artifakt\ Element\ Bold.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Italic.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');
+}
+
 * {
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	list-style: none;
-	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: Artifakt, sans-serif;
+    background-color: #000000;
 }
 
-h1 {
-	font-size: 40px;
-}
 
-body {
-	font-family: Artifakt, sans-serif;
-	background: #242424;
-	width: 100vw;
-	overflow-x: hidden;
-}
+/* Navigation bar */
 
 nav {
-	background: #242424;
-	position: fixed;
-	height: 29px;
-	width: 100%;
-	box-shadow: 0 5px 10px #000000;
+    background: #000000;
+    position: fixed;
+    height: 100%;
+    width: 130px;
 }
 
 nav ul {
-	float: right;
-	font-size: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
+    font-size: 15px;
+    margin-left: 15px;
 }
 
 nav ul li {
-	display: inline-block;
-	margin-top: -1px;
-	margin-right: 10px;
-	line-height: 30px;
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 50px;
 }
 
-nav ul li a{
-	color: #cccccc;
-	margin-bottom: -4px;
-	height: 50px;
-	padding: 0 3px;
-	font-size: 16px;
+nav ul li a {
+    color: #FFFFFF;
+    height: 50px;
+    padding: 0 3px;
+    font-size: 15px;
 }
 
-nav ul li a img {
-	display: inline-block;
-	height: 15px;
+a:hover {
+    color: #000000;
+    background: #FFFFFF;
+    transition: .5s;
 }
 
-a.active, a:hover {
-	background: #000000;
-	transition: .25s;
+#logo {
+    height: 125px;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 10px;
 }
 
-.external-link-sub {
-	display: none;
-	position: absolute;
-	margin-top: -1px;
-	margin-right: 30px;
-	margin-left: -75px;
-	background: #242424;
-	box-shadow: 5px 5px 10px #000000;
+#logo a {
+    display: block;
+    height: 100px;
+    width: 100px;
+    line-height: 0;
+    font-size: 0;
 }
 
-.external-link-sub ul {
-	margin-left: 0px;
-	margin-right: 0px;
+#logo_show {
+    display: block;
+    background-color: #000000;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
 }
 
-.external-link-sub ul li {
-	margin-right: 0;
-	width: 100%;
-	border-width: 2px 0 0 0;
-	border-style: solid;
-	border-color: #000000;
-	background: transparent;
-	border-radius: 0;
-	text-align: left;
+#logo_hide {
+    display: block;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
 }
 
-.external-link-sub ul li img {
-	display: inline-block;
-	margin-right: 10px;
+#logo_show:hover {
+    opacity: 0;
+    transition: .5s;
 }
 
-nav ul li:hover .external-link-sub {
-	display: block;
-	position: absolute;
+
+/*Main*/
+
+#Main {
+    margin-left: 150px;
+    overflow: hidden;
 }
 
-nav ul li:hover .external-link-sub li:hover {
-	background: #000000;
-	transition: .25s;
-}
-
-/*MyLogo*/
-
-.MyLogo {
-	display: block;
-	position: fixed;
-	float: left;
-	width: 7vw;
-	margin-top: 5px;
-	margin-left: 40px;
-	border-width: 5px;
-	border-style: solid;
-	border-radius: 5px;
-	border-color: #242424;
-	background: #242424;
-	box-shadow: 5px 5px 10px #000000;
-	transition: width 0.25s;
-	overflow: hidden;
-}
-
-.MyLogo img {
-	display: block;
-	width: 100%;
-}
-
-.MyLogo div {
-	color: #cccccc;
-	width: 100%;
-	margin: 5px 0 -3px 0;
-	font-size: 0.9vw;
-	text-align: center;
-	transition: color 0.25s;
-}
 
 /*Footer*/
 
 footer {
-	background: #000000;
-	color: #cccccc;
-	width: 100%;
+    background: #000000;
+    color: #FFF;
+    width: 100%;
 }
 
 .footer {
-	margin-left: 10%;
-	padding-top: 75px;
-	width: 80%;
+    margin-left: 150px;
+    padding-top: 50px;
 }
 
 .footer div {
-	padding-bottom: 25px;
+    padding-bottom: 25px;
 }
 
 footer div img {
-	display: block;
-	width: 200px;
+    display: block;
+    width: 200px;
 }
 
 .contact li {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .contact li a {
-	color: #cccccc;
-	transition: color 0.1s;
+    color: #FFF;
+    transition: color 0.1s;
+    margin-left: 5px;
 }
 
 .contact li a:hover {
-	color: #fff;
+    color: #000;
 }
 
-.contact li a img {
-	display: inline-block;
-	margin-bottom: -5px;
-	width: 20px;
-	height: 20px;
+.contact li img {
+    display: inline-block;
+    margin-bottom: -5px;
+    width: 20px;
+    height: 20px;
 }
 
 footer div h2 a {
-	color: #cccccc;
-	transition: color 0.1s;
+    color: #FFF;
+    transition: color 0.1s;
 }
 
 footer div h2 a:hover {
-	color: #fff;
+    color: #000;
 }
 
 footer hr {
-	border: 1px solid #cccccc;
-	margin-bottom: 25px;
+    border: 1px solid #FFF;
+    margin-bottom: 25px;
 }
 
 .statement {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .copyright {
-	font-size: 12px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }

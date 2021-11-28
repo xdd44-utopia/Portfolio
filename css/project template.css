@@ -97,3 +97,41 @@ hr {
     color: #000;
     font-size: 20px;
 }
+
+.landscapedsc>p>i {
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.portraitcontainer {
+    vertical-align: text-top;
+}
+
+.portraitcontainer>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80vh;
+    overflow-y: hidden;
+    object-fit: cover;
+}
+
+.portraitdsc {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.portraitdsc>p {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.portraitdsc>p>i {
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}

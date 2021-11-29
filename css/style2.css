@@ -30,6 +30,7 @@
     box-sizing: border-box;
     font-family: Artifakt, sans-serif;
     background-color: #000000;
+    scroll-behavior: smooth;
 }
 
 

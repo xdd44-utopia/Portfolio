@@ -8,7 +8,9 @@ window.onload = setUp();
 
 function setUp() {
     num = document.getElementsByClassName('container').length;
-    setInterval(checkScroll, 1000);
+    document.getElementById('upArrow').onclick = scrollUp;
+    document.getElementById('downArrow').onclick = scrollDown;
+    setInterval(checkScroll, 20);
     currentPage = 0;
 }
 
@@ -19,29 +21,31 @@ function onKeyDown(event) {
     var event = event || window.event;
     switch (event.keyCode) {
         case 38:
-            if (currentPage > 0) {
-                currentPage--;
-                scroll(currentPage);
-            }
+            scrollUp();
             break;
         case 87:
-            if (currentPage > 0) {
-                currentPage--;
-                scroll(currentPage);
-            }
+            scrollUp();
             break;
         case 40:
-            if (currentPage < num - 1) {
-                currentPage++;
-                scroll(currentPage);
-            }
+            scrollDown();
             break;
         case 83:
-            if (currentPage < num - 1) {
-                currentPage++;
-                scroll(currentPage);
-            }
+            scrollDown();
             break;
+    }
+}
+
+function scrollUp() {
+    if (currentPage > 0) {
+        currentPage--;
+        scroll(currentPage);
+    }
+}
+
+function scrollDown() {
+    if (currentPage < num - 1) {
+        currentPage++;
+        scroll(currentPage);
     }
 }
 
@@ -56,5 +60,12 @@ function checkScroll() {
             currentPage = i;
             break;
         }
+    }
+    document.getElementById('upArrowImg').style.display = "block";
+    document.getElementById('downArrowImg').style.display = "block";
+    if (currentPage == 0) {
+        document.getElementById('upArrowImg').style.display = "none";
+    } else if (currentPage == num - 1) {
+        document.getElementById('downArrowImg').style.display = "none";
     }
 }

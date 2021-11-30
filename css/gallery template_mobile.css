@@ -1,35 +1,13 @@
-#banner {
-	width: 100vw;
-	height: 25vw;
-	overflow: hidden;
+h1 {
+    font-size: 4vh;
+    text-align: center;
 }
 
-#Main {
-	margin-top: 5vw;
+h3 {
+    font-size: 2.5vh;
+    text-align: center;
 }
 
-#Main > p {
-	font-size: 13px;
-}
-
-.landscapecontainer, .portraitcontainer {
-	width: 80vw;
-}
-
-.landscapecontainer > img, .portraitcontainer > img {
-	width: 80vw;
-}
-
-.landscapedsc, .portraitdsc {
-	padding-top: 2.5vw;
-	width: 75vw;
-}
-
-.landscapedsc > p, .portraitdsc > p {
-	width: 75vw;
-	font-size: 13px;
-}
-
-i {
-	font-size: 11px;
+p {
+    font-size: 1.5vh;
 }

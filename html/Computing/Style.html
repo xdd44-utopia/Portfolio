@@ -18,7 +18,7 @@
 <body>
     <nav>
         <div id="logo">
-            <a href="index.html">
+            <a href="../index.html">
                 <img id="logo_hide" src="../../image/Others/Logo/logo_black.png" alt="Logo">
                 <img id="logo_show" src="../../image/Others/Logo/logo_white.png" alt="Logo">
             </a>
@@ -29,45 +29,69 @@
             <li><a href="../index.html#Programming">Computing</a></li>
             <li><a href="../index.html#Architecture">Architecture</a></li>
             <li><a href="../index.html#Other">Art & Design</a></li>
+            <li><a href="../../files/CV_Chenyue_DAI.pdf" target="_blank">CV</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
             <li><a href="../index.html#Links">Links</a></li>
         </ul>
     </nav>
 
     <div id="banner">
-        <img src="../../image/Programming/Style/Fake1.png">
+        <img src="../../image/Programming/Style/Cover.png">
     </div>
 
     <div id="Main">
         <h1>Architectural Style Transfer (In progress)</h1>
-        <p>NOTE: This is my final year project for BSc Computer Science, CityU HK supervised by <a href="https://www.cs.cityu.edu.hk/~rynson/">Dr. Rynson LAU</a></p>
+        <p>NOTE: This is my final year project for BSc Computer Science, CityU HK supervised by <a href="https://www.cs.cityu.edu.hk/~rynson/" target="_blank">Dr. Rynson LAU</a></p>
+        <h2>Objective:</h2>
+        <p>
+            An interactive application will be set up to realize the following pipeline with the trained deep learning model: 1) Users input photos of buildings. 2) The styles of buildings are recognized by the classification model. 3) Users choose new architectural
+            styles existing in the model and the application transfer the new styles to the photos.
+        </p>
+        <p>
+            The examples from various visual artists in <a href="https://www.nbcnews.com/mach/tech/time-warp-architecture-seven-iconic-buildings-reimagined-ncsl871061" target="_blank">this website</a> perfectly interpret the meaning of "transferring architectural
+            styles", which I would like to automate with deep learning technologies.
+        </p>
+
         <div class="container">
             <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/Photo1.jpg">
+                <img src="../../image/Programming/Style/Example.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>An example from the link above, showing a Bauhaus Style (Right) transferred onto Buckingham Palace (Left).</p>
+            </div>
+        </div>
+        <h2>Current progress:</h2>
+        <p>
+            Now I'm focusing on how to define and achieve "transferring" for architectural styles. It's a hard problem since such styles are defined by both material textures and structural features in various scales.
+        </p>
+        <p>
+            I've made some tests on several existing models, including painting style transfer with <a href="https://arxiv.org/abs/2103.16877" target="_blank">Artflow</a>, Conditional Generative Adversarial Networks with <a href="https://arxiv.org/abs/1611.07004"
+                target="_blank">Pix2pix</a> to examine the possibilities of different approaches. The images below are examples showing corresponding challenges.
+        </p>
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/Programming/Style/P1.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>This example by Artflow + WCT shows that popular style transfer models may not be suitable with this task as only the color and a small trace of texture from the style image (left) are being transferred (bottom right) on to the content
+                    image (top right).</p>
             </div>
         </div>
         <div class="container">
             <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/CMP3.png">
+                <img src="../../image/Programming/Style/P2.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>This example by Pix2pix and <a href="https://cmp.felk.cvut.cz/~tylecr1/facade/" target="_blank">CMP facade labeling</a> (top right) creates unrecognizable images (bottom right) because of the large difference in appearance of windows between
+                    sample buildings in databese (left) and input house (top right, the same as previous house).</p>
             </div>
         </div>
         <div class="container">
-            <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/Fake1.png">
+            <div class="portraitcontaine">
+                <img src="../../image/Programming/Style/G1.gif">
             </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/Photo2.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/CMP2.png">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="../../image/Programming/Style/Fake2.png">
+            <div class="portraitdsc">
+                <p>This example video from using Pix2pix trained with 450 depth images generated by <a href="https://arxiv.org/abs/2002.00569" target="_blank">DiverseDepth</a> is currently the best one, the smoothness of which is already impressive. However,
+                    there're still significant glitches and unusual movements. </p>
             </div>
         </div>
     </div>

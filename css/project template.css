@@ -82,7 +82,7 @@ hr {
     width: 64vw;
     height: 36vw;
     overflow-y: hidden;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .landscapedsc {

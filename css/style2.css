@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: Artifakt;
     src: url('../font/Artifakt\ Element\ Regular.ttf');
 }
@@ -20,7 +20,7 @@
     font-weight: bold;
     font-style: italic;
     src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');
-}
+} */
 
 * {
     padding: 0;

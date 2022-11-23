@@ -7,7 +7,7 @@ function addFooter() {
             <h2>Contact & Connect</h2>
             <ul class="contact">
                 <li>
-                    <img src="../image/icons/email.png"><a href="mailto: xdd44.utopia@gmail.com" target="_blank">xdd44.utopia@gmail.com</a>
+                    <img src="../image/icons/email.png"><a href="mailto: cyleodai@gmail.com" target="_blank">xdd44.utopia@gmail.com</a>
                 </li>
                 <li>
                     <img src="../image/icons/linkedin.png"><a href="https://www.linkedin.com/in/cyleodai" target="_blank">Chenyue DAI</a>
@@ -31,8 +31,8 @@ function addFooter() {
             <h2><a href="https://github.com/xdd44-utopia/Portfolio">See this website on GitHub</a></h2>
         </div>
         <hr>
-        <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
-            the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any request of use permission and other enquiries.<br><br></div>
+        <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
+            the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at cyleodai@gmail.com for any request of use permission and other enquiries.<br><br></div>
         <div class="copyright">Copyright © 2022 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
     </div>
     `;
@@ -50,7 +50,8 @@ function addNavigator(pageType) {
                 </a>
             </div>
             <ul>
-                <li><a href="#Bio">Bio</a></li>
+                <li><a href="#Top">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
                 <li><a href="#Photography">Photography</a></li>
                 <li><a href="#Programming">Computing</a></li>
                 <li><a href="#Architecture">Architecture</a></li>
@@ -68,7 +69,8 @@ function addNavigator(pageType) {
                 </a>
             </div>
             <ul>
-                <li><a href="index.html#Bio">Bio</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
                 <li><a href="index.html#Photography">Photography</a></li>
                 <li><a href="index.html#Programming">Computing</a></li>
                 <li><a href="index.html#Architecture">Architecture</a></li>
@@ -86,7 +88,8 @@ function addNavigator(pageType) {
                 </a>
             </div>
             <ul>
-                <li><a href="../index.html#Bio">Bio</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../bio.html#Bio">Bio</a></li>
                 <li><a href="../index.html#Photography">Photography</a></li>
                 <li><a href="../index.html#Programming">Computing</a></li>
                 <li><a href="../index.html#Architecture">Architecture</a></li>

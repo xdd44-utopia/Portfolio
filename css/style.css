@@ -27,7 +27,7 @@ nav ul {
 nav ul li {
     display: inline-block;
     margin-right: 50px;
-    line-height: 75px;
+    line-height: 60px;
 }
 
 nav ul li a {
@@ -98,8 +98,8 @@ footer {
 }
 
 .footer {
-    margin-left: 150px;
-    padding-top: 50px;
+    margin-left: 200px;
+    padding-top: 100px;
 }
 
 .footer div {

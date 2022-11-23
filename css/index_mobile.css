@@ -1,6 +1,8 @@
 .CoverImg {
+    margin-left: 0;
+    width: 100vw;
     overflow: hidden;
-    height: 180vw;
+    height: 100vh;
 }
 
 .CoverImg img {
@@ -12,17 +14,15 @@
 .title {
     position: absolute;
     box-sizing: content-box;
-    margin-top: 60vw;
+    margin-top: 56vw;
     margin-left: 10vw;
     margin-right: 10vw;
     width: 80vw;
-    color: #fff;
-    text-shadow: 5px 5px 20px #000000;
 }
 
 .title h1 {
     text-align: center;
-    font-size: 10vw;
+    font-size: 8vw;
 }
 
 .title h2 {
@@ -67,42 +67,6 @@
     color: #FFFFFF;
     font-size: 50px;
     padding-top: 50px;
-}
-
-
-/* bio */
-
-#bio-text {
-    width: calc(100vw - 50px);
-    margin-right: 10px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    float: none;
-}
-
-#bio-text p {
-    color: #FFF;
-    font-size: 10px;
-    margin-top: 20px;
-}
-
-#bio-text p b {
-    font-size: 15px;
-}
-
-#bio-text p a {
-    color: #FFF;
-    text-decoration: underline;
-}
-
-#bio-text p a:hover {
-    color: #000;
-}
-
-#bio-photo img {
-    margin-top: 40px;
-    width: 40vw;
-    height: 40vw;
 }
 
 

@@ -94,6 +94,6 @@ function addNavigator(pageType) {
                 <li><a href="../index.html#Links">Links</a></li>
             </ul>
             `;
-            braek;
+            break;
     }
 }

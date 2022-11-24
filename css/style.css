@@ -17,6 +17,7 @@ nav {
     position: fixed;
     height: 100%;
     width: 200px;
+    z-index: 2;
 }
 
 nav ul {
@@ -50,7 +51,7 @@ a:hover {
     margin-right: 10px;
 }
 
-#logo a {
+#logoa {
     display: block;
     height: 100px;
     width: 100px;
@@ -77,6 +78,18 @@ a:hover {
 #logo_show:hover {
     opacity: 0;
     transition: .5s;
+}
+
+#icon_menu {
+    display: none;
+}
+
+#icon_close {
+    display: none;
+}
+
+#navbar {
+    display: none;
 }
 
 

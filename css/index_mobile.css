@@ -56,17 +56,15 @@
 
 /* Category general */
 
-.Category_title {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #000;
-}
-
 .Category_title h1 {
     color: #FFFFFF;
     font-size: 50px;
     padding-top: 50px;
+}
+
+#Main {
+    margin-top: -100px;
+    padding-top: 90px;
 }
 
 

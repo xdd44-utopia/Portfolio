@@ -1,3 +1,7 @@
+#Main {
+    margin-top: 40px;
+}
+
 #bio-text {
     width: calc(100vw - 50px);
     margin-right: 10px;
@@ -8,12 +12,12 @@
 
 #bio-text p {
     color: #FFF;
-    font-size: 10px;
+    font-size: 14px;
     margin-top: 20px;
 }
 
 #bio-text p b {
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #bio-text p a {

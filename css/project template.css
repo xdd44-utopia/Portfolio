@@ -89,6 +89,17 @@ hr {
 
 /*containers*/
 
+iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    height: 36vw;
+    background-color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .container {
     margin-left: auto;
     margin-right: auto;

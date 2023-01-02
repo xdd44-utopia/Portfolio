@@ -16,7 +16,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* control the logo on top left of the page */
 var isLogoOver = false;
-var mq = window.matchMedia("screen and (max-device-width: 450px) and (max-device-height: 900px)");
+var mq = window.matchMedia("screen and (max-device-width: 450px) and (max-device-height: 950px)");
 
 function mouseEnterLogo() {
     isLogoOver = true;

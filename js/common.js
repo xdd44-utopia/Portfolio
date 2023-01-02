@@ -1,6 +1,10 @@
 var menuOn = false;
+var mq = window.matchMedia( "screen and (max-device-width: 450px) and (max-device-height: 950px)" );
 
 function toggleMenu() {
+    if (!mq.matches) {
+        return;
+    }
     menuOn = !menuOn;
     document.getElementById("logo_show").style.width = menuOn ? "160px" : "100px";
     document.getElementById("logo_show").style.height = menuOn ? "160px" : "100px";
@@ -49,7 +53,7 @@ function addFooter(pageType) {
         <hr>
         <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
             the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at cyleodai@gmail.com for any request of use permission and other enquiries.<br><br></div>
-        <div class="copyright">Copyright © 2022 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
+        <div class="copyright">Copyright © 2019 - 2023 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
     </div>
     `;
             break;
@@ -112,12 +116,11 @@ function addNavigator(pageType) {
                 <div id="navbar"></div>
             </div>
             <ul>
-                <li><a onclick="toggleMenu()" href="#Top">Home</a></li>
                 <li><a href="bio.html">Bio</a></li>
-                <li><a onclick="toggleMenu()" href="#Photography">Photography</a></li>
-                <li><a onclick="toggleMenu()" href="#Programming">Computing</a></li>
                 <li><a onclick="toggleMenu()" href="#Architecture">Architecture</a></li>
                 <li><a onclick="toggleMenu()" href="#Other">Art & Design</a></li>
+                <li><a onclick="toggleMenu()" href="#Programming">Computing</a></li>
+                <li><a onclick="toggleMenu()" href="#Photography">Photography</a></li>
                 <li><a onclick="toggleMenu()" href="#Links">Links</a></li>
             </ul>
             `;
@@ -138,10 +141,10 @@ function addNavigator(pageType) {
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="bio.html">Bio</a></li>
-                <li><a href="index.html#Photography">Photography</a></li>
-                <li><a href="index.html#Programming">Computing</a></li>
                 <li><a href="index.html#Architecture">Architecture</a></li>
                 <li><a href="index.html#Other">Art & Design</a></li>
+                <li><a href="index.html#Programming">Computing</a></li>
+                <li><a href="index.html#Photography">Photography</a></li>
                 <li><a href="index.html#Links">Links</a></li>
             </ul>
             `;
@@ -162,10 +165,10 @@ function addNavigator(pageType) {
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../bio.html#Bio">Bio</a></li>
-                <li><a href="../index.html#Photography">Photography</a></li>
-                <li><a href="../index.html#Programming">Computing</a></li>
                 <li><a href="../index.html#Architecture">Architecture</a></li>
                 <li><a href="../index.html#Other">Art & Design</a></li>
+                <li><a href="../index.html#Programming">Computing</a></li>
+                <li><a href="../index.html#Photography">Photography</a></li>
                 <li><a href="../index.html#Links">Links</a></li>
             </ul>
             `;

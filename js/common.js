@@ -120,7 +120,8 @@ function addNavigator(pageType) {
                 <li><a onclick="toggleMenu()" href="#Architecture">Architecture</a></li>
                 <li><a onclick="toggleMenu()" href="#Other">Art & Design</a></li>
                 <li><a onclick="toggleMenu()" href="#Programming">Computing</a></li>
-                <li><a onclick="toggleMenu()" href="#Photography">Photography</a></li>
+                <li><a onclick="toggleMenu()" href="#Photography">Photo Essay</a></li>
+                <li><a onclick="toggleMenu()" href="#Traveling">Traveling</a></li>
                 <li><a onclick="toggleMenu()" href="#Links">Links</a></li>
             </ul>
             `;
@@ -144,7 +145,8 @@ function addNavigator(pageType) {
                 <li><a href="index.html#Architecture">Architecture</a></li>
                 <li><a href="index.html#Other">Art & Design</a></li>
                 <li><a href="index.html#Programming">Computing</a></li>
-                <li><a href="index.html#Photography">Photography</a></li>
+                <li><a href="index.html#Photography">Photo Essay</a></li>
+                <li><a href="index.html#Traveling">Traveling</a></li>
                 <li><a href="index.html#Links">Links</a></li>
             </ul>
             `;

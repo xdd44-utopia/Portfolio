@@ -92,7 +92,7 @@ function addFooter(pageType) {
             <hr>
             <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
                 the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at cyleodai@gmail.com for any request of use permission and other enquiries.<br><br></div>
-            <div class="copyright">Copyright © 2022 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
+            <div class="copyright">Copyright © 2023 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
         </div>
         `;
             break;
@@ -170,7 +170,8 @@ function addNavigator(pageType) {
                 <li><a href="../index.html#Architecture">Architecture</a></li>
                 <li><a href="../index.html#Other">Art & Design</a></li>
                 <li><a href="../index.html#Programming">Computing</a></li>
-                <li><a href="../index.html#Photography">Photography</a></li>
+                <li><a href="../index.html#Photography">Photo Essay</a></li>
+                <li><a href="../index.html#Traveling">Traveling</a></li>
                 <li><a href="../index.html#Links">Links</a></li>
             </ul>
             `;

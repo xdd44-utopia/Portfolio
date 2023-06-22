@@ -1,18 +1,21 @@
-/*cover page scroll effect*/
+/*small screen navigator bar fold*/
 
-function coverScroll() {
-    document.getElementById("cover").style.marginTop = $(window).scrollTop() / 2 + "px";
+var menuOn = false;
+var mq = window.matchMedia( "screen and (max-device-width: 450px) and (max-device-height: 950px)" );
+
+function toggleMenu() {
+    if (!mq.matches) {
+        return;
+    }
+    menuOn = !menuOn;
+    document.getElementById("logo_show").style.width = menuOn ? "160px" : "100px";
+    document.getElementById("logo_show").style.height = menuOn ? "160px" : "100px";
+    document.getElementById("logoa").style.left = menuOn ? "calc(50vw - 80px)" : "20px";
+    document.getElementById("logoa").style.top = menuOn ? "200px" : "20px";
+    document.getElementById("icon_menu").style.opacity = menuOn ? "0" : "100%";
+    document.getElementById("icon_close").style.opacity = menuOn ? "100%" : "0";
+    document.getElementsByTagName('nav')[0].style.marginLeft = menuOn ? "0" : "-100vw";
 }
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
 
 /* control the logo on top left of the page */
 var isLogoOver = false;
@@ -28,5 +31,3 @@ function mouseEnterLogo() {
 }
 
 function logoControl() {}
-
-window.addEventListener("scroll", coverScroll);

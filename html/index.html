@@ -2,20 +2,30 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
-    <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
+
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../css/style_mobile.css" />
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../css/index_mobile.css" />
     <link rel="stylesheet" type="text/css" href="../css/aos.css">
     <link rel="shortcut icon" href="../image/icons/Website icon.png">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("Common/nav_index.html");
+            $("footer").load("Common/footer_page.html");
+        });
+    </script> 
+
     <title>Home&nbsp;|&nbsp;xdd44's Collections</title>
 </head>
 
-<body onload="addNavigator(0); addFooter(1);">
+<body>
 
     <nav>
     </nav>
@@ -186,11 +196,9 @@
     <footer>
     </footer>
 
-
-    <script src="../js/jquery.js"></script>
-    <script src="../js/aos.js"></script>
+    <script src="../js/index.js"></script>
     <script src="../js/shared.js"></script>
-    <script src="../js/common.js"></script>
+
 </body>
 
 </html>

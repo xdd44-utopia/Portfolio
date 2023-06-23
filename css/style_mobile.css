@@ -157,70 +157,11 @@ nav ul li a {
 
 /*Footer*/
 
-footer {
-    background: #000000;
-    color: #FFF;
-    width: 100%;
-}
-
-.footer {
-    margin-left: 25px;
-    margin-right: 25px;
-    padding-top: 50px;
-}
-
-.footer div {
-    padding-bottom: 25px;
-}
-
-footer div img {
-    display: block;
-    width: 200px;
-}
-
-.contact li {
-    margin-top: 0px;
-}
-
-.contact li a {
-    color: #FFF;
-    transition: color 0.1s;
-    margin-left: 5px;
-    font-size: 10px;
-}
-
-.contact li a:hover {
-    color: #000;
-}
-
-.contact li img {
-    display: inline-block;
-    margin-bottom: -5px;
-    width: 30px;
-    height: 30px;
-}
-
-footer div h2 a {
-    color: #FFF;
-    transition: color 0.1s;
-}
-
-footer div h2 a:hover {
-    color: #000;
-}
-
-footer hr {
-    border: 1px solid #FFF;
-    margin-bottom: 25px;
-}
-
-.statement {
-    font-size: 5px;
+#Links {
+    margin-left: 0;
+    padding-top: 100px;
 }
 
 .copyright {
     font-size: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
 }

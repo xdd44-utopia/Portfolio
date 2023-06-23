@@ -110,48 +110,20 @@ footer {
     width: 100%;
 }
 
-.footer {
+#Links {
     margin-left: 200px;
     padding-top: 100px;
 }
 
-.footer div {
+#Links div {
     padding-bottom: 25px;
 }
 
-footer div img {
-    display: block;
+#footer-logo {
+    display: in-lineblock;
     width: 200px;
-}
-
-.contact li {
-    margin-top: 10px;
-}
-
-.contact li a {
-    color: #FFF;
-    transition: color 0.1s;
-    margin-left: 5px;
-}
-
-.contact li a:hover {
-    color: #000;
-}
-
-.contact li img {
-    display: inline-block;
-    margin-bottom: -5px;
-    width: 20px;
-    height: 20px;
-}
-
-footer div h2 a {
-    color: #FFF;
-    transition: color 0.1s;
-}
-
-footer div h2 a:hover {
-    color: #000;
+    height: 22px;
+    margin-right: 20px;
 }
 
 footer hr {
@@ -159,11 +131,28 @@ footer hr {
     margin-bottom: 25px;
 }
 
-.statement {
-    font-size: 12px;
+#contact {
+    display: flex;
+    justify-content: center;
 }
 
-.copyright {
+#contact a {
+    width: 50px;
+    height: 25px;
+}
+
+#contact a:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+#contact a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#copyright {
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;

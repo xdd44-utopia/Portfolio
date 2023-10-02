@@ -77,7 +77,7 @@ a:hover {
 
 #logo_show:hover {
     opacity: 0;
-    transition: .5s;
+    transition: 1s;
 }
 
 #icon_menu {

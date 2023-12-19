@@ -51,11 +51,11 @@ table {
     width: 100%;
 }
 
-.place td {
+.title td {
     padding-top: 40px;
 }
 
-.title td {
+.place td {
     font-style: italic;
 }
 
@@ -64,6 +64,7 @@ table {
 }
 
 .year {
+    width: 160px;
     margin-right: 0;
     text-align: right;
 }

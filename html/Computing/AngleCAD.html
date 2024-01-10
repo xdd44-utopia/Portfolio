@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $.get("../Common/link_project.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script> 
+    
+    <title>AngleCAD&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+
+    <nav>
+    </nav>
+
+    <div id="banner">
+        <img src="../../image/Programming/HCI/Cover.png">
+        <h1>AngleCAD: Surface-based 3D Modelling Techniques on Foldable Touchscreens</h1>
+    </div>
+
+    <div id="Main">
+        <p>ACM ISS 2022</p>
+        <p><a href="https://www.scm.cityu.edu.hk/people/liu-can">Can Liu</a>, <b>Chenyue Dai</b>, Qingzhou Ma, Brinda Mehra, <a href="https://www.scm.cityu.edu.hk/people/cassinelli-alvaro">Alvaro Cassinelli</a></p>
+        <p>
+            Read <a href="https://dl.acm.org/doi/10.1145/3567735">full paper</a>
+        </p>
+        <p>
+            See code on <a href="https://github.com/xdd44-utopia/HCI_Extruding">GitHub</a>
+        </p>
+        <iframe src="https://www.youtube.com/embed/4r_4eCIn9DA">
+        </iframe>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

@@ -5,8 +5,20 @@
     list-style: none;
     box-sizing: border-box;
     font-family: Artifakt, sans-serif;
+    color: #FFF;
     background-color: #000000;
     scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000;
+    background-color: #FFF;
 }
 
 /*Banner*/
@@ -70,27 +82,23 @@
     margin-bottom: 30px;
 }
 
-#Main>p {
+#Main>p, #Main>table {
     margin-bottom: 20px;
     color: #fff;
     font-size: 20px;
     line-height: 150%;
 }
 
-#Main p a {
-    text-decoration: underline;
-    color: #fff;
-}
-
-#Main p a:hover {
-    text-decoration: underline;
-    color: #000;
-}
-
 hr {
     margin-bottom: 25px;
 }
 
+/*Schedule*/
+
+table {
+    text-align: left;
+    width: 60%;
+}
 
 /*containers*/
 

@@ -172,6 +172,10 @@ hr {
     margin-bottom: 25px;
 }
 
+p > a {
+    font-weight: bold;
+}
+
 /*containers*/
 
 iframe {

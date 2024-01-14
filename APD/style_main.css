@@ -97,7 +97,12 @@ hr {
 
 table {
     text-align: left;
-    width: 60%;
+    table-layout: fixed;
+    width: calc(100vw - 200px);
+}
+
+th:nth-child(3), th:nth-child(4), td:nth-child(3), td:nth-child(4) {
+    width: 10vw;
 }
 
 /*containers*/

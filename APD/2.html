@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style_page.css?v=1.1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="./style_page_mobile.css?v=1.1" />
+    <link rel="stylesheet" type="text/css" href="../css/aos.css">
+    <link rel="shortcut icon" href="../image/icons/Website icon.png">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/aos.js"></script>
+
+    <title>2. Looping&nbsp;|&nbsp;Algorithmic and Parametric 3D Design</title>
+</head>
+
+<body>
+    <nav>
+      <div id="logo">
+        <div onclick="toggleMenu()">
+            <img id="icon_menu" src="../image/icons/menu.png" alt="Menu">
+            <img id="icon_close" src="../image/icons/close.png" alt="Close">
+        </div>
+        <div id="navbar"></div>
+      </div>
+      <ul>
+          <li><a onclick="toggleMenu()" href="main.html">Back to main page</a></li>
+          <li><a onclick="toggleMenu()" href="#S0">Filter Generator</a></li>
+          <br>
+          <li><a onclick="toggleMenu()" href="#S1">Practice 1</a></li>
+          <br>
+          <li><a onclick="toggleMenu()" href="#S2">Practice 2</a></li>
+      </ul>
+    </nav>
+
+    <div id="banner">
+        <img src="./files/2/Cover.png">
+        <h1>2. Looping, and variations of looping</h1>
+    </div>
+
+    <div id="Main">
+
+      <h3 id="S0">Filter Generator</h3>
+
+      <p>For the coming in-class demonstration, please download this <a href="./files/2/Filter.gh">filter generator script</a>. Upon opening, you should see the following components:</p>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/Filter.png">
+        </div>
+        <div class="landscapedsc">
+            <p>A component generating a 2D Gaussian filter, with two sliders controlling size and sigma.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3 id="S1">Practice 1: Construct a golden spiral</h3>
+
+      <p>We demonstrated how to generate Fibonacci sequence with for loop and List class. Since Fibonacci sequence is associate with <a href="https://en.wikipedia.org/wiki/Golden_spiral" target="_blank">approximation of the golden spiral</a>, it will be a good practice for you to construct the spiral with C# and Grasshopper.</p>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/p1-1.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Approximate Golden Spiral with Fibonacci sequence</p>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/p1-2.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Appearance of Golden Spiral in nature</p>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/p1-3.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Construct Golden Spiral with C# and Grasshopper</p>
+        </div>
+      </div>
+
+      <h3>Hint 1: Observe the movement pattern of the arc center</h3>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/p1-4.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Centers of consecutive arcs</p>
+        </div>
+      </div>
+
+      <h3>Hint 2: Construct Arc with <a href="https://developer.rhino3d.com/api/rhinocommon/rhino.geometry.arc/arc" target="_blank">5th constructor</a> and set its <a href="https://developer.rhino3d.com/api/rhinocommon/rhino.geometry.arc/startangle?version=8.x" target="_blank">StartAngle</a> and <a href="https://developer.rhino3d.com/api/rhinocommon/rhino.geometry.arc/endangle?version=8.x" target="_blank">EndAngle</a></h3>
+
+      <h3>Hint 3: <a href="https://developer.rhino3d.com/api/rhinocommon/rhino.geometry.vector3d?version=8.x" target="_blank">Vector3d</a> will be helpful for moving Point3d</h3>
+
+      <h3><a href="./files/2/Spiral.gh" target="_blank">xdd's solution</a></h3>
+      
+      <hr>
+
+      <h3 id="S2">Practice 2: Alternate the filter I implemented</h3>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/2/p2.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Example: Laplacian filter for sharpening edges</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="./shared.js"></script>
+
+</body>
+
+</html>

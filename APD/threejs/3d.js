@@ -156,7 +156,7 @@ function render() {
 function update() {
 	for (let i = 0; i <= 2; i++) {
 		for (let j = 0; j <= 2; j++) {
-			platforms[i][j].updatePosition(0);
+			platforms[i][j].updatePosition(new Date().getTime() / 5000);
 		}
 	}
 	for (let i = 0; i < connections.length; i++) {

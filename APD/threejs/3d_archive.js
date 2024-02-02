@@ -1,6 +1,6 @@
 import * as THREE from '../build/three.module.js'
 import {OBJLoader} from '../build/jsm/loaders/OBJLoader.js'
-import {CustomFirstPersonControls} from '../build/jsm/controls/CustomFirstPersonControls.js'
+import {OrbitControls} from '../build/jsm/controls/OrbitControls.js'
 
 import {Platform} from './platform.js'
 import {Connection} from './connection.js'
@@ -14,7 +14,6 @@ let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 let container;
 export let scene;
 let camera, renderer;
-let controls
 
 let platforms = [];
 let connections = [];
@@ -57,14 +56,21 @@ function init() {
 	//
 
 	camera = new THREE.PerspectiveCamera( 50, aspect, 1, 10000 );
-	camera.position.x = 0;
-	camera.position.y = 1.12;
-	camera.position.z = 0;
-	camera.lookAt(new THREE.Vector3(1, 1.12, 1));
+	camera.position.x = 50 * 0.68;
+	camera.position.y = 50 * 0.27;
+	camera.position.z = 50 * 0.68;
+	camera.lookAt(new THREE.Vector3(0, 5, 0));
 
 	//
 
-	controls = new CustomFirstPersonControls(camera, container);
+	const controls = new OrbitControls(camera, container);
+	controls.maxDistance = isMobile ? 60 : 30;
+	controls.minDistance = isMobile ? 20 : 10;
+	controls.maxPolarAngle = Math.PI / 2;
+	controls.minPolarAngle = Math.PI / 4;
+	controls.panSpeed = 0.8;
+	controls.rotateSpeed = 0.8;
+	controls.zoomSpeed = 0.8;
 
 	//
 	const material = new THREE.MeshStandardMaterial({
@@ -98,10 +104,6 @@ function init() {
 
 }
 
-function initCamera() {
-
-}
-
 function onWindowResize() {
 
 	SCREEN_WIDTH = window.innerWidth;
@@ -112,8 +114,6 @@ function onWindowResize() {
 
 	camera.aspect = aspect;
 	camera.updateProjectionMatrix();
-
-	controls.handleResize();
 
 }
 
@@ -139,9 +139,6 @@ function onKeyDown( event ) {
 
 function animate() {
 	requestAnimationFrame( animate );
-	controls.update(0.2);
-	camera.position.y = 1.12;
-	console.log(camera.position.x, camera.position.z);
 	render();
 }
 

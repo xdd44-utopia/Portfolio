@@ -69,6 +69,7 @@ export class Platform {
 	}
 
 	getOffset(t) {
+		return 0;
 		return (Math.sin(t + this.#seed) + 1) * 2.5;
 	}
 

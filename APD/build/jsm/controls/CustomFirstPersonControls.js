@@ -8,7 +8,7 @@ const _lookDirection = new Vector3();
 const _spherical = new Spherical();
 const _target = new Vector3();
 
-class FirstPersonControls {
+class CustomFirstPersonControls {
 
 	constructor( object, domElement ) {
 
@@ -20,7 +20,7 @@ class FirstPersonControls {
 		this.enabled = true;
 
 		this.movementSpeed = 1.0;
-		this.lookSpeed = 0.005;
+		this.lookSpeed = 0.01;
 
 		this.lookVertical = true;
 		this.autoForward = false;
@@ -44,6 +44,10 @@ class FirstPersonControls {
 
 		this.pointerX = 0;
 		this.pointerY = 0;
+		this.pointerPX = 0;
+		this.pointerPY = 0;
+		this.pointerDX = 0;
+		this.pointerDY = 0;
 
 		this.moveForward = false;
 		this.moveBackward = false;
@@ -84,33 +88,11 @@ class FirstPersonControls {
 
 			}
 
-			if ( this.activeLook ) {
-
-				switch ( event.button ) {
-
-					case 0: this.moveForward = true; break;
-					case 2: this.moveBackward = true; break;
-
-				}
-
-			}
-
 			this.mouseDragOn = true;
 
 		};
 
 		this.onPointerUp = function ( event ) {
-
-			if ( this.activeLook ) {
-
-				switch ( event.button ) {
-
-					case 0: this.moveForward = false; break;
-					case 2: this.moveBackward = false; break;
-
-				}
-
-			}
 
 			this.mouseDragOn = false;
 
@@ -129,6 +111,8 @@ class FirstPersonControls {
 				this.pointerY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
 
 			}
+
+			// console.log(this.pointerDX, this.pointerDY);
 
 		};
 
@@ -246,8 +230,10 @@ class FirstPersonControls {
 
 				}
 
-				lon -= this.pointerX * actualLookSpeed;
-				if ( this.lookVertical ) lat -= this.pointerY * actualLookSpeed * verticalLookRatio;
+				if (this.mouseDragOn) {
+					lon += this.pointerDX * actualLookSpeed * 40;
+					if ( this.lookVertical ) lat += this.pointerDY * actualLookSpeed * verticalLookRatio * 25;
+				}
 
 				lat = Math.max( - 85, Math.min( 85, lat ) );
 
@@ -265,6 +251,11 @@ class FirstPersonControls {
 				targetPosition.setFromSphericalCoords( 1, phi, theta ).add( position );
 
 				this.object.lookAt( targetPosition );
+
+				this.pointerDX = this.pointerX - this.pointerPX;
+				this.pointerDY = this.pointerY - this.pointerPY;
+				this.pointerPX = this.pointerX;
+				this.pointerPY = this.pointerY;
 
 			};
 
@@ -322,4 +313,4 @@ function contextmenu( event ) {
 
 }
 
-export { FirstPersonControls };
+export { CustomFirstPersonControls };

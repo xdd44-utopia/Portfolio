@@ -102,13 +102,13 @@ class CustomFirstPersonControls {
 
 			if ( this.domElement === document ) {
 
-				this.pointerX = event.pageX - this.viewHalfX;
-				this.pointerY = event.pageY - this.viewHalfY;
+				this.pointerX = event.clientX - this.viewHalfX;
+				this.pointerY = event.clientY - this.viewHalfY;
 
 			} else {
 
-				this.pointerX = event.pageX - this.domElement.offsetLeft - this.viewHalfX;
-				this.pointerY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
+				this.pointerX = event.clientX - this.domElement.offsetLeft - this.viewHalfX;
+				this.pointerY = event.clientY - this.domElement.offsetTop - this.viewHalfY;
 
 			}
 

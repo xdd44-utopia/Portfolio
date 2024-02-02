@@ -141,7 +141,6 @@ function animate() {
 	requestAnimationFrame( animate );
 	controls.update(0.2);
 	camera.position.y = 1.12;
-	console.log(camera.position.x, camera.position.z);
 	render();
 }
 

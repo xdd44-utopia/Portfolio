@@ -83,14 +83,16 @@ function init() {
 	for (let i = 1; i <= practiceNum; i++) {
 		let pos = new THREE.Vector3(12 * Math.cos((i - 1) * Math.PI * 2 / practiceNum), 0, 12 * Math.sin((i - 1) * Math.PI * 2 / practiceNum));
 		let path = './models/P' + i + '.obj';
-		platforms.push(new Platform(pos, 0.5, path));
+		let p = new Platform(pos, 0.5, path);
+		platforms.push(p);
 	}
 
 	// Final Geometries
 	for (let i = 1; i <= finalNum; i++) {
 		let pos = new THREE.Vector3(4 * Math.cos((i - 0.5) * Math.PI * 2 / finalNum), 0, 4 * Math.sin((i - 0.5) * Math.PI * 2 / finalNum));
 		let path = './models/' + i + '.obj';
-		platforms.push(new Platform(pos, 1, path));
+		let p = new Platform(pos, 1, path);
+		platforms.push(p);
 	}
 	
 

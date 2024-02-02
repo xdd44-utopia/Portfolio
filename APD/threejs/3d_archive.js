@@ -2,8 +2,8 @@ import * as THREE from '../build/three.module.js'
 import {OBJLoader} from '../build/jsm/loaders/OBJLoader.js'
 import {OrbitControls} from '../build/jsm/controls/OrbitControls.js'
 
-import {Platform} from './platform.js'
-import {Connection} from './connection.js'
+import {Platform} from './platform_archive.js'
+import {Connection} from './connection_archive.js'
 
 var isMobile = window.matchMedia("screen and (max-device-width: 450px) and (max-device-height: 950px)");
 

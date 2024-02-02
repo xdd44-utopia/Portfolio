@@ -1,5 +1,5 @@
 import * as THREE from '../build/three.module.js'
-import {CustomFirstPersonControls} from '../build/jsm/controls/CustomFirstPersonControls.js'
+import {CustomFirstPersonControls} from './CustomFirstPersonControls.js'
 
 import {Platform} from './platform.js'
 
@@ -19,6 +19,7 @@ let platforms = [];
 let connections = [];
 
 let practiceNum = 5;
+let finalNum = 3;
 
 init();
 animate();
@@ -67,12 +68,12 @@ function init() {
 	controls = new CustomFirstPersonControls(camera, container);
 
 	//
-	const material = new THREE.MeshStandardMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+	const groundMaterial = new THREE.MeshStandardMaterial( {color: 0x888888, side: THREE.DoubleSide} );
 
 	// Ground
 
 	const planeGeometry = new THREE.PlaneGeometry(50, 50);
-	let ground = new THREE.Mesh( planeGeometry, material );
+	let ground = new THREE.Mesh( planeGeometry, groundMaterial );
 	ground.castShadow = false;
 	ground.receiveShadow = true;
 	ground.rotation.set(Math.PI / 2, 0, 0);
@@ -80,10 +81,18 @@ function init() {
 
 	// Practice Geometries
 	for (let i = 1; i <= practiceNum; i++) {
-		let pos = new THREE.Vector3(16 * Math.cos((i - 1) * Math.PI * 2 / practiceNum), 0, 16 * Math.sin((i - 1) * Math.PI * 2 / practiceNum));
+		let pos = new THREE.Vector3(12 * Math.cos((i - 1) * Math.PI * 2 / practiceNum), 0, 12 * Math.sin((i - 1) * Math.PI * 2 / practiceNum));
 		let path = './models/P' + i + '.obj';
+		platforms.push(new Platform(pos, 0.5, path));
+	}
+
+	// Final Geometries
+	for (let i = 1; i <= finalNum; i++) {
+		let pos = new THREE.Vector3(4 * Math.cos((i - 0.5) * Math.PI * 2 / finalNum), 0, 4 * Math.sin((i - 0.5) * Math.PI * 2 / finalNum));
+		let path = './models/' + i + '.obj';
 		platforms.push(new Platform(pos, 1, path));
 	}
+	
 
 	//
 	window.addEventListener( 'resize', onWindowResize );
@@ -151,7 +160,7 @@ function render() {
 function update() {
 	let t = new Date().getTime() / 5000;
     light.position.set(40 * Math.cos(t * 4), 40, 20 * Math.sin(t * 4));
-	for (let i = 0; i < practiceNum; i++) {
+	for (let i = 0; i < practiceNum + finalNum; i++) {
 		platforms[i].updateRotation(t);
 	}
 }

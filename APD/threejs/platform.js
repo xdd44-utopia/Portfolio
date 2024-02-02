@@ -11,12 +11,14 @@ export class Platform {
 	#itemObject;
 
 	position;
+	size;
 
-	constructor(pos, size, itemPath) {
+	constructor(pos, size, itemPath, itemName) {
 
 		this.position = pos;
+		this.size = size;
 
-		const geometry = new THREE.CylinderGeometry(1, 1.6, 0.4, 32);
+		const geometry = new THREE.CylinderGeometry(1 * size, 1.6 * size, 0.4 * size, 32);
 		this.#object = new THREE.Mesh( geometry, material );
 
 		this.#object.position.set(pos.x, pos.y, pos.z);
@@ -43,6 +45,7 @@ export class Platform {
 		this.#itemObject.material = material;
 		this.#itemObject.traverse(function(child){child.castShadow = true;});
 		this.#itemObject.position.set(this.position.x, this.position.y + 0.4, this.position.z);
+		this.#itemObject.scale.set(this.size, this.size, this.size);
 		scene.add(this.#itemObject);
 	}
 

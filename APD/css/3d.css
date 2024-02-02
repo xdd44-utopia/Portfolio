@@ -19,11 +19,11 @@ p {
 }
 
 p > a {
-	color: #FFF;
-	background-color: #0000;
+	color: #000;
+	background-color: #FFF;
 }
 
 a:hover {
-	color: #000;
-	background-color: #FFF;
+	color: #FFF;
+	background-color: #000;
 }

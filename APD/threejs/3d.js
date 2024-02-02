@@ -1,9 +1,7 @@
 import * as THREE from '../build/three.module.js'
-import {OBJLoader} from '../build/jsm/loaders/OBJLoader.js'
 import {CustomFirstPersonControls} from '../build/jsm/controls/CustomFirstPersonControls.js'
 
 import {Platform} from './platform.js'
-import {Connection} from './connection.js'
 
 var isMobile = window.matchMedia("screen and (max-device-width: 450px) and (max-device-height: 950px)");
 
@@ -14,10 +12,13 @@ let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 let container;
 export let scene;
 let camera, renderer;
-let controls
+let controls;
+let light
 
 let platforms = [];
 let connections = [];
+
+let practiceNum = 5;
 
 init();
 animate();
@@ -39,14 +40,13 @@ function init() {
 	renderer.autoClear = false;
 
 	//
-	const light = new THREE.DirectionalLight(0xffffff, 1);
+	light = new THREE.DirectionalLight(0xffffff, 1);
 	light.castShadow = true;
 	light.shadow.camera.left = -50;
 	light.shadow.camera.right = 50;
 	light.shadow.camera.top = 50;
 	light.shadow.camera.bottom = -50;
 	light.shadow.mapSize = new THREE.Vector2(2048, 2048);
-    light.position.set(40, 40, 20);
     light.target.position.set(0, 0, 0);
     scene.add(light);
     scene.add(light.target);
@@ -67,29 +67,22 @@ function init() {
 	controls = new CustomFirstPersonControls(camera, container);
 
 	//
-	const material = new THREE.MeshStandardMaterial({
-		color:0xffffff,
-		wireframe: true,
-	});
+	const material = new THREE.MeshStandardMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
 
-	//
-	for (let i = 0; i <= 2; i++) {
-		platforms.push([]);
-		for (let j = 0; j <= 2; j++) {
-			let pos = new THREE.Vector3((i - 1) * 15, Math.random() * 2.5, (j - 1) * 15)
-			let size = new THREE.Vector2(Math.random() + 0.5, Math.random() + 0.5).multiplyScalar(8);
-			platforms[i].push(new Platform(pos, size, './models/test.obj', Math.random() * Math.PI));
-		}
-	}
-	for (let i = 0; i <= 2; i++) {
-		for (let j = 0; j <= 2; j++) {
-			if (i < 2) {
-				connections.push(new Connection(platforms[i][j], platforms[i+1][j], true));
-			}
-			if (j < 2) {
-				connections.push(new Connection(platforms[i][j], platforms[i][j+1], false));
-			}
-		}
+	// Ground
+
+	const planeGeometry = new THREE.PlaneGeometry(50, 50);
+	let ground = new THREE.Mesh( planeGeometry, material );
+	ground.castShadow = false;
+	ground.receiveShadow = true;
+	ground.rotation.set(Math.PI / 2, 0, 0);
+	scene.add(ground);
+
+	// Practice Geometries
+	for (let i = 1; i <= practiceNum; i++) {
+		let pos = new THREE.Vector3(16 * Math.cos((i - 1) * Math.PI * 2 / practiceNum), 0, 16 * Math.sin((i - 1) * Math.PI * 2 / practiceNum));
+		let path = './models/P' + i + '.obj';
+		platforms.push(new Platform(pos, 1, path));
 	}
 
 	//
@@ -156,12 +149,9 @@ function render() {
 }
 
 function update() {
-	for (let i = 0; i <= 2; i++) {
-		for (let j = 0; j <= 2; j++) {
-			platforms[i][j].updatePosition(new Date().getTime() / 5000);
-		}
-	}
-	for (let i = 0; i < connections.length; i++) {
-		connections[i].connect();
+	let t = new Date().getTime() / 5000;
+    light.position.set(40 * Math.cos(t * 4), 40, 20 * Math.sin(t * 4));
+	for (let i = 0; i < practiceNum; i++) {
+		platforms[i].updateRotation(t);
 	}
 }

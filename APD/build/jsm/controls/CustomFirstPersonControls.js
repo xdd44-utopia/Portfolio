@@ -90,11 +90,15 @@ class CustomFirstPersonControls {
 
 			this.mouseDragOn = true;
 
+			event.preventDefault();
+
 		};
 
 		this.onPointerUp = function ( event ) {
 
 			this.mouseDragOn = false;
+
+			event.preventDefault();
 
 		};
 
@@ -112,7 +116,7 @@ class CustomFirstPersonControls {
 
 			}
 
-			// console.log(this.pointerDX, this.pointerDY);
+			event.preventDefault();
 
 		};
 
@@ -137,6 +141,8 @@ class CustomFirstPersonControls {
 
 			}
 
+			event.preventDefault();
+
 		};
 
 		this.onKeyUp = function ( event ) {
@@ -159,6 +165,8 @@ class CustomFirstPersonControls {
 				case 'KeyF': this.moveDown = false; break;
 
 			}
+
+			event.preventDefault();
 
 		};
 

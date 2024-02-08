@@ -1,0 +1,205 @@
+/* foreground */
+
+.foregroundHolder {
+	z-index: 1;
+	transition: margin-top .8s;
+}
+
+#leftHolder {
+	margin-left: 10vw;
+	width: 15vw;
+}
+
+#middleHolder {
+	margin-left: 41vw;
+	width: 18vw;
+}
+
+#rightHolder {
+	margin-left: 75vw;
+	width: 15vw;
+}
+
+#leftImage {
+	width: 15vw;
+}
+
+#middleImage {
+	width: 18vw;
+}
+
+#rightImage {
+	width: 15vw;
+}
+
+/* contributor */
+
+#contributorHolder {
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	z-index: 2;
+	margin-top: -5vh;
+
+	transition: margin-top 2s;
+	transition-timing-function: ease;
+
+	justify-content: space-between;
+}
+
+#contributorEN, #contributorAR {
+	margin-top: 10px;
+	color: #2d5b50;
+	font-size: 1.5vh;
+	text-align: center;
+}
+
+#contributorAR {
+	font-size: 0;
+	margin-left: 14vw;
+	font-family: 'Graphik Arabic Web Regular';
+}
+
+#contributorEN {
+	font-size: 1.5vh;
+	margin-right: 14vw;
+	font-family: 'Graphik Web';
+}
+
+/*logo*/
+
+#logo {
+	margin-top: 225%;
+}
+
+/* main */
+
+#mobileTitle {
+	display: flex;
+	justify-content: space-between;
+}
+
+#mobileEnglishTitle {
+	display: block;
+}
+
+#mobileArabicTitle {
+	display: none;
+}
+
+#arabicTitle {
+	display: none;
+}
+
+#englishTitle {
+	display: none;
+}
+
+#mainHolder {
+	margin-top: 270%;
+}
+
+#main {
+	width: 72vw;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mainLeft {
+	display: block;
+}
+
+#mainRight {
+	display: none;
+}
+
+#mobileEnglishTitle, #mobileArabicTitle {
+	font-size: 4vh;
+	margin-top: -10%;
+}
+
+#englishTitleUp, #englishTitleDown {
+	line-height: 120%;
+	font-family: 'Sang Bleu Republic';
+}
+
+#englishTitleDown {
+	margin-left: 15vw;
+}
+
+#arabicTitleUp, #arabicTitleDown {
+	line-height: 120%;
+	font-family: 'Lyon Arabic Text Web';
+}
+
+#arabicTitleUp {
+	padding-left: 5vw;
+}
+
+#arabicTitleDown {
+	padding-right: 5vw;
+}
+
+#switchAR, #switchEN {
+	font-family: 'Graphik Web';
+	font-size: 2vh;
+}
+
+#switchEN {
+	display: none;
+}
+
+#switchAR {
+	display: block;
+}
+
+#mainText {
+	width: 55vw;
+	height: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mainLeft, #mainRight {
+	font-size: 2.2vw;
+	width: 55vw;
+	height: 92.5%;
+	margin-right: 0;
+}
+
+#mainCenter {
+	display: none;
+}
+
+#signature {
+	display: none;
+}
+
+#mobileSignature {
+	display: block;
+	width: 68vw;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8%;
+}
+
+#mobileInfoSignature {
+	font-family: 'Graphik Web';
+	display: flex;
+	justify-content: space-between;
+	font-size: 2.25vw;
+}
+
+#mobileLeftLeft, #mobileLeftRight {
+	display: inline-block;
+}
+
+#mobileTitleSignature {
+	font-family: 'Sang Bleu Republic';
+	margin-top: 2.5%;
+	font-size: 2.25vw;
+	text-align: center;
+}

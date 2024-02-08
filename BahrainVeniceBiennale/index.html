@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<title>Sweating Assets</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css?v=1.8">
+	<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="css/index_mobile.css?v=1.8" />
+	<link rel="stylesheet" type="text/css" href="css/cursor.css">
+	<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="css/cursor_mobile.css" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<script src="js/TweenMax.min.js"></script>
+	<script src="js/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+	<div class="cursor">
+		<div class="cursor__ball cursor__ball--big ">
+			<svg height="30" width="30">
+				<circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+			</svg>
+		</div>
+		
+		<div class="cursor__ball cursor__ball--small">
+			<svg height="10" width="10">
+				<circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+			</svg>
+		</div>
+	</div>
+
+	<div id="background">
+		<img id="backgroundImage" src="image/SoftLaunch/background.jpg" alt="bkg">
+	</div>
+
+	<div class="foregroundHolder" id="leftHolder">
+		<img class="foregroundImage" id="leftImage" src="image/SoftLaunch/left.jpg" alt="left">
+	</div>
+	<div class="foregroundHolder" id="middleHolder">
+		<img class="foregroundImage" id="middleImage" src="image/SoftLaunch/middle.jpg" alt="middle">
+	</div>
+	<div class="foregroundHolder" id="rightHolder">
+		<img class="foregroundImage" id="rightImage" src="image/SoftLaunch/right.jpg" alt="right">
+	</div>
+
+	<div id="contributorHolder">
+		<p id="contributorAR" onclick="switchContributor()">المساهمون</p>
+		<p id="contributorEN" onclick="switchContributor()">CONTRIBUTORS</p>
+	</div>
+
+	<div id="logo">
+		<img id="BVLogo" src="image/Logo/VB.png" alt="BVLogo">
+		<img id="BACALogo" src="image/Logo/BACA.png" alt="BACALogo">
+	</div>
+
+	<img src="image/Logo/Arrow.png" alt="slide down" id="scrollArrow" onclick="show()">
+
+	<div id="mainHolder">
+		<div id="main">
+
+			<div id="mobileTitle">
+				<div id="mobileEnglishTitle">
+					<p id="englishTitleUp">Sweating</p>
+					<p id="englishTitleDown"><i>Assets</i></p>
+				</div>
+				<p id="switchAR" onclick="switchAR()">AR</p>
+				<p id="switchEN" onclick="switchEN()">EN</p>
+				<div id="mobileArabicTitle">
+					<p id="arabicTitleUp">أصول</p>
+					<p id="arabicTitleDown">رَطِبة</p>
+				</div>
+			</div>
+
+			<div id="arabicTitle">
+				<p id="arabicTitleLeft">رَطِبة</p>
+				<p id="arabicTitleRight">أصول</p>
+			</div>
+			
+			<div id="englishTitle">
+				<p id="englishTitleLeft">Sweating</p>
+				<p id="englishTitleRight"><i>Assets</i></p>
+			</div>
+	
+			<div id="mainText">
+				<div id="mainLeft">
+					<p>
+						In Bahrain, an archipelago situated in the Arabian Gulf, building systems combat the humid microclimate produced by its geographical attributes. Since the mid-twentieth century, cooling mechanisms protected inhabitants against severe conditions. Generational resilience to heat no longer a necessary inheritance, cooling technology was welcomed as a comfort-alleviating infrastructure. With a projected 5°C temperature rise by the turn of the century, the region is at the extremities of both water shortage and heat. The use of such systems is and will continue to be not only unavoidable but rather, a necessity.
+					</p>
+					<p>
+						An ecology exists between flora, fauna, and cooling units. Yet, the AC is often isolated. Climate ties those characters, best exemplified by the proportional demands between human cooling and vegetal needs for water across the year. Bahrain’s National Pavilion, <i>Sweating Assets</i>, identifies the loose ends of cooling infrastructure, investigating its overlooked offerings in the form of water.
+					</p>
+					<p>
+						Enclosed habitats behave as vessels of condensation. They sweat moisture to provide a pleasant, sheltered experience. Buildings do so in two ways. Deliberately, by dehumidifying the air fed into dwellings, collecting reservoirs of water from the atmosphere. Inadvertently, due to an obsession with the transparent surfaces of modernity. When accumulated, these water reservoirs hold immense potential. However, as it stands, they are taken for granted in a water-scarce environment, simply fed into wastewater streams. Infrastructure like hospitals, airports, malls and data centers consistently utilize substantial cooling and create large deposits of water continuously. The investigations quantify and speculate on the use of untapped reservoirs, alleviating water needs currently met by desalination and environmental sacrifices. 
+					</p>
+					<p>
+						<i>Sweating Assets</i> advocates for an adaptive approach to resource management by working with existing systems to their best capacities rather than starting anew. By no means encouraging wasteful usage of cooling systems, the possibilities made through their necessary consumption are uncovered. In Bahrain’s intense conditions of high heat and humidity, air conditioning produces proportionally high condensate. Utilizing this unintended byproduct of anthropogenic activity, loose ends are tied, redirecting water to other parts within the larger ecology.
+					</p>
+				</div>
+				<div id="mainCenter">
+					<p id="mainTitle"><i>LA BIENNALE DI VENEZIA</i></p>
+					<p id="mainDate">May 20 - November 16 2023</p>
+				</div>
+				<div id="mainRight">
+					<p>
+						البحرين هي  أرخبيلٌ طبيعيٌّ من الجزرِ تقع في قلبِ الخليج العربيّ ونظراً لوجود البحرين في هذه المنطقة من العالم الأمر الذي فرض وجود تحدّيات عدّةٍ تتعلّقُ بأنظمةِ البناءِ في مواجهةِ المناخ المحلّيّ الرَّطِب، والذي هو حصيلةٌ للطبيعة الجُغرافيّةِ.
+					</p>
+					<p>
+						غير أنّه ومنذُ منتصفِ العشرينيّاتِ من القرن الماضي أصبحت آليّات التّبريد وسيلةً عمليّةً استطاع من خلالها السّكّان التكيف مع الظّروف المناخيّة، وعليهِ فقد شهدَت البحرين مع تقدّمِ الزّمنِ وتطوّر التّكنولوجيا تحوّلاتٍ تتسم بالمرونة على الصّعيد الاجتماعيّ  وهو ما شكّل اختلافًا جذريًّا في أنماطِ المعيشةِ عن العهد السّابقِ، حيثُ أصبحَت تقنيّات التّبريد من المسلمات حيث إنها إحدى المُستلزمات المعيشيّةِ اللّازم توافرها في إعداداتِ البُنيةِ التّحتيّةِ لتحقيقِ سبل الرّاحةِ. إلّا أنّ التّحدّيات المُتوقعة بشأن ارتفاعِ درجةِ الحرارة بمقدار 5 درجاتٍ مئويّةٍ بحلولِ نهايةِ القرنِ ومواجهةِ إشكاليّاتِ نقصِ المياه سيجعلُ من تلكَ الأنظمةِ التّقنيّةِ ليست مجرّد حاجةٍ للتّكيّف بل ضرورةً حتميّةً للبقاء.
+					</p>
+					<p>
+						وبناء على ما تقدم فإنه لا بدّ من استيعاب المُعادلَة البيئيّة كاملةً، بما فيها الارتباط ما بين الثّروات النّباتيّة والحيوانيّة وتقنيّات التّبريد، خصوصًا وأنّ عامل التّكييف لا يزال مُستثنى بأثره من تلكَ المُعادلَة. أمّا الدّليل على هذا الارتباطِ البيئيّ والمناخيّ هو العلاقة الطّرديّة ما بين تنامي احتياج البشر لأنظمةِ التّبريدِ من جهةٍ، واحتياجِ النّباتات للمياهِ على مدارِ العالم.
+					</p>
+					<p>
+						ونحن عبر جناح البحرين الوطنيّ (أصولٌ رَطِبة) نسعى لدراسةِ الاحتمالاتِ المترّتبة على نتاجِ إعداداتِ البُنى التّحتيّة المتعلّقة بعمليّات التّبريد، من أجلِ التّعريفِ بإمكانيّات إسهامها ضمن المُعادلَة البيئيّةِ من خلال توفير المياهِ والفرص المُتاحَة للتّطويرِ الحضريّ.
+					</p>
+					<p>
+						يأتي هذا البحث انطلاقًا من الطّبيعةِ الفيزيائيّةِ للأماكن المُغلَقةِ التي تتّسمُ بأسطح تّتبعُ آليّةَ تكثيفِ المياه – وهي ذاتها آليّة التّعرّق – الأمرُ الذي يُساهمُ في التّكيّفِ مع المناخ وتوفيرِ بيئةٍ معيشيّةٍ أكثر مرونةً وراحةً. كذلكَ الأبنية، فهي تخضعُ لذاتِ القوانين الفيزيائيّة عبر طريقتين: الأولى " بشكلٍ مُتعمّد" عبر عزلِ الرّطوبةِ من الهواءِ المتدفّق إليها والثّانيةِ "بشكلٍ غير مقصود" تبعًا للهوسِ بنمطِ العمارة الحداثيّ المتّسم بالأسطحِ الزّجاجيّةِ، الأمر الذي يحقّقُ إمكانيّات هائلةٍ في حالِ جمعِ المياهِ وتخزينها من أجلِ استخدامها في فرصٍ للتّطوير الحضريّ والاعتناء بالبيئة الطّبيعيّةِ في منظومةٍ مُهدّدةٍ بشحّ الموارد المائيّةِ، عوضًا عن اعتبارها إحدى المُسلّمات المترتّبة على الاستخدامِ التّقنيّ.
+					</p>
+					<p>
+						ولربّما كانت أبنيةِ البُنى التّحتيّة التي تستهلكُ تبريدًا عاليًّا وتقوم بتصريفِ كمّيّات هائلةٍ من المياهِ على نحوٍ دائمٍ تُمثّلُ نماذج أساسيّة للدّراسةِ والتّحليل، وهي على سبيل المثال: المُستشفيات، المطارات، المجمّعات التّجاريّة وأبنيةِ المؤسّسات. وعليهِ، فإنّ المبحث بشأن هذا الموضوع يستندُ على إجراءِ دراساتٍ استقصائيّة وتحليليّة حول مصادرِ المياهِ التي لم تُستَثمر من قبل، لغرض تعويضِ الاحتياجات المائيّة التي تُلبّى في الوقتِ الرّاهن من خلالِ تقنيّات تحليّة المياه والتّغاضي عن الآثار البيئيّة المترتّبة عليها.
+					</p>
+					<p>
+						عبر (أُصول رَطِبة) تدعو مساعي البحث إلى تطوير نهجٍ تُكيّفي بهدفِ إدارةِ الموارد عبر استثمارِ الأنظمةِ الحاليّةِ بأساليب أكثر إبداعًا وكفاءةً عوضًا عن إهمالِها أو البدءِ في إيجادِ منهجيّاتٍ أخرى. وليسَ في ذلكَ دعوةً للإسرافِ في استخدامِ أنظمةِ التّبريد لأهدافِ إنتاجِ المياه وإنّما لاستثمارِ المُعطيات والنّتائج الحتميّة للاستهلاكِ المتّزن والمطلوب. 
+					</p>
+					<p>
+						إنّ الفرصة الحقيقيّة المُتاحة في مملكةِ البحرين تدفعُ لإعادةِ التّفكير بإمكانيّات استخدامِ المياه النّاتجة عن طبيعةِ الاستهلاكِ البشريّ لتقنيّات التّبريد ذات القدرات التّكثيفيّةِ العاليةِ، وتبعًا للظّروفِ المناخيّة المتعلّقة بارتفاع درجاتِ الحرارةِ ونسبةِ الرّطوبة الشّديدة وذلكَ عبرَ إعادةِ توجيه المياه النّاتجةِ إلى غاياتِ التّطويرِ البيئيّ والحضريّ، الأمر الذي يُشكّل مسارًا يتوجه إلى الربط ما بين كافّةِ العواملِ ضمن المنظومةِ البيئيّةِ الأوسع.
+					</p>
+				</div>
+			</div>
+	
+			<div id="signature">
+				<p id="englishSignature">BAHRAIN NATIONAL PAVILION</p>
+				<p id="contributor" onclick="switchContributor()">CONTRIBUTORS</p>
+				<p id="arabicSignature">جناح مملكة البحرين	</p>
+			</div>
+
+			<div id="mobileSignature">
+				<div id="mobileInfoSignature">
+					<div id="mobileLeftSignature">
+						<p id="mobileLeftLeft">BAHRAIN NATIONAL PAVILION</p>
+						<p id="mobileLeftRight"></p>
+					</div>
+					<p id="mobileRightSignature">May 20 - November 16 2023</p>
+				</div>
+				<p id="mobileTitleSignature"><i>LA BIENNALE DI VENEZIA</i></p>
+			</div>
+
+			<div id="contributorLeft">
+				<p><b>Commissioner</b><br>HE Shaikh Khalifa bin Ahmed Al Khalifa<br>Bahrain Authority for Culture and Antiquities</p>
+				<p><b>Deputy Commissioner</b><br>Noura Al Sayeh</p>
+				<p><b>Pavilion Coordinator</b><br>Batool Al Shaikh</p>
+				<p><b>Curation, Design, and Research Lead</b><br>Maryam Aljomairi & Latifa Alkhayat</p>
+				<p><b>Publication & Research Contributors</b><br>Dr. Waleed Alzubari, Nada Almulla, Hajer Budhahi, Sara Ali, Alya Alaam, Shan-Chun Wen, Alanood Alkhayat,  Melad Alfulaij, Natalie Pearl, Maryam Alnoaimi, Nujud Alhussain, Dr. Reem Almaella, Dr. Marwa Alkoheji, Nasser Alzayani, Khushi Nansi, Ghadeer Alkhunaizi, Sasha McKinlay</p>
+				<p><b>Exhibition Contributors</b><br>Zhicheng Xu, Alya Alaam, Melad Alfulaij, Hsin-Ying Huang & Yi-Liang Ko, Aeris Group, Saleh Jamsheer, Vijay Rajkumar</p>
+				<p><b>Photography</b><br>Hussain Almosawi</p>
+				<p><b>Graphic Design</b><br>Rabeeya Abduljabbar</p>
+				<p><b>Website</b><br>Chenyue xdd Dai</p>
+			</div>
+
+			<div id="contributorRight">
+				<p><b>المفوّض العام</b><br>سعادة الشيخ خليفة بن أحمد آل خليفة<br>هيئة البحرين للثقافة والآثار</p>
+				<p><b>نائب المفوّض العام</b><br>نورة السايح</p>
+				<p><b>منسّق الجناح</b><br>بتول الشيخ</p>
+				<p><b>التقييم ،التصميم ، والبحث</b><br>لطيفة الخياط و مريم الجميري</p>
+				<p><b>المساهمون في النشر والبحث</b><br>د. وليد الزباري، ندى الملا، هاجر بوضاحي، سارة علي، علياء العم، سام وين، العنود الخياط، ميلاد الفليج، نتالي بيرل، مريم النعيمي، نجود الحسين د.ريم المعلا، د.مروة الكوهجي، ناصر الزياني، خوشي نانسي، غدير الخنيزي، ساشا ماكنلي</p>
+				<p><b>المساهمون في المعرض</b><br>زيشنج شو، علياء العم، ميلاد الفليج، هسين-ينغ هوانغ وي-ليانج كو، مجموعة أيريس، صالح جمشير، فيجاي راجكومار</p>
+				<p><b>تصوير</b><br>حسين الموسوي</p>
+				<p><b>تصميم الجرافيك</b><br> ربيعا عبد الجبار</p>
+				<p><b>الموقع الإلكتروني</b><br>اكس دي-دي چنيوي</p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<script src="js/index.js?v=1.8"></script>
+	<script src="js/cursor.js?v=1.8"></script>
+
+
+</body>
+
+</html>

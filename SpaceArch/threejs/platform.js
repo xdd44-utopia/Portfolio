@@ -33,7 +33,7 @@ export class Platform {
 			itemPath,
 			this.addItem.bind(this),
 			function ( xhr ) {
-				loadProgress.innerHTML = "Loading model: " + ( xhr.loaded / xhr.total * 100 ) + "%";
+				loadProgress.innerHTML = "Loading model: " + Math.round( xhr.loaded / xhr.total * 10000 ) / 100 + "%";
 			},
 			function ( error ) {
 				console.log( error );

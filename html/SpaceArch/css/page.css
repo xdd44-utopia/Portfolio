@@ -1,0 +1,48 @@
+html {
+    scroll-snap-type: y mandatory;
+    color: white;
+}
+
+body {
+    scroll-snap-type: y mandatory;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 4vw;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2vw;
+    text-align: center;
+}
+
+p {
+    font-size: 1.25vw;
+    text-align: center;
+    width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 150%;
+}
+
+.page {
+    scroll-snap-align: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.page>img {
+    display: block;
+    position: absolute;
+    width: 60vw;
+    height: 60vh;
+    margin-left: 20vw;
+    margin-top: 20vh;
+    object-fit: contain;
+}

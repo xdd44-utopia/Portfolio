@@ -74,7 +74,7 @@ function init() {
 	controls.zoomSpeed = 0.8;
 
 	// Geometries
-	let path = './SpaceArch/models/main.obj';
+	let path = './models/main.obj';
 	platform = new Platform(new THREE.Vector3(0, -2, 0), 1, path);
 	
 

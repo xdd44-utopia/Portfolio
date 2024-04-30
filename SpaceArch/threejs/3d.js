@@ -25,8 +25,6 @@ function init() {
 	container = document.getElementById("canvas");
 	SCREEN_WIDTH = container.clientWidth;
 	SCREEN_HEIGHT = container.clientHeight;
-	console.log(SCREEN_WIDTH);
-	console.log(SCREEN_HEIGHT);
 
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0x242424 );

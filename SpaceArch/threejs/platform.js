@@ -27,11 +27,13 @@ export class Platform {
 
 		scene.add( this.#object );
 
+		var loadProgress = document.getElementById("loadProgress");
+
 		loader.load(
 			itemPath,
 			this.addItem.bind(this),
 			function ( xhr ) {
-				// console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+				loadProgress.innerHTML = "Loading model: " + ( xhr.loaded / xhr.total * 100 ) + "%";
 			},
 			function ( error ) {
 				console.log( error );
@@ -47,9 +49,13 @@ export class Platform {
 		this.#itemObject.position.set(this.position.x, this.position.y + 0.4, this.position.z);
 		this.#itemObject.scale.set(this.size, this.size, this.size);
 		scene.add(this.#itemObject);
+		loadProgress.innerHTML = "Drag to rotate the model";
 	}
 
 	updateRotation(t) {
+		if (this.#itemObject == null) {
+			return;
+		}
 		this.#itemObject.rotation.set(0, t, 0);
 	}
 

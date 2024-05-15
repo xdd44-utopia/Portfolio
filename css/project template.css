@@ -80,6 +80,7 @@
 #Main p a:hover {
     text-decoration: underline;
     color: #000;
+    background-color: #FFFFFFFF;
 }
 
 hr {

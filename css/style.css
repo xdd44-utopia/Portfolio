@@ -40,7 +40,7 @@ nav ul li a {
 
 a:hover {
     color: #000000;
-    background: #FFFFFF;
+    background: #FFFFFFFF;
     transition: .5s;
 }
 

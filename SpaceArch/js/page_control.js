@@ -52,7 +52,8 @@ function checkScroll() {
     }
     for (let i = 0; i < num; i++) {
         if (document.getElementsByClassName('page')[i].getBoundingClientRect().y >= -10) {
-            currentPage = i;
+            currentPage = i >= 0 ? i : 0;
+            scroll(currentPage);
             break;
         }
     }

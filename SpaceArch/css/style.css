@@ -9,8 +9,8 @@
     scroll-behavior: smooth;
 }
 
+/* scrollbar */
 
-/* width */
 ::-webkit-scrollbar {
     width: 0;
 }
@@ -28,4 +28,12 @@ background: #888;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 background: #555; 
+}
+
+/* navbar */
+
+nav {
+    position: absolute;
+    color: white;
+    z-index: 10;
 }

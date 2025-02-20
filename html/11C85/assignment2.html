@@ -40,7 +40,7 @@
         <p>After a glance at the dataset we are provided, I decided to propose the following questions:</p>
         <p>- How does proximity to MBTA transit stations affect housing prices and real estate transactions?</p>
         <p>- Are MBTA communities with higher transit accessibility more socioeconomically diverse?</p>
-        <p>- How does transit accessibility correlate with zoning regulations and housing density in MBTA-served communities?</p>
+        <p>- How does transit accessibility correlate with and housing density in MBTA-served communities?</p>
 
         <hr>
 
@@ -73,6 +73,15 @@
                 <p>Plot of year built vs sale price</p>
             </div>
         </div>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="./Old.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Checked a property from 1850 out of curiousity.</p>
+            </div>
+        </div>
 
         <p>By going over the dataset with a script, I found significant amount of missing values. For example, 27.7% of the entries don't come with previous sale price; About 40% - 60% properties miss data about flipping metrics e.g. flip_horizon.</p>
 
@@ -83,7 +92,57 @@
         <p></p>
 
         <hr>
+
+        <p><b>How does proximity to MBTA transit stations affect housing prices and real estate transactions?</b></p>
+
+        <p>I decided to plot a visualization showing lines and housing sale prices:</p>
         
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="./Figure3.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of sale price on MBTA map</p>
+            </div>
+        </div>
+
+        <p>Surprisingly, there is no significant relationships shown between price and MBTA transportation. Rather, the map shows the relationship between prices and what is actually around the properties. For example, a lot of the property prices along Newburry Street and near Charles River Esplanades look significantly higher than those in the rest of Boston.</p>
+
+        <p>This visualization shows that the value of real estate appears to be more influenced by amenities, commercial activity, and desirable neighborhood characteristics, such as walkability, retail density, and access to parks and waterfronts. It may indicate that Boston's current development pattern is not fully transit-oriented but rather amenity-oriented</p>
+
+        <hr>
+
+        <p><b>Are MBTA communities with higher transit accessibility more socioeconomically diverse?</b></p>
+        
+        <p>For this question, I performed Shannon diversity index over racial distribution data in housing zoning census data. I plotted the result along with MBTA lines in Tableau.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="./Figure4.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of racial diversity index</p>
+            </div>
+        </div>
+
+        <p>This visualization shows that racial diversity is somewhat related to distribution of MBTA lines, especially at Southern half of Boston area. Areas with no MBTA access have nearly no racial diversity. This means public transit plays a role in defining where diverse communities settle, and aligns with TOD principles.</p>
+
+        <hr>
+
+        <p><b>How does transit accessibility correlate with housing density in MBTA-served communities?</b></p>
+        
+        <p>For this question, I simply plotted sum of bedroom counts over MBTA lines and stops, and the larger circle means more bedroom at that location, and can be seem as higher housing density.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="./Figure5.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of bedroom counts</p>
+            </div>
+        </div>
+
+        <p>This visualization shows that major high density housing, likely high-rises, are distributed along major subway lines, which also fits the idea of TOD that encourages high-density development along transit corridors.</p>
 
     </div>
 

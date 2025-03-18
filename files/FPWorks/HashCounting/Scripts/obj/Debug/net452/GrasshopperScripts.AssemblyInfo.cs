@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrasshopperScripts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+959f36f61c953d1382f75b3e25a789cf8eaf908f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+daa9da08495f465c76353acba566f32b73beaa8d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrasshopperScripts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrasshopperScripts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

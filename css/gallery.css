@@ -1,0 +1,291 @@
+.CoverImg {
+	overflow: hidden;
+	height: 52vw;
+}
+
+.CoverImg img {
+	display: block;
+	width: 100vw;
+	height: auto;
+}
+
+.title {
+	position: absolute;
+	float: left;
+	box-sizing: content-box;
+	margin-left: 5%;
+	margin-right: 25%;
+	margin-top: 20vw;
+	width : 45%;
+	color: #fff;
+	text-shadow: 3px 3px 10px #000000;
+}
+
+.title h1 {
+	text-align: center;
+	font-size: 2vw;
+}
+
+.title h2 {
+	text-align: right;
+	font-size: 1.25vw;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 13vw;
+	width: 4vw;
+	animation: opa 1.5s;
+	animation-iteration-count: infinite;
+}
+@keyframes opa {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/*
+.CoverImg {
+	height: 50vw;
+	overflow: hidden;
+}
+
+slideshow
+
+.slideshow-container {
+	width: 300vw;
+	height: auto;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.mySlides {
+	width: 100vw;
+	height: 50vw;	
+	overflow: hidden;
+	transition: margin-left 1s;
+}
+
+#first-slide {
+	margin-left: 0;
+}
+
+.mySlides img {
+	display: block;
+	width: 100vw;
+}
+
+ Next & previous buttons 
+
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 25vw;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+ Caption text 
+.text {
+	position: relative;
+	margin-top: -37.5vw;
+	bottom: 8px;
+	color: #fff;
+	width: 100%;
+	font-size: 10vw;
+	text-align: center;
+	text-shadow: 3px 3px 10px #000000;
+}
+
+.text > a:hover {
+	background: none;
+}
+  
+ The dots/bullets/indicators 
+#slide-selector {
+	position: absolute;
+	width: 20vw;
+	margin-left: 40vw;
+	margin-top: -150px;
+}
+
+.dot {
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	margin: 0 1vw;
+	background-color: rgba(255, 255, 255, 0.25);
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.5s ease;
+	box-shadow: 1px 1px 15px #000000;
+}
+  
+.active, .dot:hover {
+	background-color: #fff;
+}
+  
+   Fading animation 
+
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+  
+@-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+  
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+  
+ On smaller screens, decrease text size 
+@media only screen and (max-width: 300px) {
+	.prev, .next,.text {font-size: 11px}
+}
+
+
+*/
+#Main {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	width: 82vw;
+}
+
+#Main h1 {
+	color: #fff;
+}
+
+#Main hr {
+	border: 1px solid #fff;
+	margin-top: 25px;
+}
+
+#Main > p {
+	margin-bottom: 50px;
+	margin-left: 1vw;
+	width: 80vw;
+	color: #fff;
+	font-size: 25px;
+}
+
+#Main p a {
+	text-decoration: underline;
+	color: #fff;
+}
+
+b {
+	font-size: 30px;
+}
+
+/* gallery links */
+
+#gallery-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 82vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gallery-link-container {
+	width: 40vw;
+	height: 28.5vw;
+	margin-left: 0.5vw;
+	margin-right: 0.5vw;
+	margin-top: 2vw;
+	overflow: hidden;
+}
+
+.gallery-photo {
+	display: block;
+	height: 28.5vw;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+/* 16:9 */
+#photo1 {
+	margin-left: -5vw;
+}
+
+#dsc1 {
+	margin-top: -18vw;
+}
+
+/* 3:4 */
+#photo2 {
+	height: auto;
+	width: 40vw;
+}
+
+#dsc2 {
+	margin-top: -43vw;
+}
+
+/* 3:2 */
+
+#photo4 {
+	margin-left: -1vw;
+}
+
+#dsc4 {
+	margin-top: -18vw;
+}
+
+.gallery-link-container:hover .gallery-photo {
+	opacity: 0.3;
+}
+
+.gallery-description {
+	height: 20vw;
+	margin-top: -30vw;
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.gallery-link-container:hover .gallery-description {
+	opacity: 1;
+}
+
+.gallery-description > p {
+	text-align: center;
+	font-size: 5vw;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../css/404.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../css/404_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aos.css">
+    <link rel="shortcut icon" href="../image/icons/Website icon.png">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("Common/nav_page.html");
+            $("footer").load("Common/footer_page.html");
+        });
+    </script> 
+
+    <title>Page not found&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+
+    <nav>
+    </nav>
+
+    <div id="Main" style="height: 50vh;">
+        <h1>404 - Return to <a href="index.html" style="color:white; text-decoration: underline;">home</a></h1>
+    </div>
+
+    <footer>
+    </footer>
+    
+</body>
+
+</html>

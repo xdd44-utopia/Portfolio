@@ -1,0 +1,29 @@
+body {
+	font-family: Artifakt, sans-serif;
+	margin: 0;
+}
+
+h4 {
+	position: fixed;
+	color: #FFF;
+	background-color: #0000;
+	width: 100vw;
+	text-align: center;
+}
+
+p {
+	margin-top: calc(100vh - 50px);
+	position: fixed;
+	width: 100vw;
+	text-align: center;
+}
+
+p > a {
+	color: #000;
+	background-color: #FFF;
+}
+
+a:hover {
+	color: #FFF;
+	background-color: #000;
+}

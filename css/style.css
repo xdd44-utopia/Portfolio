@@ -1,0 +1,160 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: Artifakt, sans-serif;
+    background-color: #000000;
+    scroll-behavior: smooth;
+}
+
+
+/* Navigation bar */
+
+nav {
+    background: #000000;
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    z-index: 2;
+}
+
+nav ul {
+    font-size: 15px;
+    margin-left: 50px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 50px;
+    line-height: 60px;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    height: 50px;
+    padding: 0 3px;
+    font-size: 15px;
+}
+
+a:hover {
+    color: #000000;
+    background: #FFFFFFFF;
+    transition: .5s;
+}
+
+#logo {
+    height: 125px;
+    margin-top: 55px;
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+#logoa {
+    display: block;
+    height: 100px;
+    width: 100px;
+    line-height: 0;
+    font-size: 0;
+}
+
+#logo_show {
+    display: block;
+    background-color: #000000;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
+}
+
+#logo_hide {
+    display: block;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+#logo_show:hover {
+    opacity: 0;
+    transition: 1s;
+}
+
+#icon_menu {
+    display: none;
+}
+
+#icon_close {
+    display: none;
+}
+
+#navbar {
+    display: none;
+}
+
+
+/*Main*/
+
+#Main {
+    margin-left: 250px;
+    margin-right: 100px;
+    overflow: hidden;
+}
+
+
+/*Footer*/
+
+footer {
+    background: #000000;
+    color: #FFF;
+    width: 100%;
+}
+
+#Links {
+    margin-left: 200px;
+    padding-top: 100px;
+}
+
+#Links div {
+    padding-bottom: 25px;
+}
+
+#footer-logo {
+    display: in-lineblock;
+    width: 200px;
+    height: 22px;
+    margin-right: 20px;
+}
+
+footer hr {
+    border: 1px solid #FFF;
+    margin-bottom: 25px;
+}
+
+#contact {
+    display: flex;
+    justify-content: center;
+}
+
+#contact a {
+    width: 50px;
+    height: 25px;
+}
+
+#contact a:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+#contact a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#copyright {
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

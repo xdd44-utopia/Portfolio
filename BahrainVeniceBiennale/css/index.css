@@ -1,0 +1,292 @@
+body {
+	margin: 0;
+	overflow: hidden;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+}
+
+html {
+	height: -webkit-fill-available;
+}
+
+/* background */
+
+#background {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 120%;
+	z-index: 0;
+}
+
+#backgroundImage {
+	display: block;
+	width: 100vw;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* foreground */
+
+.foregroundHolder {
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	display: inline-block;
+	height: 50%;
+}
+
+#leftHolder {
+	margin-left: 10vw;
+	margin-top: 25%;
+	width: 5vw;
+}
+
+#middleHolder {
+	margin-left: 42.5vw;
+	margin-top: 25%;
+	width: 15vw;
+}
+
+#rightHolder {
+	margin-left: 85vw;
+	margin-top: 25%;
+	width: 5vw;
+}
+
+.foregroundImage {
+	height: 100%;
+	object-fit: cover;
+	height: 50vh;
+}
+
+#leftImage {
+	width: 5vw;
+}
+
+#middleImage {
+	width: 15vw;
+}
+
+#rightImage {
+	width: 5vw;
+}
+
+/* contributor */
+
+#contributorHolder {
+	display: none;
+}
+
+/* logo */
+
+#logo {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 12vh;
+	z-index: 2;
+	display: flex;
+	justify-content: space-between;
+
+	margin-top: 100%;
+	transition: margin-top 2s;
+	transition-timing-function: ease;
+}
+
+#BVLogo {
+	height: 70%;
+	margin-left: 1%;
+}
+
+#BACALogo {
+	height: 70%;
+	margin-right: 1%;
+}
+
+/* Arrow */
+#scrollArrow {
+	color: #000000;
+	position: fixed;
+	display: block;
+
+	width: 10vh;
+	margin-left: calc(50vw - 5vh);
+
+	margin-top: 90vh;
+	transition: margin-top 2s;
+	transition-timing-function: ease;
+
+	animation: opa 1.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes opa {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* main */
+
+#mobileTitle {
+	display: none;
+}
+
+#mainHolder {
+	position: fixed;
+
+	width: 75vw;
+	height: 80%;
+
+	margin-top: 125%; /*DEBUG*/
+	margin-left: 12.5vw;
+	margin-right: auto;
+
+	z-index: 1;
+	background-color: #f9f5f1;
+	color: #2d5b50;
+
+	transition: margin-top 2s;
+	transition-timing-function: ease;
+}
+
+p {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+#main {
+	width: 60vw;
+	height: 100%;
+	padding-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#arabicTitle, #englishTitle {
+	display: flex;
+	justify-content: space-between;
+	font-size: 5vh;
+	line-height: 120%;
+}
+
+#arabicTitleLeft, #arabicTitleRight, #englishTitleLeft, #englishTitleRight {
+	display: inline-block;
+}
+
+#arabicTitleLeft, #arabicTitleRight {
+	font-family: 'Lyon Arabic Text Web';
+}
+
+#englishTitleLeft, #englishTitleRight {
+	font-family: 'Sang Bleu Republic';
+}
+
+#mainText {
+	display: flex;
+	margin-top: 0;
+	height: 70%;
+	font-size: small;
+	text-align: justify;
+	justify-content: space-between;
+}
+
+#mainLeft, #mainCenter, #mainRight {
+	display: inline-block;
+	vertical-align: top;
+	scrollbar-width: none;
+}
+
+#mainLeft, #mainRight {
+	margin-top: 1vh;
+	width: 17vw;
+	height: 50vh;
+	overflow-y: scroll;
+	position: relative;
+	z-index: 3;
+}
+
+#mainLeft > p, #mainRight > p {
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	line-height: 150%;
+}
+
+#mainLeft::-webkit-scrollbar, #mainRight::-webkit-scrollbar{
+    display: none;
+}
+
+#mainLeft {
+	font-family: 'Sang Bleu Republic';
+	margin-right: 2.5vw;
+}
+
+#mainCenter {
+	font-family: 'Sang Bleu Republic';
+	width: 20vw;
+	height: 100%;
+	margin-top: -2vh;
+	margin-right: 2vw;
+	font-size: 1vw;
+	text-align: center;
+}
+
+#mainDate {
+	font-size: 0.8vw;
+}
+
+#mainTitle {
+	height: 99%;
+}
+
+#mainRight {
+	font-family: 'Lyon Arabic Text Web';
+	direction: rtl;
+}
+
+#signature {
+	display: flex;
+	margin-top: 5%;
+	justify-content: space-between;
+	font-size: 1.6vh;
+}
+
+#englishSignature, #arabicSignature {
+	display: inline-block;
+}
+
+#englishSignature {
+	font-family: 'Graphik Web';
+	width: 20vw;
+}
+
+#contributor {
+	font-family: 'Graphik Web';
+	text-align: center;
+}
+
+#contributor:hover {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#arabicSignature {
+	font-family: 'Graphik Arabic Web Regular';
+	direction: rtl;
+	width: 20vw;
+}
+
+#mobileSignature {
+	display: none;
+}
+
+#contributorLeft, #contributorRight {
+	display: none;
+}

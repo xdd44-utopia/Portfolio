@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script> 
+
+    <title>Arkala&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+
+    <nav>
+    </nav>
+
+    <div id="banner">
+        <img src="../../image/Programming/Arkala/cover.jpg" style="opacity: 0.4;">
+        <h1>Arkala: LLM-Driven Game</h1>
+    </div>
+
+    <div id="Main">
+        <p>Over the summer of 2024, Ben, my undergrad game developer mate, and I collaborated again to explore the potential of large language model on developing narrative games.</p>
+        <p><b>Team Members:</b></p>
+        <p>Xinyu "Ben" Guan: Producer & Game Designer</p>
+        <p><b>Chenyue "xdd44" Dai</b>: Developer & Game Designer</p>
+        <p>Yian Zhou: Marketing</p>
+        <p>Yining Bei: UI Designer</p>
+        <p><b>Project Original Description:</b></p>
+        <p>
+            We are exploring the idea of a role-playing game (RPG) empowered by AI, aiming to build a dynamic society and unique storylines similar to HBO's "Westworld." In this game, each non-playable character (NPC) is a generative agent with its own objectives, behavior patterns, and interactions. This creates a constantly evolving world where complex stories and quests are generated on the fly, providing players with a unique and immersive experience every time they play. 
+        </p>
+        <p>
+            The game's AI enables NPCs to have meaningful interactions with each other and with the player, adapting to the player's actions and decisions. This results in a dense web of interconnected narratives where the consequences of one player's choices influence the behavior and story arcs of others. The dynamic nature of the gameplay ensures that no two replays are the same, offering infinite replayability and deep immersion.
+        </p>
+        <p>
+            By leveraging advanced AI techniques, we hope to push the boundaries of traditional RPGs, offering a level of depth and complexity that is rarely seen in the genre. We aim to transform player expectations while setting new standards for what AI can achieve in games—a world smart enough to react intelligently to players' actions.
+        </p>
+        <p><b>Prototype Demonstration Video:</b></p>
+        <iframe src="https://www.youtube.com/embed/fOpqMKhEAEk">
+        </iframe>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+    
+</body>
+
+</html>

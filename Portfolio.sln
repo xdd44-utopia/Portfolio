@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{9F5E6384-8D91-7B30-BF94-463B36B69FC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FPWorks", "FPWorks", "{E4D22ED3-0573-5511-6EF9-189CC026E123}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HashCounting", "HashCounting", "{A019BC2B-88CC-A939-BFE4-147A958A13FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperScripts", "files\FPWorks\HashCounting\Scripts\GrasshopperScripts.csproj", "{61B0320E-05B4-1B03-045C-259B92E52CF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BinPacking(2d)", "BinPacking(2d)", "{EDBB1E64-4A1C-9580-4820-63F76BD31442}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperScripts", "files\FPWorks\BinPacking(2d)\Script\GrasshopperScripts.csproj", "{06452C8C-E9DC-5BED-C458-EFD2AD426DFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61B0320E-05B4-1B03-045C-259B92E52CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B0320E-05B4-1B03-045C-259B92E52CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B0320E-05B4-1B03-045C-259B92E52CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B0320E-05B4-1B03-045C-259B92E52CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06452C8C-E9DC-5BED-C458-EFD2AD426DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06452C8C-E9DC-5BED-C458-EFD2AD426DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06452C8C-E9DC-5BED-C458-EFD2AD426DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06452C8C-E9DC-5BED-C458-EFD2AD426DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4D22ED3-0573-5511-6EF9-189CC026E123} = {9F5E6384-8D91-7B30-BF94-463B36B69FC3}
+		{A019BC2B-88CC-A939-BFE4-147A958A13FC} = {E4D22ED3-0573-5511-6EF9-189CC026E123}
+		{61B0320E-05B4-1B03-045C-259B92E52CF0} = {A019BC2B-88CC-A939-BFE4-147A958A13FC}
+		{EDBB1E64-4A1C-9580-4820-63F76BD31442} = {E4D22ED3-0573-5511-6EF9-189CC026E123}
+		{06452C8C-E9DC-5BED-C458-EFD2AD426DFD} = {EDBB1E64-4A1C-9580-4820-63F76BD31442}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDBE7FA2-8CA5-4D0C-BA89-E191649408D6}
+	EndGlobalSection
+EndGlobal

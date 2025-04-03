@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script> 
+    
+    <title>AngleCAD&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+
+    <nav>
+    </nav>
+
+    <div id="banner">
+        <img src="../../image/Programming/HCI/Cover.png">
+        <h1>AngleCAD: Surface-based 3D Modelling Techniques on Foldable Touchscreens</h1>
+    </div>
+
+    <div id="Main">
+        <p>A research project published at ACM ISS 2022</p>
+        <p>Author list: <a href="https://www.scm.cityu.edu.hk/people/liu-can">Can Liu</a>, <b>Chenyue Dai</b>, Qingzhou Ma, Brinda Mehra, <a href="https://www.scm.cityu.edu.hk/people/cassinelli-alvaro">Alvaro Cassinelli</a></p>
+        <p>
+            Read <a href="https://dl.acm.org/doi/10.1145/3567735">full paper</a> or code on <a href="https://github.com/xdd44-utopia/HCI_Extruding">GitHub</a>
+        </p>
+        <p>Presentation with Qingzhou at ISS 2022 (Sorry for the unclear voice, I had covid at that time):</p>
+        <iframe src="https://www.youtube.com/embed/TqiWw_Gzt3s">
+        </iframe>
+        <p>Paper Supplementary Video:</p>
+        <iframe src="https://www.youtube.com/embed/4r_4eCIn9DA">
+        </iframe>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

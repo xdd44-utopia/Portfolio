@@ -1,0 +1,36 @@
+#Main {
+    padding-top: 25vh;
+    color: #FFF;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 200%;
+}
+
+#test {
+    color: #00000000;
+    background-color: #00000000;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+#test img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    animation: move 1s linear infinite alternate;
+}
+
+@keyframes move {
+    0% {
+        margin-left: 0;
+        margin-top: 0;
+    }
+    100% {
+        margin-left: calc(100vw - 100px);
+        margin-top: calc(100vh - 100px);
+    }
+}

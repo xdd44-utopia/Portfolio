@@ -1,0 +1,42 @@
+#banner {
+    margin-left: 0px;
+    margin-bottom: -100px;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#Main {
+    margin-top: 100px;
+    padding-top: 40px;
+}
+
+#Main>p {
+    font-size: 16px;
+}
+
+iframe {
+    display: block;
+    width: 96vw;
+    height: 54vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    width: 96vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landscapecontainer>img {
+    display: block;
+    width: 96vw;
+    height: 54vw;
+    overflow-y: hidden;
+    object-fit: cover;
+}
+
+.landscapedsc>p {
+    font-size: 12px;
+}

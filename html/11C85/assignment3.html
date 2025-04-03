@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script>  
+    
+    <title>Assignment 3&nbsp;|&nbsp;xdd44's 11.C85</title>
+</head>
+
+<body>
+    <nav>
+    </nav>
+
+    <div id="Main">
+        <h1>Assignment 3</h1>
+        <p>Chenyue xdd Dai, xdd44@mit.edu, 928906170</p>
+        <hr>
+        <h3>Task 1</h3>
+
+        <p>The visualization shows the new covid-19 cases of 7-day average from Jan. 2020 (the start of pandemic) to Jan. 2022 (rise of Omicron variant). The curve indicating the case numbers is continuous and forms a spiral, so that different years share same month axes. The curve is mirrored to form enclosed colored area so that readers can easily tell when there are more cases and when there are fewer.</p>
+
+        <p>The number of cases is nearly invisible (in terms of visualization) at the start of 2020, nearly rises, and reaches a significant peak in the winter crossing 2020 and 2021. It drops down slowly to very small in June 2021 but rises up again through summer 2021. After, the number sees a bit drop and end up at a dramatical rise at the start of 2022.</p>
+
+        <p>On a larger aspect, the graph shows three waves of epidemic rises, revealing seasonal pattern, among which the Omicron variant aligns with the first wave in season but is more contagious. </p>
+
+        <hr>
+
+        <h3>Task 2</h3>
+
+        <p>+ The spiral shape is very creative to non-professionals like me. And the trends and patterns in the data simple to read, both because it is as simple as showing only one data item, and because the choice of shade and darker outline is very clear.</p>
+
+        <p>+ The choice of spiral delivers extra information than a simple line chart. As the months and peaks from different years align, readers are prompted to make year-over-year comparison and hinted to think about the relationship to seasons. </p>
+
+        <p>+ The graph can also be extended to future data without losing much accuracy. In comparison, a line chart will either be denser or be wider when extended.</p>
+
+        <p>- It is unclear (not saying it is inaccurate, the author must have a way to accurately plot the graph) whether the inner layers are scaled, especially it looks smaller than outmost part.</p>
+
+        <p>- I’m also doubting the gradient is not showing accurately. Assume the magnitude is correct from inner to outer, then the shade width should change a same amount if the number changes a same amount wherever it is. However, the same duration covers larger distance on outer layers. This means the same changing rate may look steeper on inner layers.</p>
+
+        <p>- In a line chart, horizontal lines from Y axis can be used to tell the accurate number at any point. However, the magnitude in this graph is facing all directions without reference lines, so it is nearly impossible to read accurate number with only 150K reference. The target audiences are New York Times readers so this may be fine. </p>
+
+        <p>- Four labels of months may be enough but 1) it took me some seconds to find where is September; 2) I assume dashed line marks the end/start of months? Then I feel it will be better to put month label in between dashed lines, since it also took me some seconds to figure out whether the section below April line is April or the section above.</p>
+
+        <hr>
+
+        <h3>Task 3</h3>
+        <br>
+        <h3>Sketch 1</h3>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment3/Graph1.jpg">
+            </div>
+        </div>
+
+        <p>For the first attempt, I just added two improvements I mentioned earlier to the original graph: repositioning month labels and add scale reference lines. </p>
+
+        <p>My personal feeling is that the new month labels do help reading the number in reference to time. However, the scale reference lines look messy even if I imagine they are drawn perfectly by computer. There will be too many lines in the graph.</p>
+
+        <br>
+        <br>
+        <br>
+
+        <h3>Sketch 2</h3>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment3/Graph2.jpg">
+            </div>
+        </div>
+
+        <p>For the second attempt, I just drew a line chart version of this spiral graph. (The 2022 line is completely random since I hadn’t calculated 7-day average from the csv yet). This line chart met some points I mentioned in Task 2:</p>
+        <p>1) Readers can easily tell when the cases passed 100K, 150K, etc. even without reference lines.</p>
+        <p>2) It is equally easy to compare any two years, since I imagine if the spiral extends five more years there will be 4 layers in between if a comparison between earliest and latest is needed.</p>
+        <p>3) It is extendable, just plot new lines for data from new years.</p>
+        <p>The largest downside of this chart is that years are split. For example, it is very hard to tell how the trend goes from Dec. 2020 to Jan. 2021. The readers need to first find the right end of 2020 line and the left end of 2021 line, then imagine connecting them together in mind.</p>
+
+        <br>
+        <br>
+        <br>
+
+        <h3>Sketch 3</h3>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment3/Graph3.jpg">
+            </div>
+        </div>
+
+        <p>For the last attempt, I was wondering if # new confirmed cases / # new tested cases would reflect the severity of epidemic more, since pure number of confirmed cases is affected by how many people got tested.</p>
+        <p>I did notice one issue at the very beginning: there are a lot of days when confirmed cases are more than tested case. I thought that might be a delay in processing test result, so I calculated 7-day average for both columns.</p>
+        <p>However, the graph turned out to be still quite dramatic, seeing entries more than 500% at the beginning of 2020, and the number goes over 1000% from mid-2021.</p>
+        <p>After more searches, I realized two more issues with this method: 1) Not a lot of people were tested at the beginning of the pandemic, thus 1 positive cases out of 2 tested cases will be equally severe as 100 positive cases out of 200 cases, which might not be true; 2) On March 2021, <a href="https://covidtracking.com/analysis-updates/giving-thanks-and-looking-ahead-our-data-collection-work-is-done" target="_blank">the covid tracking project ceased to collect data</a>, which might be the reason why number of tested cases suddenly dropped from millions to thousands on Mar 8, 2021. Also, at-home rapid test kits were available at the later stage of covid. Both resulting in # new test cases much smaller than # new tested cases, making percentage meaningless.</p>
+
+        <hr>
+
+        <h3>Task 4</h3>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment3/Final.png">
+            </div>
+        </div>
+
+        <p>After all sketches and thoughts above, I decided to slightly improve the form of the original visualization and came up with an interesting idea: using a 2D projection of a 3D spiral instead of a planar spiral.</p>
+
+        <hr>
+
+        <h4>Task 5</h4>
+
+        <p>To summary again, the key feature of the original visualization to me is to show the seasonal pattern, which I would like to keep in Task 4. Regarding my opinion of distorted trend gradient, the best way is of course having consistent curvature along the time axis, which results in years overlapping or a 3D cylinder. The years overlapping option will produce a circular version of my second drawing, which might be good enough. However, I do want to emphasize the chronological orders of data from different year instead of stacking all years' data at same place. Therefore, I wrote a small script to generate this 3D spiral shape in Rhino. Of course, the axis is still slightly distorted, but I feel it is accurate enough for ordinary newspaper readers. The most obvious shortcoming will be the overlapping areas around March - April and Septemper - October. I also decided to put all alignment lines horizontally insteal of in radial direction, since it is the factually correct alignment.</p>
+
+        <p>I did try to address the first point I raised in Task 2, especially the scale issue with planar spiral. However, I still chose not to add reference lines from Y axis since otherwise there will be too many lines intersecting each other. On the other hand, I do believe it is a trade off between clarity in comparison and readability of value. Besides, it might be a bit counterintuitive to align circular elements horizontally. For example, people may natually look diagonally when checking top left part of the circle. </p>
+
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

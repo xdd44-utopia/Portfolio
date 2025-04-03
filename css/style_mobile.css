@@ -1,0 +1,167 @@
+@font-face {
+    font-family: Artifakt;
+    src: url('../font/Artifakt\ Element\ Regular.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    src: url('../font/Artifakt\ Element\ Bold.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Italic.ttf');
+}
+
+@font-face {
+    font-family: Artifakt;
+    font-weight: bold;
+    font-style: italic;
+    src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+/* Navigation bar */
+
+nav {
+    background: #000000;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    margin-left: -100vw;
+    transition: all 0.5s ease-in-out;
+}
+
+nav * {
+    background-color: #00000000;
+}
+
+nav ul {
+    margin-top: 440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav ul li {
+    display: block;
+    width: 100vw;
+    text-align: center;
+    line-height: 125px;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+}
+
+#logo {
+    width: 100px;
+    height: 0;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#logoa {
+    position: fixed;
+    display: block;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+    width: 160px;
+    height: 160px;
+    margin-right: 0px;
+    line-height: 0;
+    font-size: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#logoa:hover {
+    color: #00000000;
+    background: #00000000;
+    transition: none;
+}
+
+#logo_show {
+    display: block;
+    background-color: #000000;
+    margin-top: 0;
+    width: 100px;
+    height: 100px;
+    transition: all 0.5s ease-in-out;
+}
+
+#logo_show:hover {
+    opacity: 100%;
+    transition: none;
+}
+
+#logo_hide {
+    display: none;
+}
+
+#icon_menu {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    left: calc(100vw - 120px);
+    top: 20px;
+    width: 100px;
+    transition: all 0.5s ease-in-out;
+}
+
+#icon_close {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    left: calc(100vw - 120px);
+    top: 20px;
+    width: 100px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#navbar {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 140px;
+    background: #000;
+}
+
+
+/*Main*/
+
+#Main {
+    margin-left: 25px;
+    margin-right: 25px;
+    overflow: hidden;
+}
+
+
+/*Footer*/
+
+#Links {
+    margin-left: 0;
+    padding-top: 100px;
+}
+
+.copyright {
+    font-size: 5px;
+}

@@ -1,0 +1,76 @@
+.CoverImg {
+	overflow: hidden;
+	height: 40vw;
+}
+
+
+#Main {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 40px;
+	margin-bottom: 50px;
+	width: 80%;
+}
+
+#Main h1 {
+	color: #cccccc;
+}
+
+#Main h2 {
+	color: #cccccc;
+	font-weight: normal;
+	margin-top: 25px;
+}
+
+#Main hr {
+	border: 1px solid #cccccc;
+	margin-top: 25px;
+}
+
+#Main p {
+	margin-top: 20px;
+	color: #cccccc;
+	font-size: 16px;
+}
+
+.selfIntro {
+	width: 60vw;
+}
+
+.logoIntro {
+	height: 10vw;
+}
+
+#Main p a {
+	text-decoration: underline;
+	font-weight: bold;
+	color: #cccccc;
+}
+
+h2 b {
+	font-size: 25px;
+}
+
+p b {
+	font-size: 20px;
+}
+
+.selfportrait {
+	margin-top: 20px;
+	margin-left: 20px;
+	display: block;
+	float: right;
+	width: 12vw;
+	border-width: 5px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: #cccccc;
+}
+
+.logo {
+	display: block;
+	display: block;
+	float: left;
+	height: 10vw;
+	margin-right: 25px;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style_page.css?v=1.1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="./style_page_mobile.css?v=1.1" />
+    <link rel="stylesheet" type="text/css" href="../css/aos.css">
+    <link rel="shortcut icon" href="../image/icons/Website icon.png">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/aos.js"></script>
+
+    <title>0. Preparation&nbsp;|&nbsp;Algorithmic and Parametric 3D Design</title>
+</head>
+
+<body>
+    <nav>
+      <div id="logo">
+        <div onclick="toggleMenu()">
+            <img id="icon_menu" src="../image/icons/menu.png" alt="Menu">
+            <img id="icon_close" src="../image/icons/close.png" alt="Close">
+        </div>
+        <div id="navbar"></div>
+      </div>
+      <ul>
+          <li><a onclick="toggleMenu()" href="main.html">Back to main page</a></li>
+          <li><a onclick="toggleMenu()" href="#S0">Prerequisite</a></li>
+          <li><a onclick="toggleMenu()" href="#S1">Installing Rhino</a></li>
+          <li><a onclick="toggleMenu()" href="#S2">Installing Grasshopper</a></li>
+          <li><a onclick="toggleMenu()" href="#S3">Installing Script Parasite</a></li>
+          <li><a onclick="toggleMenu()" href="#S4">Installing VS Code</a></li>
+          <li><a onclick="toggleMenu()" href="#S5">Test Installation</a></li>
+      </ul>
+    </nav>
+
+    <div id="banner">
+        <img src="./files/0/Banner.png">
+        <h1>0: Preparation</h1>
+    </div>
+
+    <div id="Main">
+      <h3><b>In this page, you will find instructions for how to install all essential tools and run your first Grasshopper-C# script</b></h3>
+
+      <h3 style="font-weight: normal;">No worries we will go through these steps at our first meeting!</h3>
+
+      <hr>
+
+      <h3 id="S0">Prerequisite</h3>
+
+      <p>1. A desktop / laptop with Windows or MacOS</p>
+
+      <p>2. A mouse is highly recommended (Apple Magic Mouse is not recommended)</p>
+
+      <p>3. MIT Wi-Fi or <a href="https://ist.mit.edu/vpn" target="_blank">MIT VPN</a>, or other sources of Rhino license</p>
+
+      <p>4. <a href="https://accounts.rhino3d.com/" target="_blank">A Rhino account</a></p>
+
+      <hr>
+
+      <h2>Installation</h2>
+
+      <h3 id="S1">Rhino</h3>
+
+      <p>Rhino 8 provides a 90-day trial. Please select correponding "One-Time Evaluation" version on the <a href="https://www.rhino3d.com/download/" target="_blank">official download page</a>.</p>
+
+      <p>Rhino 7 doesn't have trial version. MIT STOA provides free Rhino 7 and 8 license for current students. Please follow installation instructions under <a href="https://stoa.mit.edu/applications" target="_blank">"CAD" tab of STOA Application page</a>. STOA educational license only works when connected to MIT Wifi or <a href="https://ist.mit.edu/vpn" target="_blank">MIT VPN</a>.</p>
+
+      <p>NOTE: We use Rhino 7 to compose materials of this course, while there shouldn't be significant difference between 7 and 8 in terms of the content we will cover.</p>
+
+      <p>After opening Rhino and select any template for Windows or "new model" for MacOS, you should see one of the interface below depend on your system:</p>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/Rhino_Win.jpg">
+        </div>
+        <div class="landscapedsc">
+            <p>Interface of Rhino for Windows</p>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/Rhino_Mac.jpg">
+        </div>
+        <div class="landscapedsc">
+            <p>Interface of Rhino for MacOS</p>
+        </div>
+      </div>
+
+      <h3 id="S2">Grasshopper</h3>
+      <p>At Rhino Interface, directly type "grasshopper" and press enter, you should see Grasshopper's interface popping up:</p>
+      <p>NOTE: Grasshopper's window is always on top of Rhino's window. Resize or minimuze it to reveal Rhino interface.</p>
+      
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/Grasshopper.png">
+        </div>
+        <div class="landscapedsc">
+            <p>Interface of Grasshopper</p>
+        </div>
+      </div>
+
+      <h3>Recommend tools for coding in Grasshopper</h3>
+
+      <p>Since Grasshopper's coding interface lacks good user experience, we highly recommend you to install Script Parasite and write code in Visual Studio Code.</p>
+
+      <h3 id="S3">ScriptParasite</h3>
+
+      <p><a href="https://www.food4rhino.com/en/app/scriptparasite-grasshopper" target="_blank">ScriptParasite</a> is a Grasshopper plugin that synchronize the code inside a Grasshopper C# component with a local file.</p>
+
+      <p>Step 1: Download and unpack the plugin files for<a href="./files/0/scriptparasite_1.gha">Rhino 8 (both systems)</a> or <a href="./files/0/scriptparasite-111.zip">Rhino 7 Windows</a> or <a href="./files/0/scriptparasite-112.zip">Rhino 7 MacOS</a>. You should see one <i>.gha</i> file and one <i>.pdb</i> file (For Rhino 8 there's only .gha file).</p>
+
+      <p>Step 2: Open Grasshopper's components folder. In menu bar, choose File > Special Folders > Components Folder, a folder named <i>Libraries</i> should pop up.</p>
+
+      <p>Step 3: Drop the <i>.gha</i> file and <i>.pdb</i> file into the <i>Libraries</i> folder. Restart Rhino and Grasshopper.</p>
+
+      <p>Step 4: In Grasshopper Interface, press SPACE, type "scriptparasite", and press ENTER, you should be able to drop a ScriptParasite component on the canvas like below:</p>
+
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/ScriptParasite.png">
+        </div>
+        <div class="landscapedsc">
+            <p>A ScriptParasite component dropped on Grasshopper canvas</p>
+        </div>
+      </div>
+
+      <h3 id="S4">Visual Studio Code</h3>
+
+      <p>Visual Studio Code (VSC) is a popular and convenient code editor. <a href="https://code.visualstudio.com/download" target="_blank">Download and install it here</a>.</p>
+
+      <p>You can also use other code editors like Sublime Text or IntelliJ IDEA as long as it correctly highlights C# code.</p>
+
+      <p>It is recommended that you create a folder for scripts in this class. Directly drag the folder into VSC to open it, and you will be able to view and edit all scripts in the folder like below:</p>
+
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/VSC.png">
+        </div>
+        <div class="landscapedsc">
+            <p>A Visual Studio Code interface with a folder open (left panel) and a script displayed</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h2 id="S5">Test your installation with a given script</h2>
+
+      <p>If you feel everything above goes well for you, you can test your installation and have a taste of Grasshopper with this <a href="./files/0/HelloWorld.gh">hello world script</a>!</p>
+      
+
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/HelloWorldInitial.png">
+        </div>
+        <div class="landscapedsc">
+            <p>What you are expected to see when directly open the script</p>
+        </div>
+      </div>
+
+      <p>There are a few more steps inside the script. Before start, copy the path to the folder you hope to store your scripts. For Windows: click the address bar of file explorer and copy it. For MacOS: right click the folder, hold OPTION key, and choose "copy xxx as Pathname".</p>
+
+      <p>Try to finish the steps and you are all done!</p>
+
+      <div class="container">
+        <div class="landscapecontainer">
+            <img src="./files/0/HelloWorld.png">
+        </div>
+        <div class="landscapedsc">
+            <p>All the steps finished</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="./shared.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: Artifakt, sans-serif;
+    color: #FFF;
+    background-color: #000000;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000;
+    background-color: #FFF;
+}
+
+/* Navigation bar */
+
+nav {
+    background: #000000;
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    z-index: 2;
+}
+
+nav ul {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 60px;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    height: 50px;
+    padding: 0 3px;
+    font-size: 15px;
+}
+
+a:hover {
+    color: #000000;
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+#logo {
+    height: 50px;
+}
+
+#logoa {
+    display: block;
+    height: 100px;
+    width: 100px;
+    line-height: 0;
+    font-size: 0;
+}
+
+#logo_show {
+    display: block;
+    background-color: #000000;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
+}
+
+#logo_hide {
+    display: block;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+#logo_show:hover {
+    opacity: 0;
+    transition: 1s;
+}
+
+#icon_menu {
+    display: none;
+}
+
+#icon_close {
+    display: none;
+}
+
+#navbar {
+    display: none;
+}
+
+/*Banner*/
+
+#banner {
+    margin-left: 200px;
+    height: 35vh;
+    overflow: hidden;
+}
+
+#banner>h1 {
+    position: relative;
+    font-size: 75px;
+    color: #fff;
+    text-shadow: 3px 3px 10px #000000;
+    background-color: #00000000;
+    text-align: center;
+    margin-top: -25vh;
+}
+
+#banner>h2 {
+    position: relative;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 3px 3px 10px #000000;
+    background-color: #00000000;
+    text-align: center;
+}
+
+#banner>img {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+}
+
+
+/*Main*/
+
+#Main {
+    margin-left: 300px;
+    margin-right: 100px;
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+#Main h1 {
+    font-size: 75px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#Main h2 {
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+#Main h3 {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+#Main>p, #Main>table {
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 150%;
+}
+
+hr {
+    margin-bottom: 25px;
+}
+
+p > a {
+    font-weight: bold;
+}
+
+/*containers*/
+
+iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    height: 36vw;
+    background-color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    background-color: black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.landscapecontainer {
+    vertical-align: text-top;
+}
+
+.landscapecontainer>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 64vw;
+    height: 36vw;
+    overflow-y: hidden;
+    object-fit: cover;
+}
+
+.landscapedsc {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.landscapedsc>p {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.landscapedsc>p>i {
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.portraitcontainer {
+    vertical-align: text-top;
+}
+
+.portraitcontainer>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80vh;
+    overflow-y: hidden;
+    object-fit: cover;
+}
+
+.portraitdsc {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.portraitdsc>p {
+    margin-left: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}
+
+.portraitdsc>p>i {
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+}

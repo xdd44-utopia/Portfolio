@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script>  
+    
+    <title>Assignment 4&nbsp;|&nbsp;xdd44's 11.C85</title>
+</head>
+
+<body>
+    <nav>
+    </nav>
+
+    <div id="Main">
+        <h1>Assignment 4</h1>
+        <p>Chenyue xdd Dai, xdd44@mit.edu, 928906170</p>
+        <hr>
+        <h3>Task 1</h3>
+
+        <p>I chose to dig into the first dataset, Human Development Indicators, to discover the relationship between economy development and gender equality, which has been a popular topic after WWII. I picked education data for discussing gender equality, since it provides independent data for the two genders, and aspects such as education rates reflect equality among certain social groups.</p>
+
+        <p>I would like to perform visualizations along time axis, but listing all the countries would be too much. So, I picked some key countries around the world for this task: Afghanistan, Algeria, Brazil, China, Russian Federation, United Kingdom, United States. I understand that this is quite random and could be quite biased (also wondering why I didn't find an entry for Soviet Union), and I will discuss it in the following tasks. </p>
+
+        <hr>
+
+        <h3>Task 2</h3>
+
+        <p>For the dataset, I removed all entries of these countries with more than 50% missing data and listed common indicators to ensure I wouldn't pick an indicator which misses any country.</p>
+
+        <p>(I have color deficiency, so I used line styles to help me distinguish countries)</p>
+
+        <p>For representing economic growth, I picked GDP and GDP per capita in US$.</p>
+
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/GDP.png">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/GDPperCapita.png">
+            </div>
+        </div>
+
+        <p>Generally, all countries have been growing gradually, among which the scale of US is kind of an outliner. I could already see the space for deception among some unstable countries and time range, such as United Kingdom in the latest decade and the drops at 2008 financial crisis.</p>
+
+        <p>For representing gender equality, I picked Labor force, female (% of total labor force) and Unemployment, female (% of female labor force).</p>
+
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/LaborForce.png">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Unemployment.png">
+            </div>
+        </div>
+
+        <p>I was surprised to see some interesting patterns for some countries. (I don't know about local events that may lead to these patterns) For example, Afghanistan has seen a sudden but stable rise of female labor force from 2010. Meanwhile, Afghanistan and China's female unemployment rates have been quite stable, while Algeria and Brazil's rates are not stable at all.</p>
+
+        <p>Based on these, I feel <b>Gender Equality Promotes Economic Growth</b> is a suitable proposition to work on, and the falsehood would be <b>Gender Equality Doesn't Promote Relationship with Economic Growth</b>. (actually it could be either no relationship or negative impact)</p>
+
+        <hr>
+
+        <h3>Task 3</h3>
+        <br>
+        <h3>Gender Equality Promotes Economic Growth</h3>
+
+        <p>This chart shows that both US and UK have seen positive correlation between gender equality and economic growth.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Positive3.png">
+            </div>
+        </div>
+
+        <h3>Gender Equality Has No Relationship with Economic Growth</h3>
+
+        <p>This chart shows that Algeria, Brazil, and Russia have seen stable economic growth regardless of ups and downs of female unemployment rates.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Negative.png">
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>Task 4</h3>
+        <br>
+        <h3>Gender Equality Promotes Economic Growth</h3>
+
+        <p>The easiest way of promoting this proposition is to find a time range and countries where GDP and employment rate rise or fall together. First, I drew a scatter plot of GDP vs female labor force percentage, since time is not significant for finding positive correlation between these two indicators.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Positive1.png">
+            </div>
+        </div>
+
+        <p>From this graph, I noticed the correlation for US and UK, so I just got rid of all other countries. I feel this is a <b>-1</b> score since I intentionally selected countries in favor of my proposition, but not fully deceptive since this action didn't distort the factual situation for US and UK.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Positive2.png">
+            </div>
+        </div>
+
+        <p>Then, I drew lines to emphasize this correlation, which I would rate <b>2</b> for US but <b>-1</b> for UK, since the correlation is not that obvious for UK but I forcefully traced a line of positive gradient. Of course, adding the source made the chart more convincing, which is a score of <b>2</b>.</p>
+
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/Positive3.png">
+            </div>
+        </div>
+
+        <h3>Gender Equality Has No Relationship with Economic Growth</h3>
+
+        <p>For this proposition, using China's data would be quite easy since the first chart showed that China has seen an economic outburst, but its female labor force percentage dropped a little.</p>
+
+        <p>But I noticed another interesting thing: GDP charts look completely different in US$ and local currency. I feel using different currency is a score of <b>-1</b> since it blurs the definition of economic growth (to be honest I don't know which one represents economy better).</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment4/DoubleGDP.png">
+            </div>
+            <div class="landscapedsc">
+                <p>GDP of countries in US$ vs in local currency</p>
+            </div>
+        </div>
+
+        <p>I would also give the use of female unemployment rate a score of <b>-1</b>, since female percentage of total labor force is a quite objective indicator for gender equity, but female unemployment rate would be largely influenced by other events, like the financial crisis.</p>
+
+        <p>I decided <b>not to give -2</b> to any of my decisions also because Sergio shared his deceptive technique with me: He picked several values from a series of value and traced a completely incorrect development trend. I felt at least I earnestly showed the complete series of data lol.</p>
+
+        <p>Selecting countries in favor and adding source are the same. I drew a dual-axis chart showing economic growth in local currency vs instability of female unemployment rate among several countries. This time I included the time axis and used lines for GDP to emphasize the “growth” and used the bars for unemployment rates to emphasize the randomness, which I'd like to give a score of <b>2</b>.</p>
+
+        <hr>
+
+        <h3>Task 5</h3>
+
+        <p>It surprised me how easy I can create a visualization for any side of a proposition when I pick a subset from such a large dataset in favor of what I would like to express. On the other hand, I guess it is not hard to notice the bias, since the first chart only shows two typical Western developed country, and the second chart only shows three developing countries (especially Brazil and Algeria). Therefore, I feel my charts make much more sense if my proposition is targeting at the countries / region I selected.</p>
+
+        <p>Therefore, I feel in my case, the level of ethics is related to how general I sample my dataset, or how much my samples fit the domain I'm targeting at. It will be more ethical if I shows one country for every distinct region, and less ethical if I pick several similar countries (for example a bunch of EU countries) in my favor and even hide who they are in the chart. Of course, synthesizing false information from the data like Sergio is much less ethical for me.</p>
+
+        <p>I feel it's hard to draw a bound of ethics for propositions like mine, since actually the proposition itself is too general. On one hand, everything happening in a country influences its economy. On the other hand, there's no direct indicator for gender equality, and indirect indicators like employment rate and education rate can be influenced by other factors.</p>
+
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

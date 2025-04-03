@@ -1,0 +1,253 @@
+.CoverImg {
+	overflow: hidden;
+	height: 180vw;
+}
+
+.CoverImg img {
+	display: block;
+	width: 360vw;
+	margin-left: -150vw;
+}
+
+.title {
+	position: absolute;
+	box-sizing: content-box;
+	margin-top: 60vw;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	width : 80vw;
+	color: #fff;
+	text-shadow: 5px 5px 20px #000000;
+}
+
+.title h1 {
+	text-align: center;
+	font-size: 10vw;
+}
+
+.title h2 {
+	margin-top: 100px;
+	text-align: center;
+	font-size: 4vw;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25vw;
+	width: 20vw;
+	animation: opa 1.5s;
+	animation-iteration-count: infinite;
+}
+@keyframes opa {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/*slideshow
+
+.slideshow-container {
+	width: 300vw;
+	height: auto;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+}
+
+.mySlides {
+	width: 100vw;
+	height: 180vw;
+	overflow: hidden;
+	transition: margin-left 1s;
+}
+
+#first-slide {
+	margin-left: 0;
+}
+
+.mySlides img {
+	display: block;
+	width: 360vw;
+	margin-left: -110vw;
+}
+
+ Next & previous buttons 
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 90vw;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	color: white;
+	font-weight: bold;
+	font-size: 50px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+  
+ Caption text 
+.text {
+	position: relative;
+	color: #fff;
+	margin-top: -115vw;
+	font-size: 10vw;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+	text-shadow: 3px 3px 10px #000000;
+}
+  
+ The dots/bullets/indicators 
+#slide-selector {
+	position: absolute;
+	width: 50vw;
+	margin-left: 25vw;
+	margin-top: -15vw;
+}
+
+.dot {
+	cursor: pointer;
+	height: 40px;
+	width: 40px;
+	margin: 0 4vw;
+	background-color: rgba(255, 255, 255, 0.25);
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.5s ease;
+	box-shadow: 1px 1px 15px #000000;
+}
+  
+.active, .dot:hover {
+	background-color: #fff;
+}
+  
+ On smaller screens, decrease text size 
+@media only screen and (max-width: 300px) {
+	.prev, .next,.text {font-size: 11px}
+}
+*/
+
+/*Main part*/
+
+#Main {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+	margin-bottom: 50px;
+	width: 80%;
+}
+
+#Main h1 {
+	color: #fff;
+}
+
+#Main hr {
+	border: 1px solid #fff;
+	margin-top: 25px;
+}
+
+#Main > p {
+	margin-bottom: 20px;
+	color: #fff;
+	font-size: 20px;
+	width: 100%;
+}
+
+#Main p a {
+	text-decoration: underline;
+	color: #fff;
+}
+
+b {
+	font-size: 30px;
+}
+
+/* gallery links */
+
+#gallery-container {
+	display: flex;
+	flex-flow: row wrap;
+	width: 80vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.gallery-link-container {
+	width: 80vw;
+	height: 60vw;
+	margin-top: 2vw;
+	overflow: hidden;
+}
+
+.gallery-photo {
+	height: 60vw;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1;
+	transition: none;
+}
+
+/* 16:9 */
+#photo1 {
+	margin-left: -14vw;
+}
+
+#dsc1 {
+	margin-top: -37vw;
+}
+
+/* 3:4 */
+#photo2 {
+	height: auto;
+	width: 80vw;
+}
+
+#dsc2 {
+	margin-top: -85vw;
+}
+
+/* 3:2 */
+
+#photo4 {
+	margin-left: -5vw;
+}
+
+#dsc4 {
+	margin-top: -37vw;
+}
+
+.gallery-description {
+	height: 20vw;
+	margin-top: -50vw;
+	color: #fff;
+	opacity: 1;
+	transition: none;
+}
+
+.gallery-description > p {
+	text-align: center;
+	font-size: 10vw;
+	margin-left: auto;
+	margin-right: auto;
+}

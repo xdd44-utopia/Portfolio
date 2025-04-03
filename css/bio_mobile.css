@@ -1,0 +1,49 @@
+nav ul {
+    margin-top: 420px;
+}
+
+#Main {
+    margin-top: 40px;
+}
+
+#bio-text {
+    width: calc(100vw - 50px);
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    float: none;
+}
+
+#bio-text p {
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+#bio-text p b {
+    font-size: 20px;
+}
+
+#bio-text p a {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+#bio-text p a:hover {
+    color: #000;
+}
+
+#bio-photo img {
+    display: block;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+    height: 50vw;
+}
+
+#name {
+    width: 100%;
+    text-align: center;
+}

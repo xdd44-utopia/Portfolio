@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script> 
+
+    <title>Life&nbsp;|&nbsp;xdd44's Collections</title>
+</head>
+
+<body>
+    <nav>
+        <div id="logo">
+            <a href="../index.html">
+                <img id="logo_hide" src="../../image/Art/Logo/logo_black.png" alt="Logo">
+                <img id="logo_show" src="../../image/Art/Logo/logo_white.png" alt="Logo">
+            </a>
+        </div>
+        <ul>
+            <li><a href="../index.html#Bio">Bio</a></li>
+            <li><a href="../index.html#Photography">Photography</a></li>
+            <li><a href="../index.html#Programming">Computing</a></li>
+            <li><a href="../index.html#Architecture">Architecture</a></li>
+            <li><a href="../index.html#Other">Art & Design</a></li>
+            <li><a href="../index.html#Links">Links</a></li>
+        </ul>
+    </nav>
+
+    <div id="banner">
+        <img src="../../image/Art/Life/Banner.jpg">
+    </div>
+
+    <div id="Main">
+        <h1>Life</h1>
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/Art/Life/Farewell life.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>Farewell life (Dec 2018)</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/Art/Life/Love life.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>Love life (Feb 2020)</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/Art/Life/Meet life.jpg">
+            </div>
+            <div class="landscapedsc">
+                <p>Meet life (Jun 2021)</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

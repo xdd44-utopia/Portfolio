@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css?v=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/style_mobile.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="../../css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 450px) and (max-device-height: 950px)" href="../../css/project template_mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aos.css">
+    <link rel="shortcut icon" href="../../image/icons/Website icon.png">
+
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/aos.js"></script>
+    <script> 
+        $(function(){
+            $.get("../Common/meta.html", function(data){
+                $("head").append(data);
+            });
+            $("nav").load("../Common/nav_subpage.html");
+            $("footer").load("../Common/footer_subpage.html");
+        });
+    </script>  
+    
+    <title>Assignment 2&nbsp;|&nbsp;xdd44's 11.C85</title>
+</head>
+
+<body>
+    <nav>
+    </nav>
+
+    <div id="Main">
+        <h1>Assignment 2</h1>
+        <p>Chenyue xdd Dai, xdd44@mit.edu, 928906170</p>
+        <hr>
+        <p>I decided to pick subtheme Transit-Oriented Development for my assignment 2.</p>
+
+        <p>At year one, I lived at Fresh Pond, steps away from Alewife Station, the terminal of MBTA Red Line. A huge garage building covers Alewife, with some indoor bus stops. Outside Alewife there are middle to high residential buildings, contrasting the small houses all over Cambridge and Belmont.One interesting thing mentioned to me was that the garage was expected to transform commuting: let people from farther area park the car at Alewife and take subway to city center. However, the garage looked dead empty when I walked by. And I believe MBTA is about to change their mind, <a href="https://mass.streetsblog.org/2024/08/19/alewife-redevelopment-could-convert-obsolete-garage-into-thousands-of-new-transit-oriented-homes" target="_blank">the plan of which is related to transit-oriented development.</a> Therefore, I feel the subtheme Transit-Oriented Development is an interesting topic that I could look into.</p>
+
+        <p>After a glance at the dataset we are provided, I decided to propose the following questions:</p>
+        <p>- How does proximity to MBTA transit stations affect housing prices and real estate transactions?</p>
+        <p>- Are MBTA communities with higher transit accessibility more socioeconomically diverse?</p>
+        <p>- How does transit accessibility correlate with and housing density in MBTA-served communities?</p>
+
+        <hr>
+
+        <p>The data I found useful are <b>MBTA lines and stops, residential sales, and housing zoning.</b></p>
+
+        <p><b>The MBTA lines and stops</b> dataset looks quite straightforward: they provided essential information about both subway and bus lines and stops. The dataset is in geojson format so I noticed some graphic variables such as coordinates, colors, and sort order.</p>
+
+        <p><b>The residential sales</b> dataset contains information about properties, transactions, buyers and sellers, and other details about saling the listed properties.</p>
+
+        <p>This is a large dataset so there should be a lot of relationships. I picked two simple pairs: Price vs Size and Price vs Year Built.</p>
+
+        <p>The Price vs Size relationship comes out as expected: the larger the property is, the higher the sale price will be.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure1.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of sale price vs interior size</p>
+            </div>
+        </div>
+
+        <p>However, year built vs sale price gives a really weird distribution: some certain decades have properties with price significantly higher, e.g. properties built in ~1900 and ~1990. Also, this plot shows a distribution of when listed properties are built, where ~1950 has significantly less properties. Surprisingly there are even properties come from 200 years ago.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure2.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of year built vs sale price</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Old.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Checked a property from 1850 out of curiousity.</p>
+            </div>
+        </div>
+
+        <p>By going over the dataset with a script, I found significant amount of missing values. For example, 27.7% of the entries don't come with previous sale price; About 40% - 60% properties miss data about flipping metrics e.g. flip_horizon.</p>
+
+        <p></p>
+
+        <p><b>Housing zoning</b> dataset is also a set that contains spatial information. It provides data about demographic, household, and income distribution in different zonings. The values are complete.</p>
+
+        <p></p>
+
+        <hr>
+
+        <p><b>How does proximity to MBTA transit stations affect housing prices and real estate transactions?</b></p>
+
+        <p>I decided to plot a visualization showing lines and housing sale prices:</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure3.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of sale price on MBTA map</p>
+            </div>
+        </div>
+
+        <p>Surprisingly, there is no significant relationships shown between price and MBTA transportation. Rather, the map shows the relationship between prices and what is actually around the properties. For example, a lot of the property prices along Newburry Street and near Charles River Esplanades look significantly higher than those in the rest of Boston.</p>
+
+        <p>This visualization shows that the value of real estate appears to be more influenced by amenities, commercial activity, and desirable neighborhood characteristics, such as walkability, retail density, and access to parks and waterfronts. It may indicate that Boston's current development pattern is not fully transit-oriented but rather amenity-oriented</p>
+
+        <hr>
+
+        <p><b>Are MBTA communities with higher transit accessibility more socioeconomically diverse?</b></p>
+        
+        <p>For this question, I performed Shannon diversity index over racial distribution data in housing zoning census data. I plotted the result along with MBTA lines in Tableau.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure4.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of racial diversity index</p>
+            </div>
+        </div>
+
+        <p>This visualization shows that racial diversity is somewhat related to distribution of MBTA lines, especially at Southern half of Boston area. Areas with no MBTA access have nearly no racial diversity. This means public transit plays a role in defining where diverse communities settle, and aligns with TOD principles.</p>
+
+        <hr>
+
+        <p><b>How does transit accessibility correlate with housing density in MBTA-served communities?</b></p>
+        
+        <p>For this question, I simply plotted sum of bedroom counts over MBTA lines and stops, and the larger circle means more bedroom at that location, and can be seem as higher housing density.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure5.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of bedroom counts</p>
+            </div>
+        </div>
+
+        <p>This visualization shows that major high density housing, likely high-rises, are distributed along major subway lines, which also fits the idea of TOD that encourages high-density development along transit corridors.</p>
+
+        <hr>
+
+        <p>After my initial visualizations, I still want to confirm the conclusion of first question. Therefore, I plotted a box plot between properties' prices vs distances to nearest MBTA stops, using WGS84 approximation on latitude and longitude coordinates.</p>
+        
+        <p>For this question, I simply plotted sum of bedroom counts over MBTA lines and stops, and the larger circle means more bedroom at that location, and can be seem as higher housing density.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure6.png">
+            </div>
+            <div class="landscapedsc">
+                <p>Plot of price vs distance</p>
+            </div>
+        </div>
+        
+        <p>The distribution still confirms my previous conclusion: there's no obvious relationship between sale price and distance to stops. Instead, there are one group of properties which are very far from any stops but with a very high price. Out of curiousity, I filtered out the properties that are ~ 1800m - 1900m away from MBTA stops.</p>
+
+        <p>It turned out it is only one property, a large house in Wellesley, that has been sold twice, once at $14000000 and once at $18350000.</p>
+        
+        <div class="container">
+            <div class="landscapecontainer">
+                <img src="../../image/11C85/assignment2/Figure7.png">
+            </div>
+            <div class="landscapedsc">
+                <p>The property that is ~1800m away from nearest MBTA stops.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../../js/shared.js"></script>
+
+</body>
+
+</html>

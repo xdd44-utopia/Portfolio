@@ -1,17 +1,25 @@
-/*cover page scroll effect*/
+/* index.js — Index page scripts */
 
+/* ── Parallax: cover image scrolls at half speed ── */
 function coverScroll() {
-    document.getElementById("cover").style.marginTop = $(window).scrollTop() / 2 + "px";
+    var cover = document.getElementById("cover");
+    if (cover) {
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        cover.style.marginTop = (scrollY / 2) + "px";
+    }
 }
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+window.addEventListener("scroll", coverScroll, { passive: true });
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+/* ── Smooth scroll for anchor links (# hrefs) ── */
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 });
-
-window.addEventListener("scroll", coverScroll);

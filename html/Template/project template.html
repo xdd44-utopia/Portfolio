@@ -1,85 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
-    <title>Project&nbsp;|&nbsp;xdd44's Collections</title>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function () {
+            $("nav").load("html/Common/nav_page.html");
+            $("footer").load("html/Common/footer_page.html");
+        });
+    </script>
+
+    <title>Template&nbsp;|&nbsp;xdd44's Collections</title>
+    <meta property="og:title" content="Template | xdd44's Collections">
+    <meta property="og:description" content="xxx">
+    <meta property="og:url" content="xxx">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="xxx">
 </head>
 
-<body onload="addNavigator(1); addFooter(1);">
-    <nav>
-    </nav>
+<body>
 
+    <nav></nav>
+
+    <!-- ── Cover Banner ── -->
     <div id="banner">
-        <img src="image/logo 3.0.1.jpg">
+        <div id="banner-img">
+            <img src="image/logo 3.0.1.jpg" alt="cover">
+        </div>
+        <div id="banner-title">
+            <p class="banner-category">Category &nbsp;&middot;&nbsp; Year</p>
+            <h1>Project Title That Can Span<br>Multiple Lines If Needed</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <h1>Title</h1>
-        <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-            Text Text Text Text Text Text Text Text Text Text Text </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/logo 3.0.1.jpg">
+
+        <!-- ── Project Metadata ── -->
+        <div class="project-meta">
+            <span class="meta-tag">Published at Venue 20XX</span>
+            <span class="meta-tag">Tag Two</span>
+            <span class="meta-tag">Tag Three</span>
+        </div>
+
+        <!-- ── Body Content ── -->
+        <div class="project-body">
+
+            <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+                Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+                Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.</p>
+
+            <!-- Full-width landscape figure -->
+            <figure class="project-figure wide">
+                <img src="image/logo 3.0.1.jpg" alt="description">
+                <figcaption>Figure caption text. Can describe what is shown and include <em>emphasis</em> where needed.</figcaption>
+            </figure>
+
+            <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
+                Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.</p>
+
+            <h2>Section Heading</h2>
+
+            <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.</p>
+
+            <!-- Two images side by side -->
+            <div class="figure-pair">
+                <figure class="project-figure">
+                    <img src="image/logo 3.0.1.jpg" alt="left">
+                    <figcaption>Left image caption.</figcaption>
+                </figure>
+                <figure class="project-figure">
+                    <img src="image/logo 3.0.1.jpg" alt="right">
+                    <figcaption>Right image caption.</figcaption>
+                </figure>
             </div>
-            <div class="landscapedsc">
-                <p>Descript Descript Descript Descript Descript Descript Descript Descript Descript Descript Descript Descript Descript Descript </p>
+
+            <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.</p>
+
+            <!-- Video embed -->
+            <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/4r_4eCIn9DA" allowfullscreen></iframe>
             </div>
+
+            <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.</p>
+
         </div>
     </div>
 
-    <footer>
-        <div class="footer" id="Links">
-            <div><img src="image/logo 3.1.png" alt="xdd44"></div>
-            <hr>
-            <div>
-                <h2>Contact & Connect</h2>
-                <ul class="contact">
-                    <li>
-                        <img src="image/icons/email.png"><a href="mailto: xdd44.utopia@gmail.com" target="_blank">xdd44.utopia@gmail.com</a>
-                    </li>
-                    <li>
-                        <img src="image/icons/linkedin.png"><a href="https://www.linkedin.com/in/cyleodai" target="_blank">Chenyue DAI</a>
-                    </li>
-                    <li>
-                        <img src="image/icons/github.png"><a href="https://github.com/xdd44-utopia" target="_blank">xdd44-utopia</a>
-                    </li>
-                    <li>
-                        <img src="image/icons/instagram.png"><a href="https://www.instagram.com/realxdd44" target="_blank">realxdd44</a>
-                    </li>
-                    <li>
-                        <img src="image/icons/youtube.png"><a href="https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg" target="_blank">xdd44</a>
-                    </li>
-                    <li>
-                        <img src="image/icons/bilibili.png"><a href="https://space.bilibili.com/22729170" target="_blank">realxdd44</a>
-                    </li>
-                </ul>
-            </div>
-            <hr>
-            <div>
-                <h2><a href="https://github.com/xdd44-utopia/Portfolio">See this website on GitHub</a></h2>
-            </div>
-            <hr>
-            <div class="statement">All materials contained on this website, unless noted otherwise, are works of Chenyue &quot;xdd44&quot; DAI protected by Copyright law of Hong Kong and may not be reproduced, distributed, transmitted, displayed, published or broadcast without
-                the prior written permission of Chenyue &quot;xdd44&quot; DAI.<br><br>Please email me at xdd44.utopia@gmail.com for any request of use permission and other enquiries.<br><br></div>
-            <div class="copyright">Copyright © 2022 Chenyue &quot;xdd44&quot; DAI &nbsp;&nbsp;All Rights Reserved</div>
-        </div>
-    </footer>
+    <footer></footer>
 
+    <script src="js/shared.js"></script>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
 </body>
 
 </html>

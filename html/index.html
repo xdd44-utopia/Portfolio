@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <base href="/">
@@ -8,17 +8,24 @@
     <meta name="description" content="xdd44's Portfolio Website">
     <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/index.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/index_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/index_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
+    <!-- Nav + Footer injection -->
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
     <script>
-        $(function(){
+        $(function () {
             $("nav").load("html/Common/nav_index.html");
             $("footer").load("html/Common/footer_page.html");
         });
@@ -34,214 +41,225 @@
 
 <body>
 
-    <nav>
-    </nav>
+    <nav></nav>
 
+    <!-- ── Hero Cover ── -->
     <div id="Top"></div>
+
     <div id="title" class="title">
-        <h1>"Best things come to those who wait."</h1>
-        <h2>— <i>Sorry for now</i>&nbsp;&nbsp;by Linkin Park, 2017</h2>
-        <a href="#Main"><img src="image/icons/slide_down_icon.png" alt="slide down" class="center"></a>
+        <blockquote>
+            <p class="quote-text"><span class="desktop_view">&ldquo;</span>Best things come to<span class="desktop_view"> </span><br class="mobile_view">those who wait<span class="desktop_view">.&rdquo;</span></p>
+            <cite><span class="desktop_view">&mdash;&thinsp;</span><em>Sorry for now</em>&thinsp;&nbsp;&middot;&nbsp;Linkin Park, 2017</cite>
+        </blockquote>
+        <a href="#Main" class="scroll-indicator" aria-label="Scroll to content">
+            <span class="chevron"></span>
+        </a>
     </div>
+
     <div class="CoverImg">
-        <img id="cover" src="image/Home_BKG.jpg" alt="bkg">
+        <img id="cover" src="image/Home_BKG.jpg" alt="Cover">
     </div>
 
+    <!-- ── Main Content ── -->
     <div id="Main">
-        <div class="Category" id="Architecture">
-            <div class="Category_title">
-                <h1>Course</h1>
-            </div>
-            <hr>
-            <div id="gallery-container">
-                <a class="gallery-link-container" href="https://fab.cba.mit.edu/classes/863.24/people/ChenyueXddDai/" target="_blank">
-                    <video style="height:calc((100vw - 350px)/3); margin-left: -16vw;" autoplay muted loop playsinline>
-                        <source src="files/HTMAA.mp4" type="video/mp4">
-                        <source src="files/HTMAA.ogg" type="video/ogg">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="gallery-description">
-                        <p>&nbsp;How to Make (Almost) Anything
-                        </p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="APD/main.html" target="_blank">
-                    <img class="gallery-photo" src="APD/files/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Algorithmic & Parametric 3D Design
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
 
-        <div class="Category" id="AAD">
+        <!-- Course -->
+        <section class="Category" id="Architecture">
             <div class="Category_title">
-                <h1>Architecture & Art & Design</h1>
+                <h2>Course</h2>
+                <div class="title-line"></div>
             </div>
-            <hr>
-            <div id="gallery-container">
-                <a class="gallery-link-container" href="https://gazetothestars.com" target="_blank">
-                    <img class="gallery-photo" src="files/eye.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Gaze to the Stars</p>
+            <div class="gallery-container">
+                <a class="gallery-item" href="https://fab.cba.mit.edu/classes/863.24/people/ChenyueXddDai/" target="_blank">
+                    <div class="gallery-media">
+                        <video autoplay muted loop playsinline>
+                            <source src="files/HTMAA.mp4" type="video/mp4">
+                            <source src="files/HTMAA.ogg" type="video/ogg">
+                        </video>
+                    </div>
+                    <div class="gallery-label">
+                        <span>How to Make (Almost) Anything</span>
                     </div>
                 </a>
-                <a class="gallery-link-container" href="html/Art/Memory.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/MemoryStill/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Memory Still</p>
+                <a class="gallery-item" href="APD/main.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="APD/files/Cover.jpg" alt="Algorithmic & Parametric 3D Design">
                     </div>
-                </a>
-                <a class="gallery-link-container" href="html/Architecture/SpaceArch.html" target="_blank">
-                    <img class="gallery-photo" src="image/Architecture/SpaceArch/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Momo: a Lunar Habitat</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Art/Unfamiliar.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/Unfamiliar/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Unfamiliar Familiarity</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Art/ComputedTransparency.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/ComputedTransparency/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Computed Transparency</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Art/MSErosion.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/MSErosion/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Minimum Spanning Erosion</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Art/Life.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/Life/Whole.JPG">
-                    <div class="gallery-description">
-                        <p>&nbsp;Life</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Architecture/Cornell.html" target="_blank">
-                    <img class="gallery-photo" src="image/Architecture/Cornell/Final.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;A Study in Windows</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Art/Logo.html" target="_blank">
-                    <img class="gallery-photo" src="image/Art/Logo/logo-image.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Logo</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Architecture/The_bridge.html" target="_blank">
-                    <img class="gallery-photo" src="image/Architecture/The_bridge/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;The Flâneur's Bridge</p>
-                    </div>
-                </a>
-                <a class="gallery-link-container" href="html/Architecture/Exodus.html" target="_blank">
-                    <img class="gallery-photo" src="image/Architecture/Exodus/3.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;&quot;Exodus, or the Voluntary Prisoners of Architecture&quot;
-                        </p>
+                    <div class="gallery-label">
+                        <span>Algorithmic &amp; Parametric 3D Design</span>
                     </div>
                 </a>
             </div>
-        </div>
+        </section>
 
-        <div class="Category" id="Programming">
+        <!-- Architecture · Art · Design -->
+        <section class="Category" id="AAD">
             <div class="Category_title">
-                <h1>Computing</h1>
+                <h2>Architecture &middot; Art &middot; Design</h2>
+                <div class="title-line"></div>
             </div>
-            <hr>
-            <div id="gallery-container">
-                <a class="gallery-link-container" href="html/Computing/AngleCAD.html" target="_blank">
-                    <img class="gallery-photo" src="image/Programming/HCI/Cover.png">
-                    <div class="gallery-description">
-                        <p>&nbsp;AngerCAD</p>
+            <div class="gallery-container">
+                <a class="gallery-item" href="https://gazetothestars.com" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="files/eye.jpg" alt="Gaze to the Stars">
                     </div>
+                    <div class="gallery-label"><span>Gaze to the Stars</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Computing/Arkala.html" target="_blank">
-                    <img class="gallery-photo" src="image/Programming/Arkala/cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Arkala: LLM-Driven Game</p>
+                <a class="gallery-item" href="html/Art/Memory.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/MemoryStill/Cover.jpg" alt="Memory Still">
                     </div>
+                    <div class="gallery-label"><span>Memory Still</span></div>
                 </a>
-                <a class="gallery-link-container" href="https://docs.google.com/presentation/d/1JAXFD15cRr0VYQufnKurnH0ndNGuX6j2xw4Sy-Splvg/edit?usp=sharing" target="_blank">
-                    <img class="gallery-photo" src="image/Programming/Removal/Cover.png">
-                    <div class="gallery-description">
-                        <p>&nbsp;Furniture Removal Pipeline</p>
+                <a class="gallery-item" href="html/Architecture/SpaceArch.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Architecture/SpaceArch/Cover.jpg" alt="Momo: a Lunar Habitat">
                     </div>
+                    <div class="gallery-label"><span>Momo: a Lunar Habitat</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Computing/Panelization.html" target="_blank">
-                    <img class="gallery-photo" src="image/Programming/Panelization/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Panelization</p>
+                <a class="gallery-item" href="html/Art/Unfamiliar.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/Unfamiliar/Cover.jpg" alt="Unfamiliar Familiarity">
                     </div>
+                    <div class="gallery-label"><span>Unfamiliar Familiarity</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Computing/FidelityMinus.html" target="_blank">
-                    <img class="gallery-photo" src="image/Programming/Fidelity/Cover.png">
-                    <div class="gallery-description">
-                        <p>&nbsp;Fidelity in VR</p>
+                <a class="gallery-item" href="html/Art/ComputedTransparency.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/ComputedTransparency/Cover.jpg" alt="Computed Transparency">
                     </div>
+                    <div class="gallery-label"><span>Computed Transparency</span></div>
+                </a>
+                <a class="gallery-item" href="html/Art/MSErosion.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/MSErosion/Cover.jpg" alt="Minimum Spanning Erosion">
+                    </div>
+                    <div class="gallery-label"><span>Minimum Spanning Erosion</span></div>
+                </a>
+                <a class="gallery-item" href="html/Art/Life.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/Life/Whole.JPG" alt="Life">
+                    </div>
+                    <div class="gallery-label"><span>Life</span></div>
+                </a>
+                <a class="gallery-item" href="html/Architecture/Cornell.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Architecture/Cornell/Final.jpg" alt="A Study in Windows">
+                    </div>
+                    <div class="gallery-label"><span>A Study in Windows</span></div>
+                </a>
+                <a class="gallery-item" href="html/Art/Logo.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Art/Logo/logo-image.jpg" alt="Logo">
+                    </div>
+                    <div class="gallery-label"><span>Logo</span></div>
+                </a>
+                <a class="gallery-item" href="html/Architecture/The_bridge.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Architecture/The_bridge/Cover.jpg" alt="The Flâneur's Bridge">
+                    </div>
+                    <div class="gallery-label"><span>The Fl&acirc;neur&rsquo;s Bridge</span></div>
+                </a>
+                <a class="gallery-item" href="html/Architecture/Exodus.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Architecture/Exodus/3.jpg" alt="Exodus">
+                    </div>
+                    <div class="gallery-label"><span>&ldquo;Exodus, or the Voluntary Prisoners of Architecture&rdquo;</span></div>
                 </a>
             </div>
-        </div>
+        </section>
 
-        <div class="Category" id="Photography">
+        <!-- Computing -->
+        <section class="Category" id="Programming">
             <div class="Category_title">
-                <h1>Photography</h1>
+                <h2>Computing</h2>
+                <div class="title-line"></div>
             </div>
-            <hr>
-            <div id="gallery-container">
-                <a class="gallery-link-container" href="html/Photography/Automonument.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Automonument/3_1.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Automonument</p>
+            <div class="gallery-container">
+                <a class="gallery-item" href="html/Computing/AngleCAD.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Programming/HCI/Cover.png" alt="AngleCAD">
                     </div>
+                    <div class="gallery-label"><span>AngleCAD</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Photography/Decisive.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Decisive/0.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Decisive Moment</p>
+                <a class="gallery-item" href="html/Computing/Arkala.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Programming/Arkala/cover.jpg" alt="Arkala">
                     </div>
+                    <div class="gallery-label"><span>Arkala: LLM-Driven Game</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Photography/Inhabiting.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Inhabiting/0.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Inhabiting</p>
+                <a class="gallery-item" href="https://docs.google.com/presentation/d/1JAXFD15cRr0VYQufnKurnH0ndNGuX6j2xw4Sy-Splvg/edit?usp=sharing" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Programming/Removal/Cover.png" alt="Furniture Removal Pipeline">
                     </div>
+                    <div class="gallery-label"><span>Furniture Removal Pipeline</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Photography/Iceland.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Iceland/Inhabitants1.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Iceland</p>
+                <a class="gallery-item" href="html/Computing/Panelization.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Programming/Panelization/Cover.jpg" alt="Panelization">
                     </div>
+                    <div class="gallery-label"><span>Panelization</span></div>
                 </a>
-                <a class="gallery-link-container" href="html/Photography/Scotland.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Scotland/Nature1.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Scotland</p>
+                <a class="gallery-item" href="html/Computing/FidelityMinus.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Programming/Fidelity/Cover.png" alt="Fidelity in VR">
                     </div>
-                </a>
-                <a class="gallery-link-container" href="html/Photography/Norway.html" target="_blank">
-                    <img class="gallery-photo" src="image/Photography/Norway/Cover.jpg">
-                    <div class="gallery-description">
-                        <p>&nbsp;Norway</p>
-                    </div>
+                    <div class="gallery-label"><span>Fidelity in VR</span></div>
                 </a>
             </div>
-        </div>
+        </section>
+
+        <!-- Photography -->
+        <section class="Category" id="Photography">
+            <div class="Category_title">
+                <h2>Photography</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="gallery-container">
+                <a class="gallery-item" href="html/Photography/Automonument.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Automonument/3_1.jpg" alt="Automonument">
+                    </div>
+                    <div class="gallery-label"><span>Automonument</span></div>
+                </a>
+                <a class="gallery-item" href="html/Photography/Decisive.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Decisive/0.jpg" alt="Decisive Moment">
+                    </div>
+                    <div class="gallery-label"><span>Decisive Moment</span></div>
+                </a>
+                <a class="gallery-item" href="html/Photography/Inhabiting.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Inhabiting/0.jpg" alt="Inhabiting">
+                    </div>
+                    <div class="gallery-label"><span>Inhabiting</span></div>
+                </a>
+                <a class="gallery-item" href="html/Photography/Iceland.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Iceland/Inhabitants1.jpg" alt="Iceland">
+                    </div>
+                    <div class="gallery-label"><span>Iceland</span></div>
+                </a>
+                <a class="gallery-item" href="html/Photography/Scotland.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Scotland/Nature1.jpg" alt="Scotland">
+                    </div>
+                    <div class="gallery-label"><span>Scotland</span></div>
+                </a>
+                <a class="gallery-item" href="html/Photography/Norway.html" target="_blank">
+                    <div class="gallery-media">
+                        <img class="gallery-photo" src="image/Photography/Norway/Cover.jpg" alt="Norway">
+                    </div>
+                    <div class="gallery-label"><span>Norway</span></div>
+                </a>
+            </div>
+        </section>
 
     </div>
 
-    <footer>
-    </footer>
+    <footer></footer>
 
-    <script src="js/index.js?v=1773113134"></script>
-    <script src="js/shared.js?v=1773113134"></script>
+    <script src="js/index.js"></script>
+    <script src="js/shared.js"></script>
 
 </body>
 

@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="description" content="Momo: a modular, self-assembling lunar habitat designed for the Artemis III mission, developed in MIT's Space Architecture course.">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-   <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
 
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
-    <script> 
-        $(function(){
+    <script>
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
-    </script>  
+    </script>
 
     <title>Lunar Habitat&nbsp;|&nbsp;xdd44's Collections</title>
     <meta property="og:title" content="Lunar Habitat | xdd44's Collections">
@@ -32,143 +34,58 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xdd44.xyz/image/Architecture/SpaceArch/Cover.jpg">
 </head>
-
 <body>
-    <nav>
-    </nav>
+    <nav></nav>
 
     <div id="banner">
-        <img src="image/Architecture/SpaceArch/Cover.jpg">
-        <h1>Momo: a Lunar Habitat</h1>
+        <div id="banner-img"><img src="image/Architecture/SpaceArch/Cover.jpg" alt="cover"></div>
+        <div id="banner-title">
+            <p class="banner-category">Architecture &nbsp;&middot;&nbsp; 2024</p>
+            <h1>Momo: a Lunar Habitat</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <p style="font-size: 26px;"><b>Mo</b>dular <b>Mo</b>on Self Assembly</p>
-        <p>Group project, MAS.S66/4.154/16.89 Space Architecture, MIT Master of Architecture</p>
-        <p><a href="https://www.media.mit.edu/courses/mas-s66/" style="font-weight: bold;">Course overview and instructors</a></p>
-        <p><b>Team members:</b></p>
-        <p>Mateo, <b>xdd</b> (Architecture) + Kevin (Media Lab) + Adam, Katie (AeroAstro)</p>
-        <p><b>Special thanks to:</b></p>
-        <p>Yiwei (Foster + Partners), Alfonso (Media Lab)</p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/1.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>Final Model</p>
-            </div>
+        <div class="project-meta">
+            <span class="meta-tag">MIT Space Architecture</span>
+            <span class="meta-tag">Lunar Habitat</span>
+            <span class="meta-tag">Group Project</span>
         </div>
-        <p>
-            We are aiming for Momo to support Artemis III, which is slated for late 2026, early 2027 and will be the first crewed lunar landing of the Artemis missions.
-        </p>
-        <p>
-            Our goal is straightforward: develop a deployable habitat that will support our astronauts on the Moon. This habitat will be small, semi-permanent, and essential for our explorers as they lay the groundwork for future, long-term lunar settlement.
-        </p>
-        <p>
-            Focused on practicality and efficiency, the habitat will be equipped with all necessary facilities to ensure survival, including a bathroom, bed, and space for recreation—everything needed to sustain life and facilitate productivity on the lunar surface.
-        </p>
-        <p>
-            The Lunar South Pole has been selected as our location, which provides a strategic location for constructing proposed longer-term lunar settlements.
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/2.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Preliminary Simulation + Sealing</p>
-            </div>
-        </div>
-        <p>
-            Our key idea for this project is to develop a structure that minimize manual construction on the moon, since at least the current version of EVA suit is not convenient for astronauts to operate tools and lift structures. Therefore, we designed a self assembly structure that can be prefabricated on earth and self expanding in situ. The dodecahedron shape brings modularity to surface components, as well as possibility to be folded and packed, the method of which will be shown later.
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/3.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Habitat Programs</p>
-            </div>
-        </div>
-        <p>
-            <b>Personal Contributions 1: Prototype Simulation</b>
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/rod.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Mechanical Linkage Option for Actuation</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/motion.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Study of Relative Motion between Components</p>
-            </div>
-        </div>
-        <p>
-            <b>Personal Contributions 2: Design and Fabrication of Transparent Shell</b>
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/fold.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Curved Folding to Generate Shell Shape from Flat Sheet Material</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/crease.gif">
-            </div>
-            <div class="landscapedsc">
-                <p>Script to Calculate Folded Shape from Arbitrary Crease</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/4.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>Close-up Look of PETG Shell Constructed by 11 Parts</p>
-            </div>
-        </div>
-        <p>
-            <b>Personal Contributions 3: Photo Documentation with Artistic Expression</b>
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/Cover.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/5.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Architecture/SpaceArch/6.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</p>
-            </div>
+        <div class="project-body">
+            <p><b>Mo</b>dular <b>Mo</b>on Self Assembly</p>
+            <p>Group project, MAS.S66/4.154/16.89 Space Architecture, MIT Master of Architecture</p>
+            <p><a href="https://www.media.mit.edu/courses/mas-s66/"><strong>Course overview and instructors</strong></a></p>
+            <p><strong>Team members:</strong> Mateo, <strong>xdd</strong> (Architecture) + Kevin (Media Lab) + Adam, Katie (AeroAstro)</p>
+            <p><strong>Special thanks to:</strong> Yiwei (Foster + Partners), Alfonso (Media Lab)</p>
+
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/1.jpg" alt="Final Model"><figcaption>Final Model</figcaption></figure>
+
+            <p>We are aiming for Momo to support Artemis III, which is slated for late 2026, early 2027 and will be the first crewed lunar landing of the Artemis missions.</p>
+            <p>Our goal is straightforward: develop a deployable habitat that will support our astronauts on the Moon. This habitat will be small, semi-permanent, and essential for our explorers as they lay the groundwork for future, long-term lunar settlement.</p>
+            <p>Focused on practicality and efficiency, the habitat will be equipped with all necessary facilities to ensure survival, including a bathroom, bed, and space for recreation—everything needed to sustain life and facilitate productivity on the lunar surface.</p>
+            <p>The Lunar South Pole has been selected as our location, which provides a strategic location for constructing proposed longer-term lunar settlements.</p>
+
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/2.gif" alt="Preliminary Simulation + Sealing"><figcaption>Preliminary Simulation + Sealing</figcaption></figure>
+
+            <p>Our key idea for this project is to develop a structure that minimize manual construction on the moon, since at least the current version of EVA suit is not convenient for astronauts to operate tools and lift structures. Therefore, we designed a self assembly structure that can be prefabricated on earth and self expanding in situ. The dodecahedron shape brings modularity to surface components, as well as possibility to be folded and packed, the method of which will be shown later.</p>
+
+            <h2>Personal Contributions 1: Prototype Simulation</h2>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/rod.gif" alt="Mechanical Linkage Option for Actuation"><figcaption>Mechanical Linkage Option for Actuation</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/motion.gif" alt="Study of Relative Motion between Components"><figcaption>Study of Relative Motion between Components</figcaption></figure>
+
+            <h2>Personal Contributions 2: Design and Fabrication of Transparent Shell</h2>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/fold.gif" alt="Curved Folding to Generate Shell Shape from Flat Sheet Material"><figcaption>Curved Folding to Generate Shell Shape from Flat Sheet Material</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/crease.gif" alt="Script to Calculate Folded Shape from Arbitrary Crease"><figcaption>Script to Calculate Folded Shape from Arbitrary Crease</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/4.jpg" alt="Close-up Look of PETG Shell Constructed by 11 Parts"><figcaption>Close-up Look of PETG Shell Constructed by 11 Parts</figcaption></figure>
+
+            <h2>Personal Contributions 3: Photo Documentation with Artistic Expression</h2>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/Cover.jpg" alt="Stack of Long Exposure Photos Tracing Motion of Lighting Stick"><figcaption>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/5.jpg" alt="Stack of Long Exposure Photos Tracing Motion of Lighting Stick"><figcaption>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Architecture/SpaceArch/6.jpg" alt="Stack of Long Exposure Photos Tracing Motion of Lighting Stick"><figcaption>Stack of Long Exposure Photos Tracing Motion of Lighting Stick</figcaption></figure>
         </div>
     </div>
 
-    <footer>
-    </footer>
-
+    <footer></footer>
     <script src="js/shared.js"></script>
-
 </body>
-
 </html>

@@ -1,36 +1,67 @@
+/* ============================================================
+   404.css  —  404 Page Styles
+   ============================================================ */
+
 #Main {
-    padding-top: 25vh;
-    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 0;
     text-align: center;
 }
 
-h1 {
-    font-size: 40px;
-    line-height: 200%;
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
 }
 
-#test {
-    color: #00000000;
-    background-color: #00000000;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
+/* Ghost 404 number — massive, very dim */
+.error-code {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22vw;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    opacity: 0.07;
+    margin-bottom: -4vw;
+    background: transparent;
+    user-select: none;
 }
 
-#test img{
-    display: block;
-    width: 100px;
-    height: 100px;
-    animation: move 1s linear infinite alternate;
+.error-message {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: transparent;
 }
 
-@keyframes move {
-    0% {
-        margin-left: 0;
-        margin-top: 0;
-    }
-    100% {
-        margin-left: calc(100vw - 100px);
-        margin-top: calc(100vh - 100px);
-    }
+.error-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text);
+    padding: 12px 28px;
+    border: 1px solid var(--border-mid);
+    transition:
+        border-color 0.3s var(--ease),
+        color 0.3s var(--ease);
+    background: transparent;
+}
+
+.error-link:hover {
+    border-color: var(--text);
+    color: var(--text);
+    background: transparent;
 }

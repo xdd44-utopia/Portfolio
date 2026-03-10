@@ -1,105 +1,104 @@
+/* ============================================================
+   index2_mobile.css  —  Index Page Mobile Overrides (≤450px)
+   ============================================================ */
+
+/* ── Cover ── */
+
 .CoverImg {
     margin-left: 0;
     width: 100vw;
-    overflow: hidden;
     height: 100vh;
+    overflow: hidden;
 }
 
+/* Center the image on mobile (it's likely a wide landscape shot) */
 .CoverImg img {
-    display: block;
-    width: 315vw;
+    width: 300vw;
+    height: 100vh;
     margin-left: -150vw;
+    object-fit: cover;
+    object-position: center center;
 }
+
+/* ── Hero Quote (mobile) ── */
 
 .title {
     position: absolute;
-    box-sizing: content-box;
-    margin-top: 56vw;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    width: 80vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.title h1 {
+.title blockquote {
+    margin-top: 10vw;
+    padding: 0 2.5vw;
+}
+
+.quote-text {
+    font-size: 10vw;
+    line-height: 1.35;
+    margin-bottom: 6vw;
     text-align: center;
-    font-size: 8vw;
 }
 
-.title h2 {
-    margin-top: 100px;
+.title cite {
+    font-size: 3.2vw;
+    letter-spacing: 0.12em;
     text-align: center;
-    font-size: 4vw;
+    padding-right: 0;
 }
 
-.title img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25vw;
-    width: 20vw;
-    animation: opa 1.5s;
-    animation-iteration-count: infinite;
+/* ── Scroll Chevron (mobile) ── */
+
+.scroll-indicator {
+    bottom: 5vh;
 }
 
-@keyframes opa {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+.chevron {
+    width: 14px;
+    height: 14px;
 }
 
-
-/* Category general */
-
-.Category_title h1 {
-    color: #FFFFFF;
-    font-size: 25px;
-    padding-top: 50px;
-}
+/* ── Main (mobile) ── */
 
 #Main {
-    margin-top: -100px;
-    padding-top: 90px;
+    padding: 0 12px;
+    padding-top: 68px;
+    padding-bottom: 60px;
 }
 
-
-/* gallery links */
-
-#gallery-container {
-    display: flex;
-    flex-flow: row wrap;
-    width: 100vw;
-    margin-left: auto;
-    margin-right: auto;
+.Category {
+    margin-bottom: 52px;
 }
 
-.gallery-link-container {
-    width: calc((100vw - 50px)/2 - 1vw);
-    margin-right: 1vw;
-    margin-top: 1vw;
-    overflow: hidden;
+.Category_title {
+    margin-bottom: 14px;
 }
 
-.gallery-link-container:hover .gallery-description p {
-    color: #000;
+.Category_title h2 {
+    font-size: 12px;
+    letter-spacing: 0.16em;
 }
 
-.gallery-photo {
-    width: calc((100vw - 50px)/2 - 1vw);
-    height: 45vw;
-    object-fit: cover;
+/* ── Gallery Grid (mobile: 2 columns) ── */
+
+.gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
 }
 
-.gallery-description {
-    color: #fff;
+.gallery-label {
+    padding: 7px 8px 8px;
 }
 
-.gallery-description p {
-    width: calc((100vw - 50px)/2 - 1%);
-    font-size: 15px;
+.gallery-label span {
+    font-size: 11px;
 }

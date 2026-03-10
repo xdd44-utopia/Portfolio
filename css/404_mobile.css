@@ -1,9 +1,23 @@
+/* ============================================================
+   404_mobile.css  —  404 Page Mobile Overrides (≤450px)
+   ============================================================ */
+
 #Main {
-    padding-top: 45vh;
-    color: #FFF;
-    text-align: center;
+    padding-top: 0;
+    min-height: 100vh;
 }
 
-footer {
-    display: none;
+.error-code {
+    font-size: 38vw;
+    margin-bottom: -6vw;
+}
+
+.error-message {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+}
+
+.error-link {
+    font-size: 10px;
+    padding: 10px 22px;
 }

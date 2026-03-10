@@ -1,160 +1,228 @@
-* {
+/* ============================================================
+   style2.css  —  Global Desktop Styles
+   Fonts: Cormorant Garamond (display) + DM Sans (UI)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+    --bg:          #090909;
+    --bg-nav:      #090909;
+    --bg-surface:  #111111;
+    --text:        #f0ece4;
+    --text-dim:    #a09c96;
+    --accent:      #ffffff;
+    --border:      rgba(240, 236, 228, 0.09);
+    --border-mid:  rgba(240, 236, 228, 0.18);
+    --nav-width:   160px;
+    --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    box-sizing: border-box;
-    font-family: Artifakt, sans-serif;
-    background-color: #000000;
-    scroll-behavior: smooth;
 }
 
+.desktop_view {
+    display: inline-block;
+}
 
-/* Navigation bar */
+.mobile_view {
+    display: none;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+/* ── Navigation (Desktop) ── */
 
 nav {
-    background: #000000;
     position: fixed;
-    height: 100%;
-    width: 200px;
-    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--nav-width);
+    background: var(--bg-nav);
+    border-right: 1px solid var(--border);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
 }
 
-nav ul {
-    font-size: 15px;
-    margin-left: 50px;
-}
-
-nav ul li {
-    display: inline-block;
-    margin-right: 50px;
-    line-height: 60px;
-}
-
-nav ul li a {
-    color: #FFFFFF;
-    height: 50px;
-    padding: 0 3px;
-    font-size: 15px;
-}
-
-a:hover {
-    color: #000000;
-    background: #FFFFFFFF;
-    transition: .5s;
-}
-
+/* Logo container */
 #logo {
-    height: 125px;
-    margin-top: 55px;
-    margin-left: 50px;
-    margin-right: 10px;
+    padding: 44px 28px 20px;
+    flex-shrink: 0;
 }
 
+/* The logo anchor: stacks two images using block flow */
 #logoa {
     display: block;
-    height: 100px;
-    width: 100px;
-    line-height: 0;
+    width: 80px;
+    height: 80px;
+    position: relative;
     font-size: 0;
+    line-height: 0;
+    overflow: visible;
 }
 
-#logo_show {
-    display: block;
-    background-color: #000000;
-    margin-top: -100px;
-    width: 100px;
-    height: 100px;
-}
-
+/* White-background logo (bottom layer) */
 #logo_hide {
     display: block;
-    background-color: #FFFFFF;
-    margin-top: 10px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    background: var(--text);
+    object-fit: contain;
+    padding: 6px;
+}
+
+/* Dark-background logo (top layer — overlaps logo_hide) */
+#logo_show {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: var(--bg-nav);
+    object-fit: contain;
+    padding: 6px;
+    margin-top: -80px;
+    transition: opacity 0.7s var(--ease);
 }
 
 #logo_show:hover {
     opacity: 0;
-    transition: 1s;
 }
 
-#icon_menu {
-    display: none;
+/* Hide mobile-only elements on desktop */
+#menu-toggle { display: none; }
+#navbar-bg    { display: none; }
+
+/* Nav links */
+nav > ul {
+    padding: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
-#icon_close {
-    display: none;
+nav > ul > li { display: block; }
+
+nav > ul > li > a {
+    display: block;
+    color: var(--text-dim);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    position: relative;
+    transition: color 0.3s var(--ease);
+    border-left: 2px solid transparent;
 }
 
-#navbar {
-    display: none;
+nav > ul > li > a:hover {
+    color: var(--text);
+    background: transparent;
+    border-left-color: var(--accent);
 }
 
-
-/*Main*/
+/* ── Main Content Area ── */
 
 #Main {
-    margin-left: 250px;
-    margin-right: 100px;
+    margin-left: var(--nav-width);
+    padding-left: 32px;
+    padding-right: 60px;
     overflow: hidden;
 }
 
-
-/*Footer*/
+/* ── Footer (Desktop) ── */
 
 footer {
-    background: #000000;
-    color: #FFF;
+    background: var(--bg-nav);
     width: 100%;
+    border-top: 1px solid var(--border);
 }
 
-#Links {
-    margin-left: 200px;
-    padding-top: 100px;
-}
-
-#Links div {
-    padding-bottom: 25px;
-}
-
-#footer-logo {
-    display: inline-block;
-    width: 200px;
-    height: 22px;
-    margin-right: 20px;
+#footer-inner {
+    margin-left: var(--nav-width);
+    padding: 56px 60px 44px;
+    background: var(--bg-nav);
 }
 
 footer hr {
-    border: 1px solid #FFF;
-    margin-bottom: 25px;
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 28px;
 }
 
-#contact {
+#footer-contact {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 28px;
+}
+
+#footer-brand img {
+    height: 24px;
+    opacity: 0.45;
+    background: transparent;
+    transition: opacity 0.3s var(--ease);
+}
+
+#footer-brand img:hover { opacity: 0.8; }
+
+#footer-social {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#footer-social a {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
 }
 
-#contact a {
-    width: 50px;
-    height: 25px;
+#footer-social a:hover {
+    border-color: var(--accent);
+    background: rgba(197, 150, 90, 0.08);
 }
 
-#contact a:hover {
-    color: #FFFFFF;
-    background-color: #000000;
+#footer-social a img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.55;
+    background: transparent;
+    transition: opacity 0.3s var(--ease);
 }
 
-#contact a img {
-    width: 25px;
-    height: 25px;
-    margin-left: 10px;
-}
+#footer-social a:hover img { opacity: 0.9; }
 
-#copyright {
-    font-size: 12px;
-    margin-left: auto;
-    margin-right: auto;
+#footer-copyright {
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    color: var(--text-dim);
     text-align: center;
+    background: var(--bg-nav);
+    padding-top: 4px;
 }

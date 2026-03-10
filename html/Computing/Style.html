@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="description" content="An undergraduate thesis project exploring deep learning techniques for automatically transferring architectural styles between buildings.">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
-    <script> 
-        $(function(){
+    <script>
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
-    </script> 
+    </script>
 
     <title>Architectural Style Transfer&nbsp;|&nbsp;xdd44's Collections</title>
     <meta property="og:title" content="Architectural Style Transfer | xdd44's Collections">
@@ -31,103 +34,47 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xdd44.xyz/image/Programming/Style/Cover.jpg">
 </head>
-
 <body>
-
-    <nav>
-    </nav>
+    <nav></nav>
 
     <div id="banner">
-        <img src="image/Programming/Style/Cover.jpg">
-        <h1>Architectural Style Transfer</h1>
+        <div id="banner-img">
+            <img src="image/Programming/Style/Cover.jpg" alt="cover">
+        </div>
+        <div id="banner-title">
+            <p class="banner-category">Computing &nbsp;&middot;&nbsp; 2022</p>
+            <h1>Architectural Style Transfer</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <p>NOTE: This is my undergraduate thesis project supervised by <a href="https://www.cs.cityu.edu.hk/~rynson/" target="_blank">Dr. Rynson LAU</a>.</p>
-        <p><a href="https://github.com/xdd44-utopia/Architectural_style_transfer">Source code on GitHub</a></p>
-        <p><a href="files/UndergraduateThesis_Chenyue DAI.pdf">Full report for download</a></p>
-        <p>
-            (To be honest, all kinds of diffusion models currently on trend have made this project a waste of time lol)
-        </p>
-        <p>
-            The examples from various visual artists in <a href="https://www.nbcnews.com/mach/tech/time-warp-architecture-seven-iconic-buildings-reimagined-ncsl871061" target="_blank">this website</a> perfectly interpret the meaning of "transferring architectural
-            styles", which I would like to automate with deep learning technologies.
-        </p>
-
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/Example.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>An example from the link above, showing a Bauhaus Style (Right) transferred onto Buckingham Palace (Left).</p>
-            </div>
+        <div class="project-meta">
+            <span class="meta-tag">Undergraduate Thesis</span>
+            <span class="meta-tag">Deep Learning</span>
+            <span class="meta-tag">Architectural Style Transfer</span>
         </div>
-        <h2>Current progress:</h2>
-        <p>
-            Now I'm focusing on how to define and achieve "transferring" for architectural styles. It's a hard problem since such styles are defined by both material textures and structural features in various scales.
-        </p>
-        <p>
-            I've made some tests on several existing models, including painting style transfer with <a href="https://arxiv.org/abs/2103.16877" target="_blank">Artflow</a>, Conditional Generative Adversarial Networks with <a href="https://arxiv.org/abs/1611.07004"
-                target="_blank">Pix2pix</a> to examine the possibilities of different approaches. The images below are examples showing corresponding challenges.
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/P1.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>This example by Artflow + WCT shows that popular style transfer models may not be suitable with this task as only the color and a small trace of texture from the style image (left) are being transferred (bottom right) on to the content
-                    image (top right).</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/P2.jpg">
-            </div>
-            <div class="landscapedsc">
-                <p>This example by Pix2pix and <a href="https://cmp.felk.cvut.cz/~tylecr1/facade/" target="_blank">CMP facade labeling</a> (top right) creates unrecognizable images (bottom right) because of the large difference in appearance of windows between
-                    sample buildings in databese (left) and input house (top right, the same as previous house).</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="portraitcontaine">
-                <img src="image/Programming/Style/G1.gif">
-            </div>
-            <div class="portraitdsc">
-                <p>This example video from using Pix2pix trained with 450 depth images generated by <a href="https://arxiv.org/abs/2002.00569" target="_blank">DiverseDepth</a> is currently the best one, the smoothness of which is already impressive. However,
-                    there're still significant glitches and unusual movements. </p>
-            </div>
-        </div>
-        <p>
-            Obviously, increasing the size of training set helps improve the result. The results below come from a model trained from 1444 photos of modernist and postmodernist buildings. However, it can be noticed that the results still more or less failed to preserve
-            the original 3D primitive shapes and the facades are flat.
-        </p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/Sample1.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/Sample2.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/Sample3.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Programming/Style/Sample4.jpg">
-            </div>
+        <div class="project-body">
+            <p>NOTE: This is my undergraduate thesis project supervised by <a href="https://www.cs.cityu.edu.hk/~rynson/">Dr. Rynson LAU</a>.</p>
+            <p><a href="https://github.com/xdd44-utopia/Architectural_style_transfer">Source code on GitHub</a></p>
+            <p><a href="files/UndergraduateThesis_Chenyue DAI.pdf">Full report for download</a></p>
+            <p>(To be honest, all kinds of diffusion models currently on trend have made this project a waste of time lol)</p>
+            <p>The examples from various visual artists in <a href="https://www.nbcnews.com/mach/tech/time-warp-architecture-seven-iconic-buildings-reimagined-ncsl871061">this website</a> perfectly interpret the meaning of 'transferring architectural styles', which I would like to automate with deep learning technologies.</p>
+            <figure class="project-figure wide"><img src="image/Programming/Style/Example.jpg" alt="An example from the link above, showing a Bauhaus Style (Right) transferred onto Buckingham Palace (Left)."><figcaption>An example from the link above, showing a Bauhaus Style (Right) transferred onto Buckingham Palace (Left).</figcaption></figure>
+            <h2>Current progress:</h2>
+            <p>The project is currently focusing on defining what "transferring" means for architectural styles, which is a key challenge in this field. The definition of style transfer in the context of architecture is not straightforward, as it involves both the visual appearance and the structural characteristics of buildings.</p>
+            <p>Tests on existing models including Artflow and Pix2pix have been conducted to evaluate their suitability for this task. The results show that popular style transfer models may not be directly applicable to architectural style transfer, as they tend to focus on color and texture rather than structural features.</p>
+            <figure class="project-figure wide"><img src="image/Programming/Style/P1.jpg" alt="This example by Artflow + WCT shows that popular style transfer models may not be suitable with this task as only the color and a small trace of texture from the style image (left) are being transferred (bottom right) on to the content image (top right)."><figcaption>This example by Artflow + WCT shows that popular style transfer models may not be suitable with this task as only the color and a small trace of texture from the style image (left) are being transferred (bottom right) on to the content image (top right).</figcaption></figure>
+            <figure class="project-figure wide"><img src="image/Programming/Style/P2.jpg" alt="This example by Pix2pix and CMP facade labeling creates unrecognizable images because of the large difference in appearance of windows between sample buildings in database (left) and input house (top right, the same as previous house)."><figcaption>This example by Pix2pix and <a href="https://cmp.felk.cvut.cz/~tylecr1/facade/">CMP facade labeling</a> (top right) creates unrecognizable images (bottom right) because of the large difference in appearance of windows between sample buildings in database (left) and input house (top right, the same as previous house).</figcaption></figure>
+            <figure class="project-figure portrait"><img src="image/Programming/Style/G1.gif" alt="This example video from using Pix2pix trained with 450 depth images generated by DiverseDepth is currently the best one, the smoothness of which is already impressive. However, there're still significant glitches and unusual movements."><figcaption>This example video from using Pix2pix trained with 450 depth images generated by <a href="https://arxiv.org/abs/2002.00569">DiverseDepth</a> is currently the best one, the smoothness of which is already impressive. However, there're still significant glitches and unusual movements.</figcaption></figure>
+            <p>Increasing the training set is the next step to improve the quality of the generated images and reduce the glitches and unusual movements observed in the current results.</p>
+            <figure class="project-figure wide"><img src="image/Programming/Style/Sample1.jpg" alt="Sample 1"></figure>
+            <figure class="project-figure wide"><img src="image/Programming/Style/Sample2.jpg" alt="Sample 2"></figure>
+            <figure class="project-figure wide"><img src="image/Programming/Style/Sample3.jpg" alt="Sample 3"></figure>
+            <figure class="project-figure wide"><img src="image/Programming/Style/Sample4.jpg" alt="Sample 4"></figure>
         </div>
     </div>
 
-    <footer>
-    </footer>
-
+    <footer></footer>
     <script src="js/shared.js"></script>
-    
 </body>
-
 </html>

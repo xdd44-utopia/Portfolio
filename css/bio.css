@@ -1,71 +1,213 @@
-body {
-    color: #FFF;
-}
+/* ============================================================
+   bio.css  —  Bio Page Desktop Styles
+   ============================================================ */
 
 #Main {
-    line-height: 200%;
-    font-size: 20px;
+    padding-top: 64px;
+    padding-bottom: 100px;
 }
 
-#Main a {
-    color: #FFF;
-    text-decoration: underline;
+/* ── Bio Header: Photo + Text ── */
+
+#Bio {
+    display: flex;
+    gap: 52px;
+    align-items: flex-start;
+    padding-top: 52px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
 }
 
-#bio-text {
-    width: calc(80vw - 400px);
-    margin-right: 10px;
-    margin-top: -21vw;
-    float: right;
-}
-
-#bio-text p {
-    font-size: 20px;
-    margin-top: 1vw;
-}
-
-#bio-text p b {
-    font-size: 25px;
-}
-
-#bio-text p a {
-    color: #FFF;
-    text-decoration: underline;
-}
-
-#bio-text p a:hover {
-    color: #000;
+#bio-photo {
+    flex-shrink: 0;
 }
 
 #bio-photo img {
-    margin-top: 2vw;
-    width: 20vw;
-    height: 20vw;
+    display: block;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(15%);
 }
 
+#bio-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Name / sub-heading inside bio text */
+#name {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+#name b {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    background: transparent;
+}
+
+#bio-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.85;
+    margin-top: 1em;
+    background: transparent;
+}
+
+#bio-text p + #name {
+    margin-top: 2em;
+}
+
+#bio-text a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--border-mid);
+    transition: text-decoration-color 0.3s var(--ease);
+    background: transparent;
+}
+
+#bio-text a:hover {
+    text-decoration-color: var(--text);
+    background: transparent;
+    color: var(--text);
+}
+
+/* ── CV Section ── */
+
+#cv {
+    padding-top: 16px;
+}
+
+/* Section headings styled as editorial labels + extending line */
 #cv h1 {
-    margin-top: 50px;
-    clear: both;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 52px;
+    margin-bottom: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: transparent;
 }
 
+#cv h1::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* Tables */
 table {
     width: 100%;
+    border-collapse: collapse;
 }
 
-.title td {
-    padding-top: 40px;
+tr.title td {
+    padding-top: 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.5;
+    background: transparent;
 }
 
-.place td {
-    font-style: italic;
+tr.place td {
+    padding-top: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+    background: transparent;
 }
 
-.description td {
-    font-style: italic;
+tr.description td {
+    padding-top: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    color: var(--text-dim);
+    background: transparent;
+}
+
+/* Extra spacing for standalone skill rows */
+tr.description.solo td {
+    padding-top: 14px;
+    font-size: 14px;
+    color: var(--text);
 }
 
 .year {
     width: 160px;
-    margin-right: 0;
     text-align: right;
+    white-space: nowrap;
+    vertical-align: top;
+    padding-top: 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-dim);
+    background: transparent;
+}
+
+/* Links within CV */
+#cv a {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--border-mid);
+    transition: text-decoration-color 0.3s var(--ease);
+    background: transparent;
+}
+
+#cv a:hover {
+    text-decoration-color: var(--text);
+    background: transparent;
+    color: var(--text);
+}
+
+/* Bold name in publication author lists */
+#cv b {
+    font-weight: 500;
+    background: transparent;
+}
+
+/* Inline detail text (e.g. "In progress") */
+.detail {
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 13px;
+    background: transparent;
+}
+
+/* Project sub-heading within a research entry */
+tr.description.project-label td {
+    padding-top: 14px;
+    color: var(--text);
+    font-style: normal;
+}
+
+tr.description.project-label td em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    background: transparent;
 }

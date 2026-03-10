@@ -1,49 +1,63 @@
-nav ul {
-    margin-top: 420px;
-}
+/* ============================================================
+   bio_mobile.css  —  Bio Page Mobile Overrides (≤450px)
+   ============================================================ */
 
 #Main {
-    margin-top: 40px;
+    padding-top: 72px;
+    padding-bottom: 64px;
 }
 
-#bio-text {
-    width: calc(100vw - 50px);
-    margin-right: 10px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    float: none;
-}
-
-#bio-text p {
-    color: #FFF;
-    font-size: 14px;
-    margin-top: 20px;
-}
-
-#bio-text p b {
-    font-size: 20px;
-}
-
-#bio-text p a {
-    color: #FFF;
-    text-decoration: underline;
-}
-
-#bio-text p a:hover {
-    color: #000;
+/* Stack photo above text on mobile */
+#Bio {
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 32px;
+    padding-bottom: 40px;
+    align-items: center;
 }
 
 #bio-photo img {
-    display: block;
-    margin-top: 100px;
-    margin-bottom: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50vw;
-    height: 50vw;
+    width: 140px;
+    height: 140px;
 }
 
-#name {
+#bio-text {
     width: 100%;
-    text-align: center;
+}
+
+#name b {
+    font-size: 18px;
+}
+
+#bio-text p {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+/* CV section */
+#cv h1 {
+    font-size: 11px;
+    margin-top: 36px;
+    letter-spacing: 0.16em;
+}
+
+tr.title td {
+    font-size: 13.5px;
+    padding-top: 24px;
+}
+
+tr.place td,
+tr.description td {
+    font-size: 12px;
+}
+
+tr.description.solo td {
+    font-size: 13px;
+    padding-top: 12px;
+}
+
+.year {
+    font-size: 11px;
+    padding-top: 24px;
+    width: 100px;
 }

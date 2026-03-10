@@ -1,32 +1,40 @@
-/*small screen navigator bar fold*/
+/* shared.js — Shared scripts (mobile nav, logo) */
 
-var menuOn = false;
-var mq = window.matchMedia( "screen and (max-width: 450px)" );
+var menuOpen = false;
+var mq = window.matchMedia("screen and (max-width: 450px)");
 
 function toggleMenu() {
-    if (!mq.matches) {
-        return;
+    if (!mq.matches) return;
+
+    menuOpen = !menuOpen;
+
+    /* Nav overlay */
+    var nav = document.querySelector('nav');
+    if (nav) {
+        if (menuOpen) {
+            nav.classList.add('menu-open');
+        } else {
+            nav.classList.remove('menu-open');
+        }
     }
-    menuOn = !menuOn;
-    document.getElementById("logo_show").style.width = menuOn ? "64px" : "40px";
-    document.getElementById("logo_show").style.height = menuOn ? "64px" : "40px";
-    document.getElementById("logoa").style.left = menuOn ? "calc(50vw - 32px)" : "8px";
-    document.getElementById("logoa").style.top = menuOn ? "80px" : "8px";
-    document.getElementById("icon_menu").style.opacity = menuOn ? "0" : "100%";
-    document.getElementById("icon_close").style.opacity = menuOn ? "100%" : "0";
-    document.getElementsByTagName('nav')[0].style.marginLeft = menuOn ? "0" : "-100vw";
-}
 
-/* control the logo on top left of the page */
-var isLogoOver = false;
+    /* Hamburger → × */
+    var toggle = document.getElementById('menu-toggle');
+    if (toggle) {
+        if (menuOpen) {
+            toggle.classList.add('menu-open-btn');
+        } else {
+            toggle.classList.remove('menu-open-btn');
+        }
+    }
 
-function mouseEnterLogo() {
-    isLogoOver = true;
-    if (mq.matches) {
-        mobileLogoControl();
-    } else {
-        logoControl();
+    /* Logo: slides to center when menu is open */
+    var logoa = document.getElementById('logoa');
+    if (logoa) {
+        if (menuOpen) {
+            logoa.classList.add('logo-centered');
+        } else {
+            logoa.classList.remove('logo-centered');
+        }
     }
 }
-
-function logoControl() {}

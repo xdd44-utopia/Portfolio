@@ -1,167 +1,218 @@
-@font-face {
-    font-family: Artifakt;
-    src: url('../font/Artifakt\ Element\ Regular.ttf');
-}
+/* ============================================================
+   style2_mobile.css  —  Mobile Overrides (≤450px)
+   ============================================================ */
 
-@font-face {
-    font-family: Artifakt;
-    font-weight: bold;
-    src: url('../font/Artifakt\ Element\ Bold.ttf');
-}
-
-@font-face {
-    font-family: Artifakt;
-    font-style: italic;
-    src: url('../font/Artifakt\ Element\ Italic.ttf');
-}
-
-@font-face {
-    font-family: Artifakt;
-    font-weight: bold;
-    font-style: italic;
-    src: url('../font/Artifakt\ Element\ Bold\ Italic.ttf');
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-}
+/* ── Mobile Nav: full-screen slide-in overlay ── */
 
 
-/* Navigation bar */
-
-nav {
-    background: #000000;
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    margin-left: -100vw;
-    transition: all 0.5s ease-in-out;
-}
-
-nav * {
-    background-color: #00000000;
-}
-
-nav ul {
-    margin-top: 175px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-nav ul li {
-    display: block;
-    width: 100vw;
-    text-align: center;
-    line-height: 50px;
-}
-
-nav ul li a {
-    color: #FFFFFF;
-    height: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-}
-
-#logo {
-    width: 100px;
-    height: 0;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-#logoa {
-    position: fixed;
-    display: block;
-    z-index: 2;
-    top: 8px;
-    left: 8px;
-    width: 64px;
-    height: 64px;
-    margin-right: 0px;
-    line-height: 0;
-    font-size: 0;
-    transition: all 0.5s ease-in-out;
-}
-
-#logoa:hover {
-    color: #00000000;
-    background: #00000000;
-    transition: none;
-}
-
-#logo_show {
-    display: block;
-    background-color: #000000;
-    margin-top: 0;
-    width: 40px;
-    height: 40px;
-    transition: all 0.5s ease-in-out;
-}
-
-#logo_show:hover {
-    opacity: 100%;
-    transition: none;
-}
-
-#logo_hide {
+.desktop_view {
     display: none;
 }
 
-#icon_menu {
-    display: block;
-    position: fixed;
-    z-index: 2;
-    left: calc(100vw - 48px);
-    top: 8px;
-    width: 40px;
-    transition: all 0.5s ease-in-out;
+.mobile_view {
+    display: inline-block;
 }
 
-#icon_close {
-    display: block;
+nav {
+    /* Use margin-left (NOT transform) so position:fixed children
+       remain truly fixed (transform creates a new containing block) */
     position: fixed;
-    z-index: 2;
-    left: calc(100vw - 48px);
-    top: 8px;
-    width: 40px;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: var(--bg-nav);
+    border-right: none;
+    margin-left: -100vw;
+    transition: margin-left 0.45s var(--ease);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-#navbar {
+nav.menu-open {
+    margin-left: 0;
+}
+
+/* ── Top bar ── */
+
+/* Fixed black bar across the top */
+#navbar-bg {
     display: block;
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 55px;
-    background: #000;
+    height: 52px;
+    background: rgba(9, 9, 9, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 298;
+    border-bottom: 1px solid var(--border);
 }
 
+/* Logo container: zero-height placeholder so fixed children float */
+#logo {
+    height: 0;
+    padding: 0;
+    overflow: visible;
+}
 
-/*Main*/
+/* Logo link: fixed to top-left */
+#logoa {
+    position: fixed;
+    top: 6px;
+    left: 8px;
+    width: 40px;
+    height: 40px;
+    z-index: 300;
+    font-size: 0;
+    line-height: 0;
+    transition:
+        top  0.45s var(--ease),
+        left 0.45s var(--ease),
+        width  0.45s var(--ease),
+        height 0.45s var(--ease);
+}
+
+/* Show only the dark-bg logo on mobile */
+#logo_hide { display: none; }
+
+#logo_show {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    object-fit: contain;
+    padding: 0;
+    margin-top: 0;
+    transition: none;
+}
+
+#logo_show:hover { opacity: 1; }
+
+/* Logo centered state (when menu open) */
+#logoa.logo-centered {
+    top: 72px;
+    left: calc(50vw - 32px);
+    width: 64px;
+    height: 64px;
+}
+
+/* ── CSS Hamburger Button ── */
+
+#menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    position: fixed;
+    top: 6px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 301;
+}
+
+.ham-line {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 1px;
+    transform-origin: center;
+    transition:
+        transform 0.4s var(--ease),
+        opacity   0.35s var(--ease),
+        width     0.35s var(--ease);
+}
+
+/* Animate to × when menu is open */
+#menu-toggle.menu-open-btn .ham-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+#menu-toggle.menu-open-btn .ham-line:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+#menu-toggle.menu-open-btn .ham-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile Nav Links ── */
+
+nav > ul {
+    padding: 0;
+    margin-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+nav > ul > li {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+nav > ul > li > a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 18px 0;
+    border-left: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.3s;
+}
+
+nav > ul > li > a:hover,
+nav > ul > li > a:active {
+    color: var(--accent);
+    background: transparent;
+    border-left: none;
+}
+
+nav > ul > li:last-child > a {
+    border-bottom: none;
+}
+
+/* ── Main (mobile) ── */
 
 #Main {
-    margin-left: 25px;
-    margin-right: 25px;
-    overflow: hidden;
-}
-
-
-/*Footer*/
-
-#Links {
     margin-left: 0;
-    padding-top: 100px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 64px;
 }
 
-.copyright {
-    font-size: 5px;
+/* ── Footer (mobile) ── */
+
+#footer-inner {
+    margin-left: 0;
+    padding: 44px 20px 36px;
+}
+
+#footer-contact {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+#footer-social {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
 }

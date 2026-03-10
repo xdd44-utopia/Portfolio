@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <base href="/">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/404.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/404_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+    <meta name="description" content="xdd44's Portfolio Website">
+    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/404.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/404_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
     <script>
-        $(function(){
-            $.get("html/Common/meta.html", function(data){
-                $("head").append(data);
-            });
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
-    </script> 
+    </script>
 
     <title>Page not found&nbsp;|&nbsp;xdd44's Collections</title>
     <meta property="og:title" content="Page not found | xdd44's Collections">
@@ -33,16 +38,20 @@
 
 <body>
 
-    <nav>
-    </nav>
+    <nav></nav>
 
-    <div id="Main" style="height: 50vh;">
-        <h1>404 - Return to <a href="html/index.html" style="color:white; text-decoration: underline;">home</a></h1>
+    <div id="Main">
+        <div class="error-container">
+            <p class="error-code">404</p>
+            <p class="error-message">This page could not be found.</p>
+            <a href="html/index.html" class="error-link">Return home</a>
+        </div>
     </div>
 
-    <footer>
-    </footer>
-    
+    <footer></footer>
+
+    <script src="js/shared.js"></script>
+
 </body>
 
 </html>

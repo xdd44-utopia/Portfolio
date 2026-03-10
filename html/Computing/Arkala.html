@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="description" content="Arkala: an LLM-driven RPG where generative AI agents create a dynamic, ever-evolving narrative world with unique storylines for every playthrough.">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
-    <script> 
-        $(function(){
+    <script>
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
-    </script> 
+    </script>
 
     <title>Arkala&nbsp;|&nbsp;xdd44's Collections</title>
     <meta property="og:title" content="Arkala | xdd44's Collections">
@@ -31,44 +34,42 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xdd44.xyz/image/Programming/Arkala/cover.jpg">
 </head>
-
 <body>
-
-    <nav>
-    </nav>
+    <nav></nav>
 
     <div id="banner">
-        <img src="image/Programming/Arkala/cover.jpg" style="opacity: 0.4;">
-        <h1>Arkala: LLM-Driven Game</h1>
+        <div id="banner-img">
+            <img src="image/Programming/Arkala/cover.jpg" alt="cover" style="opacity: 0.4;">
+        </div>
+        <div id="banner-title">
+            <p class="banner-category">Computing &nbsp;&middot;&nbsp; 2024</p>
+            <h1>Arkala: LLM-Driven Game</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <p>Over the summer of 2024, Ben, my undergrad game developer mate, and I collaborated again to explore the potential of large language model on developing narrative games.</p>
-        <p><b>Team Members:</b></p>
-        <p>Xinyu "Ben" Guan: Producer & Game Designer</p>
-        <p><b>Chenyue "xdd44" Dai</b>: Developer & Game Designer</p>
-        <p>Yian Zhou: Marketing</p>
-        <p>Yining Bei: UI Designer</p>
-        <p><b>Project Original Description:</b></p>
-        <p>
-            We are exploring the idea of a role-playing game (RPG) empowered by AI, aiming to build a dynamic society and unique storylines similar to HBO's "Westworld." In this game, each non-playable character (NPC) is a generative agent with its own objectives, behavior patterns, and interactions. This creates a constantly evolving world where complex stories and quests are generated on the fly, providing players with a unique and immersive experience every time they play. 
-        </p>
-        <p>
-            The game's AI enables NPCs to have meaningful interactions with each other and with the player, adapting to the player's actions and decisions. This results in a dense web of interconnected narratives where the consequences of one player's choices influence the behavior and story arcs of others. The dynamic nature of the gameplay ensures that no two replays are the same, offering infinite replayability and deep immersion.
-        </p>
-        <p>
-            By leveraging advanced AI techniques, we hope to push the boundaries of traditional RPGs, offering a level of depth and complexity that is rarely seen in the genre. We aim to transform player expectations while setting new standards for what AI can achieve in games—a world smart enough to react intelligently to players' actions.
-        </p>
-        <p><b>Prototype Demonstration Video:</b></p>
-        <iframe src="https://www.youtube.com/embed/fOpqMKhEAEk">
-        </iframe>
+        <div class="project-meta">
+            <span class="meta-tag">Game Design</span>
+            <span class="meta-tag">Large Language Model</span>
+            <span class="meta-tag">Role-Playing Game</span>
+        </div>
+        <div class="project-body">
+            <p>Over the summer of 2024, Ben, my undergrad game developer mate, and I collaborated again to explore the potential of large language model on developing narrative games.</p>
+            <h2>Team</h2>
+            <p>Xinyu "Ben" Guan: Producer &amp; Game Designer</p>
+            <p><strong>Chenyue "xdd44" Dai</strong>: Developer &amp; Game Designer</p>
+            <p>Yian Zhou: Marketing</p>
+            <p>Yining Bei: UI Designer</p>
+            <h2>Project Description</h2>
+            <p>Arkala is a role-playing game empowered by AI, where generative agents breathe life into a dynamic world reminiscent of Westworld. Every NPC has their own memory, goals, and motivations, creating an ever-evolving narrative landscape where no two playthroughs are the same.</p>
+            <p>Meaningful interactions lie at the heart of Arkala. Player choices ripple through the world, shaping relationships and unlocking dynamic narratives that respond to every decision made throughout the journey.</p>
+            <p>By harnessing the power of large language models and generative agents, Arkala pushes the boundaries of traditional RPGs, offering an experience where the story is truly shaped by the player.</p>
+            <h2>Prototype Demonstration</h2>
+            <div class="video-wrap"><iframe src="https://www.youtube.com/embed/fOpqMKhEAEk" allowfullscreen></iframe></div>
+        </div>
     </div>
 
-    <footer>
-    </footer>
-
+    <footer></footer>
     <script src="js/shared.js"></script>
-    
 </body>
-
 </html>

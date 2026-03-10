@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="description" content="A decorative sculpture applying the minimum spanning tree graph algorithm to erode a cube, using layered acrylic to create dynamic light and negative space effects.">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-   <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
 
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
     <script>
-        $(function(){
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
@@ -32,73 +34,38 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xdd44.xyz/image/Art/MSErosion/Cover.jpg">
 </head>
-
 <body>
-    <nav>
-    </nav>
+    <nav></nav>
 
     <div id="banner">
-        <img src="image/Art/MSErosion/Cover.jpg">
-        <h1>Minimum Spanning Erosion</h1>
+        <div id="banner-img"><img src="image/Art/MSErosion/Cover.jpg" alt="cover"></div>
+        <div id="banner-title">
+            <p class="banner-category">Art &amp; Design &nbsp;&middot;&nbsp; 2023</p>
+            <h1>Minimum Spanning Erosion</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <p>Individual work, a gift to friend</p>
-        <p>This project is an extension of <a href="html/Art/ComputedTransparency.html">Computed Transparency</a>, where I explored  
-            parametric modeling with tangible materials. I experimented with the application of graph 
-            theory algorithms from computer science to the design and fabrication of decorative 
-            objects. Specifically, I transformed the 'minimum spanning tree' algorithm into a tangible 
-            tree form that artistically erodes a cube. The crafted negative spaces are 
-            dynamic, evolving from a unified space on one side to a fragmented composition on the 
-            other. Additionally, I utilized the unique properties of layered acrylic sheets, which 
-            reflect and transmit light, to create captivating visual effects within these hollow spaces.</p>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/1.jpg">
-            </div>
+        <div class="project-meta">
+            <span class="meta-tag">Computational Geometry</span>
+            <span class="meta-tag">Fabrication</span>
+            <span class="meta-tag">Laser Cut</span>
         </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/2.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/3.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/4.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/5.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/6.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/7.jpg">
-            </div>
-        </div>
-        <div class="container">
-            <div class="landscapecontainer">
-                <img src="image/Art/MSErosion/8.jpg">
-            </div>
+        <div class="project-body">
+            <p>Individual work, a gift to a friend.</p>
+            <p>This project is an extension of <a href="html/Art/ComputedTransparency.html">Computed Transparency</a>, where I explored parametric modeling with tangible materials. I experimented with the application of graph theory algorithms from computer science to the design and fabrication of decorative objects. Specifically, I transformed the 'minimum spanning tree' algorithm into a tangible tree form that artistically erodes a cube. The crafted negative spaces are dynamic, evolving from a unified space on one side to a fragmented composition on the other. Additionally, I utilized the unique properties of layered acrylic sheets, which reflect and transmit light, to create captivating visual effects within these hollow spaces.</p>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/1.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/2.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/3.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/4.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/5.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/6.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/7.jpg" alt="..."></figure>
+            <figure class="project-figure wide"><img src="image/Art/MSErosion/8.jpg" alt="..."></figure>
         </div>
     </div>
 
-    <footer>
-    </footer>
-
+    <footer></footer>
     <script src="js/shared.js"></script>
-
 </body>
-
 </html>

@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xdd44's Portfolio Website">
-    <meta name="keywords" content="Photography, gallery, Architecture, Computer Science">
+    <meta name="description" content="AngleCAD: a research project on surface-based 3D modelling techniques on foldable touchscreens, published at ACM ISS 2022.">
+    <meta name="keywords" content="Photography, Architecture, Computer Science, xdd44">
     <meta name="author" content="Chenyue &quot;xdd44&quot; DAI">
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/project template.css?v=1773113134">
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css?v=1773113134" />
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/style_mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/project template.css">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="css/project template_mobile.css">
+
     <link rel="shortcut icon" href="image/icons/Website icon.png">
 
     <script src="js/jquery.js"></script>
-    <script src="js/aos.js"></script>
-    <script> 
-        $(function(){
+    <script>
+        $(function () {
             $("nav").load("html/Common/nav_page.html");
             $("footer").load("html/Common/footer_page.html");
         });
-    </script> 
-    
+    </script>
+
     <title>AngleCAD&nbsp;|&nbsp;xdd44's Collections</title>
     <meta property="og:title" content="AngleCAD | xdd44's Collections">
     <meta property="og:description" content="AngleCAD: a research project on surface-based 3D modelling techniques on foldable touchscreens, published at ACM ISS 2022.">
@@ -31,36 +34,37 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xdd44.xyz/image/Programming/HCI/Cover.png">
 </head>
-
 <body>
-
-    <nav>
-    </nav>
+    <nav></nav>
 
     <div id="banner">
-        <img src="image/Programming/HCI/Cover.png">
-        <h1>AngleCAD: Surface-based 3D Modelling Techniques on Foldable Touchscreens</h1>
+        <div id="banner-img">
+            <img src="image/Programming/HCI/Cover.png" alt="cover">
+        </div>
+        <div id="banner-title">
+            <p class="banner-category">Computing &nbsp;&middot;&nbsp; 2022</p>
+            <h1>AngleCAD: Surface-based 3D Modelling Techniques on Foldable Touchscreens</h1>
+        </div>
     </div>
 
     <div id="Main">
-        <p>A research project published at ACM ISS 2022</p>
-        <p>Author list: <a href="https://www.scm.cityu.edu.hk/people/liu-can">Can Liu</a>, <b>Chenyue Dai</b>, Qingzhou Ma, Brinda Mehra, <a href="https://www.scm.cityu.edu.hk/people/cassinelli-alvaro">Alvaro Cassinelli</a></p>
-        <p>
-            Read <a href="https://dl.acm.org/doi/10.1145/3567735">full paper</a> or code on <a href="https://github.com/xdd44-utopia/HCI_Extruding">GitHub</a>
-        </p>
-        <p>Presentation with Qingzhou at ISS 2022 (Sorry for the unclear voice, I had covid at that time):</p>
-        <iframe src="https://www.youtube.com/embed/TqiWw_Gzt3s">
-        </iframe>
-        <p>Paper Supplementary Video:</p>
-        <iframe src="https://www.youtube.com/embed/4r_4eCIn9DA">
-        </iframe>
+        <div class="project-meta">
+            <span class="meta-tag">ACM ISS 2022</span>
+            <span class="meta-tag">HCI Research</span>
+            <span class="meta-tag">Surface-based 3D Modelling</span>
+        </div>
+        <div class="project-body">
+            <p>A research project published at ACM ISS 2022</p>
+            <p>Author list: <a href="https://www.scm.cityu.edu.hk/people/liu-can">Can Liu</a>, <strong>Chenyue Dai</strong>, Qingzhou Ma, Brinda Mehra, <a href="https://www.scm.cityu.edu.hk/people/cassinelli-alvaro">Alvaro Cassinelli</a></p>
+            <p><a href="https://dl.acm.org/doi/10.1145/3567735">Read full paper</a> or <a href="https://github.com/xdd44-utopia/HCI_Extruding">code on GitHub</a></p>
+            <p>Presentation with Qingzhou at ISS 2022 (Sorry for the unclear voice, I had covid at that time):</p>
+            <div class="video-wrap"><iframe src="https://www.youtube.com/embed/TqiWw_Gzt3s" allowfullscreen></iframe></div>
+            <p>Paper Supplementary Video:</p>
+            <div class="video-wrap"><iframe src="https://www.youtube.com/embed/4r_4eCIn9DA" allowfullscreen></iframe></div>
+        </div>
     </div>
 
-    <footer>
-    </footer>
-
+    <footer></footer>
     <script src="js/shared.js"></script>
-
 </body>
-
 </html>

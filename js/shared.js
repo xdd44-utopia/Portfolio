@@ -19,7 +19,6 @@ function toggleMenu() {
 
 /* control the logo on top left of the page */
 var isLogoOver = false;
-var mq = window.matchMedia("screen and (max-width: 450px)");
 
 function mouseEnterLogo() {
     isLogoOver = true;

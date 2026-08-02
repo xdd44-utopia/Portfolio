@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Feral — 260801</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --stage:#08080a;
+    --bg:#0d0d0f;
+    --ink:#efece5;
+    --sub:#a3a099;
+    --muted:#6a6862;
+    --faint:#3a3936;
+    --line:rgba(239,236,229,.14);
+    --brass:#c9a367;
+    --cool:#8fb8cc;
+    --display:"Baskerville","Songti SC","Songti TC","STSong",serif;
+    --sans:"Avenir Next","PingFang SC","Hiragino Sans GB","Helvetica Neue",sans-serif;
+    --mono:"SF Mono","Menlo","Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%;background:var(--stage);color:var(--ink);
+    font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden;}
+
+  .stage{position:fixed;inset:0;display:grid;place-items:center;}
+  .scaler{width:1280px;height:720px;position:relative;transform-origin:center center;
+    background:var(--bg);box-shadow:0 40px 120px rgba(0,0,0,.75);overflow:hidden;}
+
+  .slide{position:absolute;inset:0;background:var(--bg);overflow:hidden;
+    opacity:0;pointer-events:none;transition:opacity .4s ease;}
+  .slide.active{opacity:1;pointer-events:auto;}
+
+  /* grain + vignette */
+  .scaler::after{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:6;
+    background:radial-gradient(120% 90% at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 100%);
+  }
+  .grain{position:absolute;inset:-50%;pointer-events:none;z-index:5;opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");}
+
+  /* ---------- layout ---------- */
+  .frame{position:absolute;inset:0;padding:120px 96px 96px;display:flex;flex-direction:column;justify-content:center;}
+  .cols{display:grid;gap:52px;flex:1;min-height:0;grid-auto-rows:minmax(0,1fr);}
+  .c-6-4{grid-template-columns:1fr 420px;}
+  .c-5-5{grid-template-columns:1fr 1fr;}
+  .c-4-6{grid-template-columns:390px 1fr;}
+  .col{min-width:0;min-height:0;display:flex;flex-direction:column;}
+  .col.mid{justify-content:center;}
+
+  /* ---------- type ---------- */
+  .eyebrow{position:absolute;top:74px;left:96px;font-size:10.5px;letter-spacing:.42em;color:var(--muted);
+    text-transform:uppercase;display:flex;align-items:center;gap:14px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.8;}
+  h1{font-family:var(--display);font-weight:400;font-size:42px;line-height:1.32;margin:0;
+    letter-spacing:.01em;color:var(--ink);}
+  h1.big{font-size:54px;line-height:1.28;}
+  h2{font-family:var(--display);font-weight:400;font-size:19px;line-height:1.5;margin:0;color:var(--ink);}
+  p{margin:0;font-size:15.5px;line-height:1.95;color:var(--sub);letter-spacing:.015em;}
+  p+p{margin-top:16px;}
+  .lede{font-size:16.5px;line-height:2;color:#cdc9c1;max-width:640px;}
+  .small{font-size:13px;line-height:1.85;}
+  .tiny{font-size:11.5px;line-height:1.7;color:var(--muted);letter-spacing:.02em;}
+  em{font-style:normal;color:var(--ink);}
+  .brass{color:var(--brass);}
+  .cool{color:var(--cool);}
+  .lat{font-family:"Avenir Next",sans-serif;letter-spacing:.01em;}
+
+  .rule{height:1px;background:var(--line);}
+  .stack>*+*{margin-top:18px;}
+
+  /* lists */
+  ul{list-style:none;margin:0;padding:0;}
+  li{position:relative;padding-left:22px;font-size:15px;line-height:1.9;color:var(--sub);}
+  li+li{margin-top:13px;}
+  li::before{content:"";position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--brass);}
+  li em{color:var(--ink);}
+
+  /* cards */
+  .card{border:1px solid var(--line);padding:22px 24px;background:rgba(255,255,255,.017);}
+  .card .k{font-size:10px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;}
+  .card h2{margin:10px 0 8px;}
+  .cardgrid{display:grid;gap:20px;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+
+  .note{border-left:2px solid var(--brass);padding:4px 0 4px 18px;}
+  .note .t{font-size:10px;letter-spacing:.3em;color:var(--brass);text-transform:uppercase;margin-bottom:9px;}
+
+  /* photos */
+  .photo{position:relative;overflow:hidden;background:#000;min-height:0;}
+  .photo img{display:block;width:100%;height:100%;object-fit:cover;}
+  .photo .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:11px;letter-spacing:.06em;
+    color:#e6e2da;background:linear-gradient(transparent,rgba(0,0,0,.82));}
+  .bleed{position:absolute;inset:0;}
+  .bleed img{width:100%;height:100%;object-fit:cover;display:block;}
+  .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,6,7,.97) 0%,rgba(6,6,7,.9) 30%,rgba(6,6,7,.5) 55%,rgba(6,6,7,0) 82%);}
+  .scrim.up{background:linear-gradient(0deg,rgba(6,6,7,.95) 0%,rgba(6,6,7,.35) 45%,rgba(6,6,7,0) 80%);}
+
+  /* shelf — 参照品牌 */
+  .shelf{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;}
+  .shelf .pic{height:250px;overflow:hidden;background:#111;border:1px solid var(--line);}
+  .shelf .pic img{width:100%;height:100%;object-fit:cover;display:block;
+    filter:brightness(.92) saturate(.9);transition:filter .4s ease;}
+  .shelf .nm{font-family:var(--display);font-size:15.5px;line-height:1.35;color:var(--ink);
+    margin:16px 0 13px;min-height:42px;}
+  .shelf .fact{display:flex;gap:10px;font-size:12px;line-height:1.7;color:var(--sub);}
+  .shelf .fact+.fact{margin-top:9px;color:var(--muted);}
+  .shelf .fact .lb{font-size:9.5px;letter-spacing:.06em;color:var(--brass);padding-top:4px;
+    flex:0 0 24px;white-space:nowrap;}
+  .shelf .fact+.fact .lb{color:var(--faint);}
+
+  /* questions */
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 52px;}
+  .q{display:flex;gap:16px;align-items:flex-start;}
+  .q .n{font-family:var(--mono);font-size:11px;color:var(--brass);padding-top:6px;min-width:22px;}
+  .q .t{font-size:15px;line-height:1.85;color:var(--sub);}
+
+  /* footer */
+  .foot{position:absolute;left:96px;right:96px;bottom:34px;display:flex;justify-content:space-between;
+    align-items:center;font-size:10px;letter-spacing:.28em;color:var(--faint);z-index:4;}
+  .foot .lbl{color:var(--muted);}
+  .progress{position:absolute;left:0;bottom:0;height:2px;background:var(--brass);opacity:.55;z-index:7;
+    transition:width .4s ease;}
+
+  .navbtn{position:fixed;top:0;height:100%;width:22%;cursor:pointer;z-index:20;background:transparent;border:0;}
+  .navbtn.prev{left:0;} .navbtn.next{right:0;}
+  .counter{position:fixed;top:16px;right:20px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;
+    color:#4a4844;z-index:30;}
+
+  /* entrance stagger */
+  .slide.active .frame>*{animation:rise .55s cubic-bezier(.2,.7,.25,1) both;}
+  .slide.active .frame>*:nth-child(1){animation-delay:.04s}
+  .slide.active .frame>*:nth-child(2){animation-delay:.12s}
+  .slide.active .frame>*:nth-child(3){animation-delay:.2s}
+  .slide.active .frame>*:nth-child(4){animation-delay:.28s}
+  .slide.active .frame>*:nth-child(5){animation-delay:.36s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="scaler" id="scaler">
+
+<section class="slide">
+  <div class="bleed"><img src="materials/moving.gif" alt="" style="object-position:0% 50%"></div>
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="frame" style="justify-content:center;">
+    <h1 class="big" style="max-width:600px;">
+      Feral 
+    </h1>
+    <p class="lede" style="margin-top:28px;max-width:470px;">
+      唤醒房间的桌面磁流体<span class="brass">小生命</span>
+    </p>
+  </div>
+  <div class="foot"><span class="lbl">FERAL</span><span>02</span></div>
+</section>
+
+<!-- 2 — 一句话 -->
+<section class="slide">
+  <div class="bleed"><img src="materials/closeup.jpg" alt="" style="object-position:78% 50%"></div>
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="frame" style="justify-content:center;">
+    <h1 class="big" style="max-width:600px;">
+      Feral 
+    </h1>
+    <p class="lede" style="margin-top:28px;max-width:470px;">
+      唤醒房间的桌面磁流体<span class="brass">小生命</span>
+    </p>
+  </div>
+</section>
+
+<!-- 3 — 起点 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">起点</div>
+    <div class="cols c-6-4">
+      <div class="col mid stack">
+        <h1>起点：MIT实体AI黑客松</h1>
+        <p class="lede">
+          我与我的建筑系和Media Lab的同学组队参加，设计出了Feral<br>
+          赢得了<em>Reflect Track Award</em>
+        </p>
+      </div>
+      <div class="col">
+        <div class="photo" style="flex:1;">
+          <img src="materials/trackaward.jpg" alt="Reflect Track 获奖" style="object-position:50% 40%">
+          <div class="cap">MIT AI &amp; Hardware Hackathon · Reflect Track</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 — 之后世界给的反馈 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">后续</div>
+    <h1 style="margin-bottom:34px;">赢得三次额外曝光，反响热烈</h1>
+    <div class="cardgrid g3">
+      <div class="col">
+        <div class="photo" style="height:262px;">
+          <img src="materials/instagram.jpg" alt="发布 reel" style="object-position:50% 100%">
+        </div>
+        <h2 style="margin-top:18px;">发布Instagram短片</h2>
+        <p class="small" style="margin-top:10px;">没有付费推广的情况下获得约2万点击，近千转赞评</p>
+      </div>
+      <div class="col">
+        <div class="photo" style="height:262px;">
+          <img src="materials/medialab.png" alt="MIT Media Lab Hardmode" style="object-position:50% 35%">
+        </div>
+        <h2 style="margin-top:18px;">MIT Media Lab · 黑客松社群活动</h2>
+        <p class="small" style="margin-top:10px;">面向在 MIT 的创作社群展示介绍</p>
+      </div>
+      <div class="col">
+        <div class="photo" style="height:262px;">
+          <img src="materials/anthropic.jpeg" alt="Code with Claude" style="object-position:50% 50%">
+        </div>
+        <h2 style="margin-top:18px;">Anthropic「Code with Claude」</h2>
+        <p class="small" style="margin-top:10px;">在旧金山、伦敦、东京展出，吸引AI从业者关注讨论</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 — 反应即产品 + 诚实解读（合并 5、6） -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">现场</div>
+    <div class="cols c-6-4">
+      <div class="col mid stack">
+        <h1>动态实体交互的魅力</h1>
+        <p class="lede">
+          人们 - 知道或者不知道磁流体本身是什么 - 都被原型中灵活运动的小液滴所吸引
+        </p>
+        <div class="note" style="margin-top:30px;max-width:610px;">
+          <p class="small">
+            它的效果很打动人，<em>我们需要验证“有人愿意为它花钱”</em>
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="photo" style="flex:1;">
+          <img src="materials/inperson.jpeg" alt="现场观众" style="object-position:50% 45%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 — 第一件作品 + 它是什么（合并 7、8） -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">原型</div>
+    <div class="cols c-5-5" style="gap:56px;">
+      <div class="col mid stack">
+        <h1>被设计成物件的<br><span class="brass">人造生命</span></h1>
+        <p class="lede" style="max-width:none;">
+          摆放在办公室或家中的桌面上，像生命一样模拟各种行为、对人的一举一动作出智能的回应
+        </p>
+      </div>
+      <div class="col" style="gap:18px;">
+        <div class="photo" style="flex:1.15;">
+          <img src="materials/prototype.png" alt="外观原型" style="object-position:50% 50%">
+          <div class="cap">原型外观</div>
+        </div>
+        <div class="photo" style="flex:1;">
+          <img src="materials/circuit.png" alt="线圈矩阵" style="object-position:50% 100%">
+          <div class="cap">电磁铁矩阵电路</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 — 谁会买 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">意向买家</div>
+    <div class="cols c-6-4">
+      <div class="col mid stack">
+        <h1>意向买家</h1>
+        <ul style="margin-top:6px;">
+          <li><em>18–35 岁</em>，已经在买设计物件和轻奢小物：<br><span class="lat">Teenage Engineering</span>、<span class="lat">Nothing</span>、<span class="lat">Nanoleaf</span>、潮玩手办。</li>
+          <li><em>接受与欢迎AI</em>，会用AI工具、智能手环等提升自己的生活效率/质量</li>
+          <li><em>作息相对固定</em>，桌子是他每天待得最久的地方。</li>
+          <li><em>想要一点玩性，也想要一点陪伴</em>，但不想花过多精力给真正的宠物。</li>
+        </ul>
+      </div>
+      <div class="col mid">
+        <div class="card">
+          <p class="small" style="margin-top:12px;">
+            如何验证买家？
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 — 放在哪、怎么被买走 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">场景与购买</div>
+    <h1 style="margin-bottom:34px;">购买与使用场景设想</h1>
+    <div class="cardgrid g2">
+      <div class="card">
+        <div class="k">两种买法</div>
+        <h2>看一眼就想要 / 送得出手</h2>
+        <p class="small" style="margin-top:12px;">
+          <em>冲动型：</em>被外观直接击中，当场决定。
+        </p>
+        <p class="small" style="margin-top:14px;">
+          <em>礼物型：</em>中高端的送礼选择，买的人和用的人不是同一个。
+        </p>
+      </div>
+      <div class="card">
+        <div class="k">场景</div>
+        <h2>桌面创物</h2>
+        <p class="small" style="margin-top:12px;">
+          卧室、工作台：一只能给予陪伴的人造生物。
+        </p>
+        <p class="small" style="margin-top:14px;">
+          客厅、办公室等更公开的场所：成为话题对象、被分享，成为间接宣传渠道。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 — 货架 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">参照物</div>
+    <h1 style="margin-bottom:34px;">参考产品/品牌</h1>
+    <div class="shelf">
+      <div>
+        <div class="pic"><img src="materials/competitors/teenage.webp" alt="Teenage Engineering TP-7" style="transform:scale(1.45)"></div>
+        <div class="nm lat">Teenage Engineering</div>
+        <div class="fact"><span class="lb">特点</span><span>设计语言和工艺卖出溢价</span></div>
+      </div>
+      <div>
+        <div class="pic"><img src="materials/competitors/nothing.avif" alt="Nothing"></div>
+        <div class="nm lat">Nothing</div>
+        <div class="fact"><span class="lb">特点</span><span>有辨识度的设计本身就是产品</span></div>
+      </div>
+      <div>
+        <div class="pic"><img src="materials/competitors/nanoleaf.jpg" alt="Nanoleaf" style="object-position:45% 30%"></div>
+        <div class="nm lat">Nanoleaf</div>
+        <div class="fact"><span class="lb">特点</span><span>买家为房间氛围买单</span></div>
+      </div>
+      <div>
+        <div class="pic"><img src="materials/competitors/qoobo.jpg" alt="Moflin / Qoobo" style="object-position:62% 50%"></div>
+        <div class="nm lat">Moflin / Qoobo</div>
+        <div class="fact"><span class="lb">特点</span><span>零智能也能靠行为为卖点</span></div>
+      </div>
+      <div>
+        <div class="pic"><img src="materials/competitors/burnslap.webp" alt="BurnSlap FAV"></div>
+        <div class="nm lat">BurnSlap FAV</div>
+        <div class="fact"><span>密封铁磁流体已能小批量卖出</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — 工作室与品牌 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">工作室</div>
+    <div class="cols c-5-5" style="gap:56px;">
+      <div class="col mid stack">
+        <h1 style="font-size:36px;">Feral作为衍生品牌</h1>
+        <p class="lede" style="max-width:none;">
+          <span class="lat">Feral</span> 在这件磁流体产品后: 用技术和设计改善空间感受
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 — MVP：一定会做 -->
+<section class="slide">
+  <div class="grain"></div>
+  <div class="frame">
+    <div class="eyebrow">MVP</div>
+    <h1 style="margin-bottom:34px;">当下目标：Minimum Viable Product</h1>
+    <div class="cardgrid g3">
+      <div class="card">
+        <div class="k">01</div>
+        <h2>密封流体 + 线圈矩阵 模拟生物</h2>
+        <p class="small" style="margin-top:10px;">核心</p>
+      </div>
+      <div class="card">
+        <div class="k">02</div>
+        <h2>一套动作语汇</h2>
+        <p class="small" style="margin-top:10px;">呼吸、沉降、搅动，以及“注意到你”的那一拍</p>
+      </div>
+      <div class="card">
+        <div class="k">03</div>
+        <h2>本地软件</h2>
+        <p class="small" style="margin-top:10px;">暂时不考虑云处理/大模型</p>
+      </div>
+      <div class="card" style="border-color:rgba(201,163,103,.35);">
+        <div class="k brass">产量</div>
+        <h2>小批量制作</h2>
+        <p class="small" style="margin-top:10px;">建立一个小工作室小批量制作</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<div class="progress" id="progress"></div>
+<button class="navbtn prev" aria-label="上一页"></button>
+<button class="navbtn next" aria-label="下一页"></button>
+<div class="counter" id="counter">1 / 17</div>
+
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const scaler = document.getElementById('scaler');
+  let i = 0;
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + 'vw';
+    history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  function fit(){
+    const pad = 20;
+    const scale = Math.min((window.innerWidth - pad*2)/1280, (window.innerHeight - pad*2)/720);
+    scaler.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { show(i+1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { show(i-1); e.preventDefault(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+
+  // 点击：左侧 22% 回上一页，其余任意位置进下一页
+  document.querySelector('.navbtn.prev').addEventListener('click', e => { e.stopPropagation(); show(i-1); });
+  document.addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    show(i+1);
+  });
+
+  // 滚轮 / 触控板：累积到阈值翻一页，翻页后冷却，避免惯性连翻
+  let acc = 0, lock = false, lockTimer = null;
+  document.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (lock) return;
+    acc += e.deltaY;
+    if (Math.abs(acc) < 40) return;
+    show(i + (acc > 0 ? 1 : -1));
+    acc = 0;
+    lock = true;
+    clearTimeout(lockTimer);
+    lockTimer = setTimeout(() => { lock = false; acc = 0; }, 550);
+  }, {passive:false});
+
+  const start = parseInt((location.hash || '#1').slice(1), 10);
+  show(isNaN(start) ? 0 : start - 1);
+})();
+</script>
+</body>
+</html>

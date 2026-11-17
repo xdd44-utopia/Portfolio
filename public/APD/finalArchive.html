@@ -10,6 +10,14 @@
 	<body>
 		<h4>Drag to navigate, WASD or Arrows to move</h4>
 		<p><a onclick="toggleMenu()" href="main.html">Back to main page</a></p>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.module.js",
+					"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.147.0/examples/jsm/"
+				}
+			}
+		</script>
 		<script type=module src="./threejs/3d_archive.js"></script>
 		<script src="./js/jquery.js"></script>
 		<script src="./js/aos.js"></script>

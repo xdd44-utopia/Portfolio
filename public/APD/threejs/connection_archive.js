@@ -1,4 +1,4 @@
-import * as THREE from '../build/three.module.js'
+import * as THREE from 'three'
 import {scene} from './3d_archive.js'
 
 const material = new THREE.MeshStandardMaterial( {color: 0xffffff, side: THREE.DoubleSide} );

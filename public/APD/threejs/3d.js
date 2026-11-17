@@ -1,4 +1,4 @@
-import * as THREE from '../build/three.module.js'
+import * as THREE from 'three'
 import {CustomFirstPersonControls} from './CustomFirstPersonControls.js'
 
 import {Platform} from './platform.js'

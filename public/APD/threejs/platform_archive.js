@@ -1,5 +1,5 @@
-import * as THREE from '../build/three.module.js'
-import {OBJLoader} from '../build/jsm/loaders/OBJLoader.js'
+import * as THREE from 'three'
+import {OBJLoader} from 'three/addons/loaders/OBJLoader.js'
 import {scene} from './3d_archive.js'
 
 const material = new THREE.MeshStandardMaterial( {color: 0xffffff, side: THREE.DoubleSide} );

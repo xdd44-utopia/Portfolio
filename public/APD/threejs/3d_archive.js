@@ -1,6 +1,5 @@
-import * as THREE from '../build/three.module.js'
-import {OBJLoader} from '../build/jsm/loaders/OBJLoader.js'
-import {OrbitControls} from '../build/jsm/controls/OrbitControls.js'
+import * as THREE from 'three'
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
 import {Platform} from './platform_archive.js'
 import {Connection} from './connection_archive.js'

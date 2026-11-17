@@ -1,0 +1,46 @@
+---
+import PhotographyLayout from '../../layouts/PhotographyLayout.astro';
+
+const photos = [
+    "/image/Photography/Decisive/0.jpg",
+    "/image/Photography/Decisive/1.jpg",
+    "/image/Photography/Decisive/2.jpg",
+    "/image/Photography/Decisive/3.jpg",
+    "/image/Photography/Decisive/4.jpg",
+    "/image/Photography/Decisive/5.jpg",
+    "/image/Photography/Decisive/6.jpg",
+    "/image/Photography/Decisive/7.jpg",
+    "/image/Photography/Decisive/8.jpg",
+    "/image/Photography/Decisive/9.jpg"
+];
+---
+
+<PhotographyLayout
+    title={"Decisive Moment"}
+    subtitle={"Photography | Hong Kong"}
+    ogDescription={"A street photography series from Hong Kong capturing decisive moments — the simultaneous recognition of significance and precise visual composition."}
+    image={"https://xdd44.xyz/image/Photography/Decisive/0.jpg"}
+>
+    <div class="container">
+        <p style="padding-top: 15vh;">
+            &quot;To me, photography is the simultaneous recognition , in a fraction of a second, of the significance of an event, as well as of a precise organization of forms which give that event its proper expression.&quot;
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>-- Henri Cartier-Bresson --</p>
+    </div>
+    <div class="container">
+        <p style="padding-top: 20vh;">
+            By the term &quot;Decisive Moment&quot;, Henri Cartier-Bresson tried to defined the action of capturing something deep and meaningful with photography. Through my wandering in streets, I also noticed such &quot;moments&quot;. I successfully captured some
+            of them, incorporating my own understanding, and telling the stories of Hongkongers without words.
+        </p>
+    </div>
+    {photos.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+</PhotographyLayout>

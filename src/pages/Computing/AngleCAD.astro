@@ -1,0 +1,28 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const page = {
+    "title": "AngleCAD | xdd44's Collections",
+    "description": "AngleCAD: a research project on surface-based 3D modelling techniques on foldable touchscreens, published at ACM ISS 2022.",
+    "image": "https://xdd44.xyz/image/Programming/HCI/Cover.png",
+    "heading": "AngleCAD: Surface-based 3D Modelling Techniques on Foldable Touchscreens",
+    "cover": "image/Programming/HCI/Cover.png",
+    "category": "Computing",
+    "year": "2022",
+    "tags": [
+        "ACM ISS 2022",
+        "HCI Research",
+        "Surface-based 3D Modelling"
+    ]
+};
+---
+
+<ProjectLayout {...page}>
+    <p>A research project published at ACM ISS 2022</p>
+    <p>Author list: <a href="https://www.scm.cityu.edu.hk/people/liu-can">Can Liu</a>, <strong>Chenyue Dai</strong>, Qingzhou Ma, Brinda Mehra, <a href="https://www.scm.cityu.edu.hk/people/cassinelli-alvaro">Alvaro Cassinelli</a></p>
+    <p><a href="https://dl.acm.org/doi/10.1145/3567735">Read full paper</a> or <a href="https://github.com/xdd44-utopia/HCI_Extruding">code on GitHub</a></p>
+    <p>Presentation with Qingzhou at ISS 2022 (Sorry for the unclear voice, I had covid at that time):</p>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/TqiWw_Gzt3s" allowfullscreen></iframe></div>
+    <p>Paper Supplementary Video:</p>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/4r_4eCIn9DA" allowfullscreen></iframe></div>
+</ProjectLayout>

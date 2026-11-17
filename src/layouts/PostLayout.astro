@@ -1,0 +1,34 @@
+---
+import SiteLayout from './SiteLayout.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    image?: string;
+    heading: string;
+    date: string;
+    author?: string;
+    lang?: string;
+}
+
+const { heading, date, author, ...page } = Astro.props;
+const styles = [
+    { href: '/css/project template.css' },
+    { href: '/css/project template_mobile.css', media: 'screen and (max-width: 450px)' },
+];
+---
+
+<SiteLayout {...page} styles={styles}>
+    <div id="Main">
+        <div class="post-header">
+            <p class="post-date">{date}</p>
+            <h1>{heading}</h1>
+            {author && <p>{author}</p>}
+        </div>
+        <div class="project-body">
+            <slot />
+        </div>
+    </div>
+</SiteLayout>

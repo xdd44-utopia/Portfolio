@@ -1,0 +1,24 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const page = {
+    "title": "3D Modeling on Foldable Phones | xdd44's Collections",
+    "description": "A research study examining the effects of geometric fidelity in a VR spatial design tool for non-professionals, published at Chinese CHI 2024.",
+    "image": "https://xdd44.xyz/image/Programming/Fidelity/Cover.png",
+    "heading": "Examining the Effects of Geometric Fidelity in a VR Spatial Design Tool",
+    "cover": "image/Programming/Fidelity/Cover.png",
+    "category": "Computing",
+    "year": "2024",
+    "tags": [
+        "ACM Chinese CHI 2024",
+        "HCI Research",
+        "Virtual Reality"
+    ]
+};
+---
+
+<ProjectLayout {...page}>
+    <p>Group Research Project</p>
+    <p>Authorship: Lan Wei, <strong>Chenyue Dai</strong>, Xuening Peng, Xin Tong, Can Liu</p>
+    <video width="100%" controls autoplay><source src="image/Programming/Fidelity/Demo.mp4" type="video/mp4"><source src="image/Programming/Fidelity/Demo.ogg" type="video/ogg"></video>
+</ProjectLayout>

@@ -1,0 +1,32 @@
+---
+const links = [
+    { href: 'mailto:cyleodai@gmail.com', label: 'Email', icon: 'email' },
+    { href: 'https://www.linkedin.com/in/cyleodai', label: 'LinkedIn', icon: 'linkedin' },
+    { href: 'https://github.com/xdd44-utopia', label: 'GitHub', icon: 'github' },
+    { href: 'https://www.instagram.com/realxdd44', label: 'Instagram', icon: 'instagram' },
+    { href: 'https://www.youtube.com/channel/UCuLjsKUCwts0mB72BVh3ZJg', label: 'YouTube', icon: 'youtube' },
+    { href: 'https://space.bilibili.com/22729170', label: 'Bilibili', icon: 'bilibili' },
+];
+---
+
+<footer>
+    <div id="footer-inner">
+        <hr />
+        <div id="footer-contact">
+            <div id="footer-brand">
+                <img src="/image/logo 3.1.png" alt="xdd44" />
+            </div>
+            <div id="footer-social">
+                {links.map(({ href, label, icon }) => (
+                    <a href={href} target="_blank" aria-label={label}>
+                        <img src={`/image/icons/${icon}.png`} alt={label} />
+                    </a>
+                ))}
+            </div>
+        </div>
+        <hr />
+        <div id="footer-copyright">
+            Copyright &copy; 2018&ndash;2026 Chenyue &ldquo;xdd44&rdquo; DAI &ensp;&middot;&ensp; All Rights Reserved
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,45 @@
+---
+import SiteLayout from './SiteLayout.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    image?: string;
+    heading: string;
+    category: string;
+    year: string;
+    cover: string;
+    coverStyle?: string;
+    subtitle?: string;
+    tags: string[];
+    lang?: string;
+}
+
+const { heading, category, year, cover, coverStyle, subtitle, tags, ...page } = Astro.props;
+const styles = [
+    { href: '/css/project template.css' },
+    { href: '/css/project template_mobile.css', media: 'screen and (max-width: 450px)' },
+];
+---
+
+<SiteLayout {...page} styles={styles}>
+    <div id="banner">
+        <div id="banner-img"><img src={cover} alt="cover" style={coverStyle} /></div>
+        <div id="banner-title">
+            <p class="banner-category">{category} &nbsp;&middot;&nbsp; {year}</p>
+            <h1>{heading}</h1>
+            {subtitle && <h2>{subtitle}</h2>}
+        </div>
+    </div>
+
+    <div id="Main">
+        <div class="project-meta">
+            {tags.map((tag) => <span class="meta-tag">{tag}</span>)}
+        </div>
+        <div class="project-body">
+            <slot />
+        </div>
+    </div>
+</SiteLayout>

@@ -1,0 +1,49 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { categories } from '../data/projects';
+---
+
+<SiteLayout
+    title="Home | xdd44's Collections"
+    description="xdd44's Portfolio Website"
+    ogTitle="Home | xdd44's Collections"
+    ogDescription="Portfolio of xdd44 — designer, photographer, and programmer exploring architecture, art, computing, and photography."
+    image="/image/Home_BKG.jpg"
+    navigation="home"
+    styles={[
+        { href: '/css/index.css' },
+        { href: '/css/index_mobile.css', media: 'screen and (max-width: 450px)' },
+    ]}
+    scripts={['/js/index.js']}
+>
+    <div id="Top"></div>
+
+    <div id="title" class="title">
+        <blockquote>
+            <p class="quote-text"><span class="desktop_view">&ldquo;</span>Best things come to<span class="desktop_view"> </span><br class="mobile_view">those who wait<span class="desktop_view">.&rdquo;</span></p>
+            <cite><span class="desktop_view">&mdash;&thinsp;</span><em>Sorry for now</em>&thinsp;&nbsp;&middot;&nbsp;Linkin Park, 2017</cite>
+        </blockquote>
+        <a href="#Main" class="scroll-indicator" aria-label="Scroll to content">
+            <span class="chevron"></span>
+        </a>
+    </div>
+
+    <div class="CoverImg">
+        <img id="cover" src="image/Home_BKG.jpg" alt="Cover">
+    </div>
+
+    <div id="Main">
+        {categories.map(category => (
+            <section class="Category" id={category.id}>
+                <div class="Category_title">
+                    <h2>{category.title}</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="gallery-container">
+                    {category.projects.map(project => <ProjectCard {...project} />)}
+                </div>
+            </section>
+        ))}
+    </div>
+</SiteLayout>

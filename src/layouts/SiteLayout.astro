@@ -1,0 +1,30 @@
+---
+import SiteHead, { type Props as HeadProps } from '../components/SiteHead.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { assetUrl } from '../lib/assets';
+
+interface Props extends HeadProps {
+    lang?: string;
+    navigation?: 'home' | 'page' | false;
+    footer?: boolean;
+    scripts?: string[];
+}
+
+const { lang = 'en', navigation = 'page', footer = true, scripts = [], ...head } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+    <head>
+        <SiteHead {...head} />
+        <slot name="head" />
+    </head>
+    <body>
+        {navigation && <Navigation variant={navigation} />}
+        <slot />
+        {footer && <Footer />}
+        {navigation && <script is:inline src={assetUrl('/js/shared.js')}></script>}
+        {scripts.map(src => <script is:inline src={assetUrl(src)}></script>)}
+    </body>
+</html>

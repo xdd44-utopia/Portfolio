@@ -1,0 +1,54 @@
+---
+import SiteLayout from './SiteLayout.astro';
+
+interface Props {
+    title: string;
+    subtitle?: string;
+    ogDescription: string;
+    image: string;
+}
+
+const { title, subtitle = 'Photography', ogDescription, image } = Astro.props;
+---
+
+<SiteLayout
+    title={`${title.replaceAll(' ', ' ')} | xdd44's Collections`}
+    description="xdd44's Portfolio Website"
+    ogTitle={`${title} | xdd44's Collections`}
+    ogDescription={ogDescription}
+    image={image}
+    fonts={false}
+    navigation={false}
+    footer={false}
+    baseStyles={false}
+    styles={[
+        { href: '/css/style.css' },
+        { href: '/css/gallery template.css' },
+        { href: '/css/gallery template_mobile.css', media: 'screen and (max-width: 450px)' },
+        { href: '/css/aos.css' },
+    ]}
+    scripts={['/js/jquery.js', '/js/aos.js', '/js/gallery.js']}
+>
+    <div class="container">
+        <h1 style="padding-top: 15vh;">{title}</h1>
+        <br />
+        <br />
+        <br />
+        <p>{subtitle}</p>
+    </div>
+
+    <slot />
+
+    <div class="container">
+        <p style="padding-top: 25vh;">
+            <a href="#" onclick="window.scroll(0); return false;">Back to top</a> / <a href="/#Photography">Back to home</a>
+        </p>
+    </div>
+
+    <div id="upArrow">
+        <img id="upArrowImg" src="/image/icons/slide_up_icon.png" />
+    </div>
+    <div id="downArrow">
+        <img id="downArrowImg" src="/image/icons/slide_down_icon.png" />
+    </div>
+</SiteLayout>

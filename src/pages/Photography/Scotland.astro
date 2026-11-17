@@ -1,0 +1,79 @@
+---
+import PhotographyLayout from '../../layouts/PhotographyLayout.astro';
+
+const journeys = [
+    "/image/Photography/Scotland/Journey1.jpg",
+    "/image/Photography/Scotland/Journey2.jpg",
+    "/image/Photography/Scotland/Journey3.jpg",
+    "/image/Photography/Scotland/Journey4.jpg"
+];
+const creatures = [
+    "/image/Photography/Scotland/Creature1.jpg",
+    "/image/Photography/Scotland/Creature2.jpg",
+    "/image/Photography/Scotland/Creature3.jpg"
+];
+const artifacts = [
+    "/image/Photography/Scotland/Artifact5.jpg",
+    "/image/Photography/Scotland/Artifact1.jpg",
+    "/image/Photography/Scotland/Artifact2.jpg",
+    "/image/Photography/Scotland/Artifact3.jpg",
+    "/image/Photography/Scotland/Artifact4.jpg"
+];
+const nature = [
+    "/image/Photography/Scotland/Nature1.jpg",
+    "/image/Photography/Scotland/Nature2.jpg",
+    "/image/Photography/Scotland/Nature3.jpg",
+    "/image/Photography/Scotland/Nature4.jpg"
+];
+---
+
+<PhotographyLayout
+    title={"Scotland"}
+    subtitle={"Photography"}
+    ogDescription={"A photography collection of Scotland"}
+    image={"https://xdd44.xyz/image/Photography/Scotland/Journey1.jpg"}
+>
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Journeys
+        </h3>
+    </div>
+    {journeys.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Creatures
+        </h3>
+    </div>
+    {creatures.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Artifacts
+        </h3>
+    </div>
+    {artifacts.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Nature
+        </h3>
+    </div>
+    {nature.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+</PhotographyLayout>

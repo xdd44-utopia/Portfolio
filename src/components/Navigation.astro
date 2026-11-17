@@ -1,0 +1,30 @@
+---
+interface Props {
+    variant?: 'home' | 'page';
+}
+
+const { variant = 'page' } = Astro.props;
+const home = variant === 'home';
+---
+
+<nav>
+    <div id="logo">
+        <a id="logoa" href={home ? '/#Top' : '/'}>
+            <img id="logo_hide" src="/image/Art/Logo/logo_black.png" alt="xdd44" />
+            <img id="logo_show" src={home ? '/image/icons/logo_blackback.png' : '/image/Art/Logo/logo_white.png'} alt="xdd44" />
+        </a>
+        <button id="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+        </button>
+        <div id="navbar-bg"></div>
+    </div>
+    <ul>
+        {!home && <li><a href="/">Home</a></li>}
+        <li><a href="/bio">Bio</a></li>
+        <li><a onclick={home ? 'toggleMenu()' : undefined} href="/#AAD">Design &amp; Art</a></li>
+        <li><a onclick={home ? 'toggleMenu()' : undefined} href="/#Programming">{home ? 'Interface' : 'Computing'}</a></li>
+        <li><a onclick={home ? 'toggleMenu()' : undefined} href="/#Photography">Photography</a></li>
+    </ul>
+</nav>

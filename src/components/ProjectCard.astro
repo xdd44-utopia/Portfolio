@@ -1,0 +1,20 @@
+---
+import type { ProjectCardData } from '../data/projects';
+
+interface Props extends ProjectCardData {}
+
+const { title, href, target, image, alt, sources } = Astro.props;
+---
+
+<a class="gallery-item" href={href} target={target}>
+    <div class="gallery-media">
+        {image ? (
+            <img class="gallery-photo" src={image} alt={alt} />
+        ) : (
+            <video autoplay muted loop playsinline>
+                {sources?.map(source => <source src={source.src} type={source.type} />)}
+            </video>
+        )}
+    </div>
+    <div class="gallery-label"><span>{title}</span></div>
+</a>

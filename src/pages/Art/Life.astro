@@ -1,0 +1,24 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const page = {
+    "title": "Life | xdd44's Collections",
+    "description": "A triptych artwork series — Farewell life, Love life, and Meet life — three paintings exploring life's emotional milestones across years.",
+    "image": "https://xdd44.xyz/image/Art/Life/Banner.jpg",
+    "heading": "Life",
+    "cover": "image/Art/Life/Banner.jpg",
+    "category": "Art & Design",
+    "year": "2018–2021",
+    "tags": [
+        "Triptych",
+        "Painting",
+        "Personal Work"
+    ]
+};
+---
+
+<ProjectLayout {...page}>
+    <figure class="project-figure wide"><img src="image/Art/Life/Farewell life.jpg" alt="Farewell life (Dec 2018)"><figcaption>Farewell life (Dec 2018)</figcaption></figure>
+    <figure class="project-figure wide"><img src="image/Art/Life/Love life.jpg" alt="Love life (Feb 2020)"><figcaption>Love life (Feb 2020)</figcaption></figure>
+    <figure class="project-figure wide"><img src="image/Art/Life/Meet life.jpg" alt="Meet life (Jun 2021)"><figcaption>Meet life (Jun 2021)</figcaption></figure>
+</ProjectLayout>

@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+    title={"Page not found | xdd44's Collections"}
+    description={"xdd44's Portfolio Website"}
+    ogTitle={"Page not found | xdd44's Collections"}
+    ogDescription={"This page could not be found on xdd44's portfolio website."}
+    image="/image/Home_BKG.jpg"
+    styles={[
+        { href: '/css/404.css' },
+        { href: '/css/404_mobile.css', media: 'screen and (max-width: 450px)' },
+    ]}
+>
+    <div id="Main">
+        <div class="error-container">
+            <p class="error-code">404</p>
+            <p class="error-message">This page could not be found.</p>
+            <a href="/" class="error-link">Return home</a>
+        </div>
+    </div>
+</SiteLayout>

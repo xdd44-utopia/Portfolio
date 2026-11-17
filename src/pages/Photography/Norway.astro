@@ -1,0 +1,28 @@
+---
+import PhotographyLayout from '../../layouts/PhotographyLayout.astro';
+
+const photos = [
+    "/image/Photography/Norway/1.jpg",
+    "/image/Photography/Norway/2.jpg",
+    "/image/Photography/Norway/3.jpg",
+    "/image/Photography/Norway/4.jpg",
+    "/image/Photography/Norway/5.jpg",
+    "/image/Photography/Norway/6.jpg",
+    "/image/Photography/Norway/7.jpg",
+    "/image/Photography/Norway/8.jpg",
+    "/image/Photography/Norway/Cover.jpg"
+];
+---
+
+<PhotographyLayout
+    title={"Norway"}
+    subtitle={"Photography"}
+    ogDescription={"A photography collection of Norway"}
+    image={"https://xdd44.xyz/image/Photography/Norway/1.jpg"}
+>
+    {photos.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+</PhotographyLayout>

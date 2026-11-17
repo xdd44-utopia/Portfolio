@@ -1,0 +1,63 @@
+---
+import { assetUrl } from '../lib/assets';
+
+export interface Stylesheet {
+    href: string;
+    media?: string;
+}
+
+export interface Props {
+    title: string;
+    description?: string;
+    keywords?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    image?: string;
+    fonts?: boolean;
+    baseStyles?: boolean;
+    styles?: Stylesheet[];
+}
+
+const {
+    title,
+    description = "xdd44's Portfolio Website",
+    keywords = 'Photography, Architecture, Computer Science, xdd44',
+    ogTitle = title.replaceAll(' ', ' '),
+    ogDescription = description,
+    image = '/image/Home_BKG.jpg',
+    fonts = true,
+    baseStyles = true,
+    styles = [],
+} = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+const canonical = new URL(pathname, Astro.site);
+const stylesheets = [
+    ...(baseStyles ? [
+        { href: '/css/style.css' },
+        { href: '/css/style_mobile.css', media: 'screen and (max-width: 450px)' },
+    ] : []),
+    ...styles,
+];
+---
+
+<base href="/" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={'Chenyue "xdd44" DAI'} />
+{fonts && <>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</>}
+{stylesheets.map(({ href, media }) => <link rel="stylesheet" href={assetUrl(href)} media={media} />)}
+<link rel="shortcut icon" href="/image/icons/Website icon.png" />
+<link rel="canonical" href={canonical} />
+<title>{title}</title>
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:image" content={new URL(image, Astro.site)} />

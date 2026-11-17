@@ -1,0 +1,79 @@
+---
+import PhotographyLayout from '../../layouts/PhotographyLayout.astro';
+
+const inhabitants = [
+    "/image/Photography/Iceland/Inhabitants1.jpg",
+    "/image/Photography/Iceland/Inhabitants2.jpg",
+    "/image/Photography/Iceland/Inhabitants3.jpg",
+    "/image/Photography/Iceland/Inhabitants4.jpg"
+];
+const artifacts = [
+    "/image/Photography/Iceland/Artifacts1.jpg",
+    "/image/Photography/Iceland/Artifacts2.jpg",
+    "/image/Photography/Iceland/Artifacts3.jpg",
+    "/image/Photography/Iceland/Artifacts4.jpg"
+];
+const architectures = [
+    "/image/Photography/Iceland/Architecture1.jpg",
+    "/image/Photography/Iceland/Architecture2.jpg",
+    "/image/Photography/Iceland/Architecture3.jpg",
+    "/image/Photography/Iceland/Architecture4.jpg"
+];
+const nature = [
+    "/image/Photography/Iceland/Nature1.jpg",
+    "/image/Photography/Iceland/Nature2.jpg",
+    "/image/Photography/Iceland/Nature3.jpg",
+    "/image/Photography/Iceland/Nature4.jpg"
+];
+---
+
+<PhotographyLayout
+    title={"Iceland"}
+    subtitle={"Photography"}
+    ogDescription={"A photography collection of Iceland"}
+    image={"https://xdd44.xyz/image/Photography/Iceland/Inhabitants1.jpg"}
+>
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Inhabitants
+        </h3>
+    </div>
+    {inhabitants.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Artifacts
+        </h3>
+    </div>
+    {artifacts.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Architectures
+        </h3>
+    </div>
+    {architectures.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+
+    <div class="container">
+        <h3 style="padding-top: 24vh;">
+            Nature
+        </h3>
+    </div>
+    {nature.map(src => (
+        <div class="container">
+            <img src={src} />
+        </div>
+    ))}
+</PhotographyLayout>

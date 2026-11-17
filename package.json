@@ -1,0 +1,20 @@
+{
+  "name": "xdd44-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "vite preview --config vite.preview.config.mjs --host 127.0.0.1"
+  },
+  "dependencies": {
+    "astro": "^7.4.12"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}

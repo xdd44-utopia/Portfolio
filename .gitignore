@@ -3,3 +3,6 @@
 .vscode
 
 debug
+node_modules/
+dist/
+.astro/

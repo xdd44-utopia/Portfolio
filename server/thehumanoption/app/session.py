@@ -4,6 +4,7 @@ import secrets
 
 
 COOKIE = 'tho_session'
+BROWSER_COOKIE = 'tho_browser'
 
 
 def sign(value, key):
@@ -15,7 +16,7 @@ def verify(cookie, key):
     if not cookie or len(cookie) > 200:
         return None
     value, separator, _ = cookie.partition('.')
-    if not separator or not hmac.compare_digest(cookie, sign(value, key)):
+    if not separator or not hmac.compare_digest(cookie.encode(), sign(value, key).encode()):
         return None
     return value
 

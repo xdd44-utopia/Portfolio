@@ -12,6 +12,11 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
     const status = document.getElementById('chat-status');
     const messages = document.getElementById('chat-messages');
     const remaining = document.getElementById('chat-remaining');
+    const lastMessage = document.getElementById('chat-last-message');
+    const accessDialog = document.getElementById('chat-access');
+    const accessForm = document.getElementById('chat-access-form');
+    const accessKey = document.getElementById('chat-access-key');
+    const accessStatus = document.getElementById('chat-access-status');
     const errors = {
         rate_limited: 'Too many messages. Try again later.',
         conversation_full: 'Conversation limit reached. Select New chat to start over.',
@@ -19,6 +24,9 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         off: 'Chat is offline.',
         unavailable: 'Chat is unavailable. Try again.',
         turnstile_required: 'Verification failed. Try again.',
+        allowance_exhausted: 'Browser chat allowance used up.',
+        invalid_access_key: 'Access key not accepted.',
+        access_required: 'Private access expired. Enter your key again.',
     };
     const labels = {
         thinking: 'Thinking…', searching: 'Looking things up…',
@@ -30,33 +38,52 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
     let closed = false;
     let full = false;
     let exhausted = false;
+    let remainingChats;
+    let remainingReplies;
     let sessionId;
+    let accessToken;
     let scriptPromise;
     let widget;
 
     function controls() {
         input.disabled = busy || !ready || closed || full || exhausted;
         send.disabled = input.disabled || !input.value.trim();
-        reset.disabled = busy || !ready || closed || exhausted;
+        reset.disabled = busy || !ready || closed || remainingChats === 0;
+        lastMessage.hidden = busy || !ready || closed || full || exhausted || remainingReplies !== 1;
+        input.setAttribute('aria-describedby', lastMessage.hidden ? 'chat-hint' : 'chat-hint chat-last-message');
         input.style.height = 'auto';
         input.style.height = `${Math.min(input.scrollHeight, 180)}px`;
     }
 
     function fail(code) {
-        status.textContent = errors[code] || errors.unavailable;
+        status.textContent = code === 'conversation_full' && remainingChats === 0
+            ? errors.allowance_exhausted : errors[code] || errors.unavailable;
         closed = code === 'off' || code === 'budget_exhausted';
         full = code === 'conversation_full';
-        retry.hidden = full || code === 'rate_limited' || !page.dataset.siteKey;
+        if (code === 'allowance_exhausted') updateUsage({ remaining_chats: 0, chat_started: false, remaining_replies: remainingReplies });
+        if (code === 'access_required') {
+            accessToken = undefined;
+            ready = false;
+        }
+        retry.hidden = full || (exhausted && ready) || code === 'rate_limited' || !page.dataset.siteKey;
         controls();
     }
 
-    function updateRemaining(value) {
-        if (!Number.isInteger(value)) return;
-        remaining.textContent = `${value} message${value === 1 ? '' : 's'} left in this session`;
-        if (value <= 0) {
-            exhausted = true;
-            status.textContent = 'Session message limit reached.';
+    function updateUsage(data) {
+        const value = data.remaining_chats;
+        if (value !== null && !Number.isInteger(value)) return;
+        remainingChats = value;
+        remainingReplies = data.remaining_replies;
+        full = Number.isInteger(remainingReplies) && remainingReplies <= 0;
+        if (value === null) {
+            exhausted = false;
+            remaining.textContent = 'Private access · browser allowance paused';
+            return;
         }
+        remaining.textContent = `${value} new chat${value === 1 ? '' : 's'} left for this browser`;
+        exhausted = value <= 0 && !data.chat_started;
+        if (exhausted) status.textContent = errors.allowance_exhausted;
+        else if (full) status.textContent = value === 0 ? errors.allowance_exhausted : errors.conversation_full;
     }
 
     async function request(path, body) {
@@ -64,13 +91,14 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             method: body === undefined ? 'GET' : 'POST',
             headers: body === undefined ? {} : {
                 'Content-Type': 'application/json',
-                ...(path === '/reset' && sessionId ? { 'X-Chat-Session': sessionId } : {}),
+                ...(sessionId ? { 'X-Chat-Session': sessionId } : {}),
+                ...(accessToken ? { 'X-Chat-Access': accessToken } : {}),
             },
             body: body === undefined ? undefined : JSON.stringify(body),
             credentials: 'same-origin', cache: 'no-store', signal: AbortSignal.timeout(15000),
         });
         const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(response.status === 429 ? 'rate_limited' : data.code || 'unavailable');
+        if (!response.ok) throw new Error(data.code || (response.status === 429 ? 'rate_limited' : 'unavailable'));
         return data;
     }
 
@@ -122,10 +150,11 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         const data = await request('/session', { token });
         if (sessionId) messages.replaceChildren();
         sessionId = data.session_id;
+        accessToken = undefined;
         ready = true;
         full = false;
         exhausted = false;
-        updateRemaining(data.remaining_messages);
+        updateUsage(data);
     }
 
     async function initialize() {
@@ -137,7 +166,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             const data = await request('/status');
             if (data.status !== 'open') throw new Error(data.status === 'off' ? 'off' : 'budget_exhausted');
             if (!ready) await openSession();
-            status.textContent = '';
+            if (!exhausted) status.textContent = '';
         } catch (error) {
             fail(error.message);
         } finally {
@@ -239,7 +268,10 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             if (!lines.length) return;
             const data = JSON.parse(lines.join('\n'));
             const follow = messages.scrollHeight - messages.scrollTop - messages.clientHeight < 80;
-            if (type === 'error') throw new Error(data.code || 'unavailable');
+            if (type === 'error') {
+                updateUsage(data);
+                throw new Error(data.code || 'unavailable');
+            }
             if (type === 'text') {
                 reply.source += typeof data === 'string' ? data : data.text || '';
                 renderReply(reply);
@@ -253,7 +285,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             if (type === 'done') {
                 ended = true;
                 reply.label.hidden = true;
-                updateRemaining(data.remaining_messages);
+                updateUsage(data);
             }
             if (follow) messages.scrollTop = messages.scrollHeight;
         }
@@ -291,13 +323,14 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
                     const response = await fetch('/api/chat', {
                         method: 'POST', headers: {
                             'Content-Type': 'application/json', 'X-Chat-Session': sessionId,
+                            ...(accessToken ? { 'X-Chat-Access': accessToken } : {}),
                         },
                         body: JSON.stringify({ message }), credentials: 'same-origin',
                         signal: AbortSignal.timeout(270000),
                     });
                     if (!response.ok) {
                         const data = await response.json().catch(() => ({}));
-                        throw new Error(response.status === 429 ? 'rate_limited' : data.code || 'unavailable');
+                        throw new Error(data.code || (response.status === 429 ? 'rate_limited' : 'unavailable'));
                     }
                     await readStream(response, reply);
                     input.value = '';
@@ -342,7 +375,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             full = false;
             input.value = '';
             status.textContent = '';
-            updateRemaining(data.remaining_messages);
+            updateUsage(data);
             retry.hidden = true;
         } catch (error) {
             if (error.message === 'turnstile_required') ready = false;
@@ -350,6 +383,51 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         } finally {
             busy = false;
             controls();
+        }
+    });
+    function showAccess() {
+        if (busy || !ready || closed || accessDialog.open) return;
+        accessStatus.textContent = '';
+        accessDialog.showModal();
+        accessKey.focus();
+    }
+    document.querySelector('.chat-heading h1').addEventListener('dblclick', showAccess);
+    document.addEventListener('keydown', (event) => {
+        if (event.altKey && event.shiftKey && event.code === 'KeyU' && !event.repeat) {
+            event.preventDefault();
+            showAccess();
+        }
+    });
+    document.getElementById('chat-access-cancel').addEventListener('click', () => accessDialog.close());
+    accessDialog.addEventListener('close', () => { accessKey.value = ''; });
+    accessForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (busy || !ready || !accessKey.value.trim()) return;
+        busy = true;
+        controls();
+        const key = accessKey.value.trim();
+        accessKey.value = '';
+        accessStatus.textContent = 'Unlocking…';
+        try {
+            const data = await request('/unlock', { key });
+            accessToken = data.access_token;
+            full = false;
+            updateUsage(data);
+            status.textContent = '';
+            retry.hidden = true;
+            accessDialog.close();
+        } catch (error) {
+            accessStatus.textContent = errors[error.message] || errors.unavailable;
+            if (error.message === 'turnstile_required') {
+                ready = false;
+                fail(error.message);
+                accessDialog.close();
+            }
+        } finally {
+            busy = false;
+            controls();
+            if (accessDialog.open) accessKey.focus();
+            else if (!input.disabled) input.focus();
         }
     });
     input.addEventListener('input', controls);

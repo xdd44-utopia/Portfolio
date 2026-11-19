@@ -22,6 +22,18 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DE
                 <span>New chat</span>
             </button>
         </header>
+        <dialog id="chat-access" aria-labelledby="chat-access-title">
+            <form id="chat-access-form" autocomplete="off">
+                <h2 id="chat-access-title">Private access</h2>
+                <label for="chat-access-key">Access key</label>
+                <input id="chat-access-key" type="password" required autocomplete="off" spellcheck="false" aria-describedby="chat-access-status" />
+                <p id="chat-access-status" role="status"></p>
+                <div class="chat-access-actions">
+                    <button type="button" id="chat-access-cancel">Cancel</button>
+                    <button type="submit">Unlock</button>
+                </div>
+            </form>
+        </dialog>
         <section class="chat" aria-label="Conversation">
             <div class="chat-stage">
                 <div id="chat-messages" role="log" aria-label="Messages" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
@@ -32,6 +44,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DE
                     <button type="button" id="chat-retry" hidden>Try again</button>
                 </div>
                 <div id="chat-verification"></div>
+                <p id="chat-last-message" role="status" hidden>One message left in this chat</p>
                 <form id="chat-form">
                     <label for="chat-message" class="visually-hidden">Your message</label>
                     <textarea id="chat-message" name="message" rows="1" maxlength="2000" placeholder="Message" required disabled aria-describedby="chat-hint"></textarea>

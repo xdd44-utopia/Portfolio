@@ -23,10 +23,17 @@ class Settings:
         if not self.turnstile_secret or (self.production and self.turnstile_secret.startswith(('1x', '2x', '3x'))):
             raise ValueError('Set a real TURNSTILE_SECRET in production')
         self.timezone = ZoneInfo(os.getenv('BUDGET_TIMEZONE', 'America/Los_Angeles'))
+        self.private_access_key_hashes = tuple(
+            value.strip().lower() for value in os.getenv('PRIVATE_ACCESS_KEY_HASHES', '').split(',') if value.strip()
+        )
+        if any(len(value) != 64 or any(char not in '0123456789abcdef' for char in value)
+               for value in self.private_access_key_hashes):
+            raise ValueError('PRIVATE_ACCESS_KEY_HASHES must contain comma-separated SHA-256 hashes')
         for name, default in {
-            'session_hours': 24, 'idle_hours': 24, 'session_messages': 30,
-            'ip_hourly_messages': 60, 'ip_daily_messages': 150,
-            'max_message_chars': 2000, 'max_turns': 30, 'max_conversation_tokens': 24000,
+            'session_hours': 1, 'idle_hours': 1,
+            'browser_sessions': 10,
+            'ip_hourly_messages': 50, 'ip_daily_messages': 500,
+            'max_message_chars': 2000, 'max_turns': 5, 'max_conversation_tokens': 24000,
             'max_concurrency': 8, 'max_output_tokens': 2048, 'max_requests': 5,
             'max_searches': 3, 'max_fetches': 2, 'max_input_tokens': 16000,
         }.items():
@@ -35,7 +42,7 @@ class Settings:
                 raise ValueError(f'{name} must be positive')
             setattr(self, name, value)
         for name, default in {
-            'daily_budget_usd': 5, 'reply_reservation_usd': 1.5,
+            'daily_budget_usd': 10, 'reply_reservation_usd': 1.5,
             'anthropic_input_usd_per_million': 2, 'anthropic_output_usd_per_million': 10,
             'openai_input_usd_per_million': 1, 'openai_output_usd_per_million': 5,
             'search_usd': 0.01,

@@ -58,15 +58,37 @@ After changing the backend `.env` or `prompt.md`, stop terminal 1's server with 
 
 ### Conversation and budget behavior
 
-On startup, the backend deletes the saved sessions and transcripts from earlier versions. It keeps the spending and IP rate-limit records.
+On startup, the backend deletes the saved sessions and transcripts from earlier versions. It keeps browser allowances, spending, and IP rate-limit records.
 
-A new tab starts a new conversation and replaces the shared session cookie. If you return to an older tab, it detects that change, renews its session, and visibly starts fresh so conversations do not get mixed. Reset clears the current conversation without restoring the session's message allowance. Sessions and conversation history are held only in server memory and expire after the configured session or idle period. Restarting the backend clears them, so existing tabs start fresh on their next message. Spending and IP rate-limit records remain in SQLite across restarts. The default limits and budget are in the backend `.env.example`; model names and price settings must be kept in sync when changing providers or models.
+A new tab starts a new conversation and replaces the shared session cookie. If you return to an older tab, it detects that change, renews its session, and visibly starts fresh so conversations do not get mixed. Sessions and conversation history are held only in server memory and expire after one hour by default. Restarting the backend clears them, so existing tabs start fresh on their next message.
 
-Before each reply, the backend reserves $1.50 of the daily budget. A successful reply is reconciled against the configured token and search prices; failed, interrupted, or fallback replies may retain the full reservation. The piece closes for the day when the remaining balance cannot cover another reservation, which can happen before exactly $5 has been spent. Provider billing caps are independent of this application budget; provider-managed search context makes the reservation an estimate, not a guaranteed billing ceiling.
+Each browser has a separate signed, HttpOnly cookie linked to a chat counter in SQLite. `BROWSER_SESSIONS` defaults to 10. A chat consumes one allowance when its first public message is accepted, even if that reply later fails. Opening or refreshing the page and selecting New chat do not consume an allowance until a message is accepted. Later messages in the same chat do not consume more allowances, and the tenth chat can finish even when no new chats remain. Each public chat allows five successful replies; after the fourth reply, a chip above the input warns that one message remains. Failed replies do not consume a reply turn.
+
+The browser allowance has no scheduled renewal. Changing networks and restarting the backend do not restore it. The cookie's 400-day lifetime is refreshed when a new chat session is opened; clearing or losing that cookie, using a different browser, or using private browsing can create a new allowance. Existing message counters are retained but no longer used; on the first startup after this change, existing browsers start with ten chats. `BROWSER_MESSAGES` and `SESSION_MESSAGES` no longer configure the allowance. IP throttling allows 50 accepted messages per rolling hour and 500 per rolling 24 hours, including private messages and replies that later fail. The default limits and budget are in the backend `.env.example`; model names and price settings must be kept in sync when changing providers or models.
+
+Before each reply, the backend reserves $1.50 of the $10 daily budget, which resets at midnight in America/Los_Angeles. A successful reply is reconciled against the configured token and search prices; failed, interrupted, or fallback replies may retain the full reservation. The piece closes for the day when the remaining balance cannot cover another reservation, which can happen before exactly $10 has been spent. Provider billing caps are independent of this application budget; provider-managed search context makes the reservation an estimate, not a guaranteed billing ceiling.
 
 OpenAI is tried first when its key is configured; Claude is the fallback. Fallback happens only before reply text appears. If a provider fails after streaming starts, the page marks the reply as interrupted so text from different attempts is not joined together.
 
 Known limitation: a failure in OpenAI's preliminary token-count request does not trigger Claude fallback in the current library integration. The OpenAI adapter removes the generation-only tool-limit parameter from that preliminary request while retaining it for reply generation.
+
+### Private access on the chat page
+
+Press **Alt+Shift+U** or double-click the page title to open the access-key dialog. A valid key bypasses the browser allowance and conversation turn cap, and hides the last-message chip. Private messages do not consume the browser allowance. Conversation-size limits, IP throttling, the daily spending budget, and the off switch still apply. The temporary access token stays only in page memory; refresh, session renewal, or a backend restart locks the page again. For example, starting one public chat, unlocking, sending more messages, and refreshing shows nine new chats remaining. New chat keeps the current page's unlock but clears conversation history.
+
+Generate a separate random key for each person from a trusted terminal:
+
+```sh
+python3 - <<'PY'
+import hashlib
+import secrets
+key = secrets.token_urlsafe(32)
+print('Give this key privately to the person:', key)
+print('Add this hash to PRIVATE_ACCESS_KEY_HASHES:', hashlib.sha256(key.encode()).hexdigest())
+PY
+```
+
+Put only the generated SHA-256 hashes in `PRIVATE_ACCESS_KEY_HASHES` in the backend `.env` (or `/etc/thehumanoption/env` in production), separated by commas, then restart the backend. An empty setting disables private access. Keep the actual keys out of source, URLs, frontend environment variables, and logs. Removing a person's hash and restarting revokes their key and clears active unlocks. Unlock requests require a verified chat session. There is no unlock-specific attempt cap or key-length cap; the general request-body limit and any installed nginx request limits still apply.
 
 ## VM setup
 

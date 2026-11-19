@@ -1,4 +1,6 @@
 import asyncio
+import hashlib
+import hmac
 import json
 from contextlib import asynccontextmanager, suppress
 from ipaddress import ip_address
@@ -11,7 +13,7 @@ from pydantic import BaseModel, Field
 from .agent import ReplyUnavailable, run_reply, validate_budget
 from .config import Settings
 from .limits import ActiveReplies
-from .session import COOKIE, ip_hash, new_id, sign, verify
+from .session import BROWSER_COOKIE, COOKIE, ip_hash, new_id, sign, verify
 from .store import Denied, Store
 from .turnstile import validate
 
@@ -44,7 +46,8 @@ app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None
 
 @app.exception_handler(Denied)
 async def denied(request, exc):
-    status = 401 if exc.code == 'turnstile_required' else 429 if exc.code == 'rate_limited' else 503
+    status = (401 if exc.code == 'turnstile_required' else 403 if exc.code in {'access_required', 'invalid_access_key'}
+              else 429 if exc.code in {'rate_limited', 'allowance_exhausted'} else 503)
     return JSONResponse({'code': exc.code}, status_code=status)
 
 
@@ -78,6 +81,10 @@ class SessionInput(BaseModel):
 
 class MessageInput(BaseModel):
     message: str = Field(min_length=1, max_length=2000)
+
+
+class UnlockInput(BaseModel):
+    key: str = Field(min_length=1)
 
 
 def visitor_ip(request):
@@ -118,10 +125,29 @@ async def session(body: SessionInput, request: Request):
     if not await validate(body.token, visitor_ip(request), s):
         raise Denied('turnstile_required')
     sid = new_id()
-    request.app.state.store.create(sid)
-    response = JSONResponse({'remaining_messages': s.session_messages, 'session_id': sid})
+    browser = verify(request.cookies.get(BROWSER_COOKIE), s.signing_key)
+    if not browser or not browser.startswith('browser:'):
+        browser = f'browser:{new_id()}'
+    store = request.app.state.store
+    store.create(sid, browser)
+    response = JSONResponse({**store.usage(sid), 'session_id': sid})
     response.set_cookie(COOKIE, sign(sid, s.signing_key), httponly=True, secure=s.production, samesite='strict', path='/api/chat')
+    response.set_cookie(BROWSER_COOKIE, sign(browser, s.signing_key), max_age=34560000,
+                        httponly=True, secure=s.production, samesite='strict', path='/api/chat')
     return response
+
+
+@app.post('/api/chat/unlock')
+async def unlock(body: UnlockInput, request: Request):
+    sid = session_id(request)
+    s = request.app.state.settings
+    store = request.app.state.store
+    digest = hashlib.sha256(body.key.encode()).hexdigest()
+    if not any(hmac.compare_digest(digest, value) for value in s.private_access_key_hashes):
+        raise Denied('invalid_access_key')
+    access_token = new_id()
+    store.unlock(sid, access_token)
+    return {'access_token': access_token, **store.usage(sid, access_token)}
 
 
 @app.post('/api/chat/reset')
@@ -129,9 +155,9 @@ async def reset(request: Request):
     sid = session_id(request)
     if sid in request.app.state.active.sessions:
         raise Denied('unavailable')
-    request.app.state.store.reset(sid)
-    row = request.app.state.store.get(sid)
-    return {'remaining_messages': request.app.state.settings.session_messages - row['messages']}
+    access_token = request.headers.get('x-chat-access')
+    request.app.state.store.reset(sid, access_token)
+    return request.app.state.store.usage(sid, access_token)
 
 
 def event(name, data):
@@ -144,12 +170,13 @@ async def chat(body: MessageInput, request: Request):
     store = request.app.state.store
     active = request.app.state.active
     sid = session_id(request)
+    access_token = request.headers.get('x-chat-access')
     message = body.message.strip()
     if not message or len(message) > s.max_message_chars:
         return JSONResponse({'code': 'invalid_message'}, status_code=400)
     active.enter(sid)
     try:
-        history = store.reserve(sid, ip_hash(visitor_ip(request), s.signing_key))
+        history = store.reserve(sid, ip_hash(visitor_ip(request), s.signing_key), access_token)
     except BaseException:
         active.leave(sid)
         raise
@@ -168,13 +195,12 @@ async def chat(body: MessageInput, request: Request):
                 if result is None:
                     raise Denied('unavailable')
                 store.finish(sid, result)
-                yield event('done', {'remaining_messages': s.session_messages - store.get(sid)['messages']})
-        except Denied as exc:
-            yield event('error', {'code': exc.code})
-        except ReplyUnavailable as exc:
-            yield event('error', {'code': exc.code})
-        except Exception:
-            yield event('error', {'code': 'unavailable'})
+                yield event('done', store.usage(sid, access_token))
+        except Exception as exc:
+            data = {'code': exc.code if isinstance(exc, (Denied, ReplyUnavailable)) else 'unavailable'}
+            with suppress(Denied):
+                data.update(store.usage(sid, access_token))
+            yield event('error', data)
         finally:
             store.finish(sid)
             active.leave(sid)

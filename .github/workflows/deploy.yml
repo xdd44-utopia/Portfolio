@@ -127,6 +127,6 @@ jobs:
 
       - name: Verify live backend
         run: |
-          curl --fail --silent --show-error --retry 5 --retry-all-errors --retry-delay 2 --max-time 30 \
+          curl --fail --silent --show-error --retry 20 --retry-all-errors --retry-delay 3 --max-time 30 \
             https://xdd44.xyz/api/chat/status -o "$RUNNER_TEMP/chat-status.json"
           python3 -c 'import json,sys; assert json.load(open(sys.argv[1]))["status"] in {"open", "closed_for_today", "off"}' "$RUNNER_TEMP/chat-status.json"

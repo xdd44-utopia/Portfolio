@@ -17,6 +17,10 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
     const accessForm = document.getElementById('chat-access-form');
     const accessKey = document.getElementById('chat-access-key');
     const accessStatus = document.getElementById('chat-access-status');
+    const photoPanel = document.getElementById('chat-photos');
+    const photoStage = document.getElementById('chat-photo-stage');
+    const gallery = document.getElementById('chat-gallery');
+    const layout = document.querySelector('.chat-layout');
     const errors = {
         rate_limited: 'Too many messages. Try again later.',
         conversation_full: 'Conversation limit reached. Select New chat to start over.',
@@ -44,6 +48,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
     let accessToken;
     let scriptPromise;
     let widget;
+    let photoTurn;
 
     function controls() {
         input.disabled = busy || !ready || closed || full || exhausted;
@@ -148,6 +153,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             });
         });
         const data = await request('/session', { token });
+        clearPhotos();
         if (sessionId) messages.replaceChildren();
         sessionId = data.session_id;
         accessToken = undefined;
@@ -235,7 +241,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             const source = safeUrl(item.source_url);
             const thumbnail = safeUrl(item.thumbnail || item.url);
             const license = safeUrl(item.license_url);
-            if (!source || !thumbnail || !license || !item.creator || !item.license) continue;
+            if (!source || !thumbnail) continue;
             const figure = document.createElement('figure');
             const link = externalLink(source);
             const image = document.createElement('img');
@@ -245,14 +251,161 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             image.referrerPolicy = 'no-referrer';
             link.append(image);
             const caption = document.createElement('figcaption');
-            caption.append(document.createTextNode(`${item.title || 'Image'} — ${item.creator} · `), externalLink(license, item.license));
+            caption.append(document.createTextNode(`${item.title || 'Image'}${item.creator ? ` — ${item.creator}` : ''} · `),
+                externalLink(source, item.source || new URL(source).hostname));
+            if (license && item.license) caption.append(document.createTextNode(' · '), externalLink(license, item.license));
             figure.append(link, caption);
             grid.append(figure);
         }
         if (grid.children.length) article.append(grid);
     }
 
-    async function readStream(response, reply) {
+    function clearPhotos() {
+        if (photoTurn) {
+            photoTurn.cancelled = true;
+            photoTurn.controller.abort();
+            clearTimeout(photoTurn.timer);
+            for (const cancel of photoTurn.loads) cancel();
+            photoTurn.resolve();
+        }
+        photoTurn = undefined;
+        photoPanel.hidden = true;
+        gallery.classList.remove('is-visible');
+        photoStage.replaceChildren();
+        gallery.replaceChildren();
+        layout.classList.remove('has-photos');
+    }
+
+    function startPhotos(reply) {
+        clearPhotos();
+        const turn = {
+            reply, photos: [], loads: new Set(), index: -1, boundary: 0, boundaryAt: 0,
+            visibleAt: 0, answerDone: false, photosDone: false, streamDone: false,
+            cancelled: false, complete: false, controller: new AbortController(),
+        };
+        turn.finished = new Promise((resolve) => { turn.resolve = resolve; });
+        photoTurn = turn;
+        return turn;
+    }
+
+    function showPhoto(turn, index) {
+        if (turn !== photoTurn || turn.cancelled) return;
+        const photo = turn.photos[index];
+        if (!photo?.loaded) return;
+        const previous = photoStage.querySelector('.chat-photo:not(.chat-photo-leave)');
+        const figure = document.createElement('figure');
+        figure.className = 'chat-photo';
+        const link = externalLink(photo.source);
+        link.append(photo.image);
+        const caption = document.createElement('figcaption');
+        caption.append(document.createTextNode(`${photo.item.title || 'Photograph'}${photo.item.creator ? ` — ${photo.item.creator}` : ''} · `),
+            externalLink(photo.source, photo.item.source || new URL(photo.source).hostname));
+        if (photo.license && photo.item.license) caption.append(document.createTextNode(' · '), externalLink(photo.license, photo.item.license));
+        figure.append(link, caption);
+        if (previous) {
+            for (const leaving of photoStage.querySelectorAll('.chat-photo-leave')) leaving.remove();
+            previous.classList.add('chat-photo-leave');
+            previous.setAttribute('aria-hidden', 'true');
+            previous.inert = true;
+            previous.addEventListener('animationend', () => previous.remove(), { once: true });
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) previous.remove();
+            figure.classList.add('chat-photo-enter');
+        }
+        photoStage.append(figure);
+        photoPanel.hidden = false;
+        layout.classList.add('has-photos');
+        turn.index = index;
+        turn.visibleAt = performance.now() + (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400);
+        for (const button of gallery.children) button.setAttribute('aria-current', String(Number(button.dataset.index) === index));
+    }
+
+    function advancePhotos(turn) {
+        if (turn !== photoTurn || turn.cancelled || turn.complete) return;
+        clearTimeout(turn.timer);
+        if (document.hidden) {
+            turn.hiddenAt ??= performance.now();
+            return;
+        }
+        const follow = messages.scrollHeight - messages.scrollTop - messages.clientHeight < 80;
+        let next = turn.index + 1;
+        while (turn.photos[next]?.failed) next++;
+        if (turn.index < 0 && turn.photos[next]?.loaded && (turn.reply.source || turn.answerDone)) showPhoto(turn, next);
+        const noneAvailable = turn.photosDone && !turn.loads.size && !turn.photos.some((photo) => photo.loaded);
+        if (turn.index >= 0 || noneAvailable) {
+            turn.reply.label.hidden = Boolean(turn.reply.source);
+            if (turn.rendered !== turn.reply.source) {
+                renderReply(turn.reply);
+                turn.rendered = turn.reply.source;
+                if (follow) messages.scrollTop = messages.scrollHeight;
+            }
+        }
+        const elapsed = performance.now() - turn.visibleAt;
+        next = turn.index + 1;
+        while (turn.photos[next]?.failed) next++;
+        if (turn.index >= 0 && elapsed >= 3000 && turn.photos[next]?.loaded
+            && (turn.answerDone || turn.boundaryAt >= turn.visibleAt + 3000 || elapsed >= 4000)) {
+            showPhoto(turn, next);
+        }
+        const noMore = turn.photosDone && !turn.loads.size && next >= turn.photos.length;
+        if (turn.streamDone && turn.answerDone && noMore && (noneAvailable || elapsed >= 3000)) {
+            turn.complete = true;
+            turn.reply.label.hidden = true;
+            if (noneAvailable) {
+                const note = document.createElement('p');
+                note.className = 'chat-speaker';
+                note.textContent = 'Photos unavailable for this reply.';
+                turn.reply.article.append(note);
+            } else {
+                gallery.replaceChildren();
+                turn.photos.forEach((photo, index) => {
+                    if (!photo.loaded) return;
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.dataset.index = index;
+                    button.setAttribute('aria-label', `Show photo ${gallery.children.length + 1}: ${photo.item.title || 'Photograph'}`);
+                    button.setAttribute('aria-current', String(index === turn.index));
+                    button.addEventListener('click', () => { if (turn.complete && index !== turn.index) showPhoto(turn, index); });
+                    gallery.append(button);
+                });
+                gallery.classList.toggle('is-visible', gallery.children.length > 1);
+            }
+            if (follow) messages.scrollTop = messages.scrollHeight;
+            turn.resolve();
+            return;
+        }
+        turn.timer = setTimeout(() => advancePhotos(turn), 100);
+    }
+
+    function receivePhoto(turn, item) {
+        if (turn.photos.length >= 5 || turn.photosDone || turn.cancelled) return;
+        const source = safeUrl(item.source_url);
+        const url = safeUrl(item.thumbnail || item.url);
+        const license = safeUrl(item.license_url);
+        if (!source || !url
+            || turn.photos.some((photo) => photo.source === source || photo.image.src === url)) return;
+        const image = new Image();
+        image.alt = item.title || 'Photograph';
+        image.referrerPolicy = 'no-referrer';
+        const photo = { item, source, license, image, loaded: false, failed: false };
+        turn.photos.push(photo);
+        const finish = (loaded) => {
+            clearTimeout(timer);
+            image.onload = image.onerror = null;
+            turn.loads.delete(cancel);
+            if (turn !== photoTurn || turn.cancelled) return;
+            photo.loaded = loaded;
+            photo.failed = !loaded;
+            advancePhotos(turn);
+        };
+        const cancel = () => { finish(false); image.removeAttribute('src'); };
+        const timer = setTimeout(cancel, 12000);
+        turn.loads.add(cancel);
+        image.onload = () => finish(image.naturalWidth > 0);
+        image.onerror = () => finish(false);
+        image.src = url;
+    }
+
+    async function readStream(response, reply, turn) {
         if (!response.body || !response.headers.get('content-type')?.includes('text/event-stream')) throw new Error('unavailable');
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
@@ -267,6 +420,11 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             }
             if (!lines.length) return;
             const data = JSON.parse(lines.join('\n'));
+            if (turn !== photoTurn || turn.cancelled) return;
+            if (data.turn_id) {
+                if (turn.id && turn.id !== data.turn_id) return;
+                turn.id = data.turn_id;
+            }
             const follow = messages.scrollHeight - messages.scrollTop - messages.clientHeight < 80;
             if (type === 'error') {
                 updateUsage(data);
@@ -274,19 +432,29 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
             }
             if (type === 'text') {
                 reply.source += typeof data === 'string' ? data : data.text || '';
-                renderReply(reply);
-                reply.label.hidden = true;
+                const boundary = (reply.source.match(/[.!?](?:["')\]]*)\s|\n\s*\n/g) || []).length;
+                if (boundary > turn.boundary) turn.boundaryAt = performance.now();
+                turn.boundary = boundary;
+                advancePhotos(turn);
             }
             if (type === 'status') {
                 reply.label.textContent = labels[typeof data === 'string' ? data : data.label] || 'Thinking…';
                 reply.label.hidden = false;
             }
-            if (type === 'images') addImages(reply.article, data);
+            if (type === 'images') addImages(reply.article, data.images || data);
+            if (type === 'photo') receivePhoto(turn, data);
+            if (type === 'photos_done') turn.photosDone = true;
+            if (type === 'answer_done') {
+                turn.answerDone = true;
+            }
             if (type === 'done') {
                 ended = true;
-                reply.label.hidden = true;
+                turn.streamDone = true;
+                turn.answerDone = true;
+                turn.photosDone = true;
                 updateUsage(data);
             }
+            advancePhotos(turn);
             if (follow) messages.scrollTop = messages.scrollHeight;
         }
         try {
@@ -301,6 +469,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
                 if (done) break;
             }
             if (!ended) throw new Error('unavailable');
+            await turn.finished;
         } finally {
             await reader.cancel().catch(() => {});
             reader.releaseLock();
@@ -312,11 +481,13 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         const message = input.value.trim();
         if (busy || !ready || closed || full || exhausted || !message) return;
         busy = true;
+        input.value = '';
         retry.hidden = true;
         controls();
         status.textContent = '';
         let userMessage = addMessage('You', message);
         let reply = addMessage('Assistant', '');
+        let turn = startPhotos(reply);
         try {
             for (let attempt = 0; attempt < 2; attempt++) {
                 try {
@@ -326,14 +497,13 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
                             ...(accessToken ? { 'X-Chat-Access': accessToken } : {}),
                         },
                         body: JSON.stringify({ message }), credentials: 'same-origin',
-                        signal: AbortSignal.timeout(270000),
+                        signal: AbortSignal.any([turn.controller.signal, AbortSignal.timeout(270000)]),
                     });
                     if (!response.ok) {
                         const data = await response.json().catch(() => ({}));
                         throw new Error(data.code || (response.status === 429 ? 'rate_limited' : 'unavailable'));
                     }
-                    await readStream(response, reply);
-                    input.value = '';
+                    await readStream(response, reply, turn);
                     break;
                 } catch (error) {
                     if (error.message !== 'turnstile_required' || attempt || reply.source) throw error;
@@ -342,11 +512,18 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
                     messages.replaceChildren();
                     userMessage = addMessage('You', message);
                     reply = addMessage('Assistant', '');
+                    turn = startPhotos(reply);
                     reply.label.textContent = 'New chat started. Thinking…';
                     status.textContent = '';
                 }
             }
         } catch (error) {
+            if (turn.cancelled) return;
+            turn.answerDone = true;
+            turn.photosDone = true;
+            turn.streamDone = true;
+            advancePhotos(turn);
+            await turn.finished;
             fail(error.message);
             reply.label.hidden = true;
             if (reply.source) {
@@ -355,6 +532,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
                 note.textContent = 'This reply was interrupted.';
                 reply.article.append(note);
             } else {
+                input.value = message;
                 reply.article.remove();
                 userMessage.article.remove();
             }
@@ -371,6 +549,7 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         controls();
         try {
             const data = await request('/reset', {});
+            clearPhotos();
             messages.replaceChildren();
             full = false;
             input.value = '';
@@ -437,5 +616,16 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm';
         if (!send.disabled) form.requestSubmit();
     });
     retry.addEventListener('click', initialize);
+    document.addEventListener('visibilitychange', () => {
+        const turn = photoTurn;
+        if (!turn || turn.complete) return;
+        if (document.hidden) turn.hiddenAt ??= performance.now();
+        else if (turn.hiddenAt !== undefined) {
+            turn.visibleAt += performance.now() - turn.hiddenAt;
+            turn.hiddenAt = undefined;
+        }
+        advancePhotos(turn);
+    });
+    window.addEventListener('pagehide', clearPhotos);
     initialize();
 })();

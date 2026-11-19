@@ -118,7 +118,7 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
           ssh_args=(-i "$ssh_dir/key" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$ssh_dir/known_hosts" -o ConnectTimeout=15)
           rsync -az --delay-updates --delete-delay --chmod=D755,F644 \
-            --exclude=.venv --exclude=.env --exclude='prompt.md' --exclude='*.sqlite*' \
+            --exclude=.venv --exclude=.env --exclude='prompt.md' --exclude=prompts --exclude=evaluation --exclude='*.sqlite*' \
             --exclude=__pycache__ --exclude='.pytest_cache' --exclude=.DS_Store \
             -e "ssh -i $ssh_dir/key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$ssh_dir/known_hosts -o ConnectTimeout=15" \
             server/thehumanoption/ "$BACKEND_DEPLOY_USER@$DEPLOY_HOST:./"

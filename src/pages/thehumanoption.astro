@@ -34,6 +34,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DE
                 </div>
             </form>
         </dialog>
+        <div class="chat-layout">
         <section class="chat" aria-label="Conversation">
             <div class="chat-stage">
                 <div id="chat-messages" role="log" aria-label="Messages" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
@@ -60,6 +61,11 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DE
                 <noscript><p>Enable JavaScript to use chat.</p></noscript>
             </div>
         </section>
+        <aside id="chat-photos" aria-label="Human alternatives" hidden>
+            <div id="chat-photo-stage" aria-live="polite"></div>
+            <nav id="chat-gallery" aria-label="Photo gallery"></nav>
+        </aside>
+        </div>
     </main>
     <script src="../scripts/thehumanoption.js"></script>
 </body>

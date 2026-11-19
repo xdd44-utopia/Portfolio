@@ -2,7 +2,7 @@ import asyncio
 import hashlib
 import hmac
 import json
-from contextlib import asynccontextmanager, suppress
+from contextlib import aclosing, asynccontextmanager, suppress
 from ipaddress import ip_address
 
 from fastapi import FastAPI, Request
@@ -10,8 +10,9 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from .agent import ReplyUnavailable, run_reply, validate_budget
+from .agent import ReplyUnavailable, run_turn, validate_budget
 from .config import Settings
+from .evaluation import EvaluationLog, bind, conversation, record, unbind
 from .limits import ActiveReplies
 from .session import BROWSER_COOKIE, COOKIE, ip_hash, new_id, sign, verify
 from .store import Denied, Store
@@ -25,6 +26,7 @@ async def lifespan(app):
     app.state.settings = settings
     app.state.store = Store(settings)
     app.state.active = ActiveReplies(settings.max_concurrency)
+    app.state.evaluation = EvaluationLog(settings)
 
     async def cleanup():
         while True:
@@ -39,6 +41,7 @@ async def lifespan(app):
         with suppress(asyncio.CancelledError):
             await task
         app.state.store.db.close()
+        app.state.evaluation.close()
 
 
 app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
@@ -124,6 +127,9 @@ async def session(body: SessionInput, request: Request):
         raise Denied('off' if state == 'off' else 'budget_exhausted')
     if not await validate(body.token, visitor_ip(request), s):
         raise Denied('turnstile_required')
+    previous_sid = verify(request.cookies.get(COOKIE), s.signing_key)
+    if previous_sid:
+        await request.app.state.active.cancel(previous_sid)
     sid = new_id()
     browser = verify(request.cookies.get(BROWSER_COOKIE), s.signing_key)
     if not browser or not browser.startswith('browser:'):
@@ -153,9 +159,9 @@ async def unlock(body: UnlockInput, request: Request):
 @app.post('/api/chat/reset')
 async def reset(request: Request):
     sid = session_id(request)
-    if sid in request.app.state.active.sessions:
-        raise Denied('unavailable')
     access_token = request.headers.get('x-chat-access')
+    request.app.state.store.private_access(sid, access_token)
+    await request.app.state.active.cancel(sid)
     request.app.state.store.reset(sid, access_token)
     return request.app.state.store.usage(sid, access_token)
 
@@ -183,26 +189,52 @@ async def chat(body: MessageInput, request: Request):
 
     async def stream():
         result = None
+        turn_id = new_id()
+        evaluation_token = bind(request.app.state.evaluation, turn_id)
+        outcome = 'cancelled'
+        answer = []
+        record('turn_started', conversation=conversation(history), message=message,
+               reserved_usd=s.reply_reservation_usd)
+        active.bind(sid)
         try:
             async with asyncio.timeout(240):
-                async for name, data in run_reply(history, message, s):
-                    if s.off_path.exists():
-                        raise Denied('off')
-                    if name == 'result':
-                        result = data
-                    elif name in {'status', 'text', 'images'}:
-                        yield event(name, data)
+                async with aclosing(run_turn(history, message, s)) as events:
+                    async for name, data in events:
+                        if s.off_path.exists():
+                            raise Denied('off')
+                        if name == 'result':
+                            result = data
+                            record('generation_finished', usage=data.get('usage'), timing=data.get('timing'),
+                                   cost_usd=data['cost_usd'])
+                        elif name in {'status', 'text', 'images', 'photo', 'photos_done', 'answer_done'}:
+                            if name == 'text':
+                                if not answer:
+                                    record('first_text', role='worker')
+                                answer.append(data['text'])
+                            elif name != 'status':
+                                record(name, role='photo' if name in {'photo', 'photos_done'} else 'worker', payload=data)
+                            payload = {'images': data} if name == 'images' else data
+                            yield event(name, {**payload, 'turn_id': turn_id})
                 if result is None:
                     raise Denied('unavailable')
                 store.finish(sid, result)
-                yield event('done', store.usage(sid, access_token))
+                outcome = 'success'
+                yield event('done', {**store.usage(sid, access_token), 'turn_id': turn_id})
         except Exception as exc:
-            data = {'code': exc.code if isinstance(exc, (Denied, ReplyUnavailable)) else 'unavailable'}
+            outcome = 'timeout' if isinstance(exc, TimeoutError) else 'error'
+            data = {'code': exc.code if isinstance(exc, (Denied, ReplyUnavailable)) else 'unavailable', 'turn_id': turn_id}
+            record('turn_error', error_type=type(exc).__name__, code=data['code'])
+            if isinstance(exc, ReplyUnavailable):
+                store.finish(sid, cost_usd=exc.cost_usd)
             with suppress(Denied):
                 data.update(store.usage(sid, access_token))
             yield event('error', data)
         finally:
-            store.finish(sid)
-            active.leave(sid)
+            try:
+                store.finish(sid)
+            finally:
+                active.leave(sid)
+                record('turn_finished', outcome=outcome, answer=''.join(answer))
+                unbind(evaluation_token)
 
     return StreamingResponse(stream(), media_type='text/event-stream', headers={'X-Accel-Buffering': 'no'})

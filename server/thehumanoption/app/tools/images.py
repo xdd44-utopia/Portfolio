@@ -4,6 +4,8 @@ from urllib.parse import urlparse
 
 import httpx
 
+from ..evaluation import record
+
 
 def _text(value):
     return unescape(re.sub(r"<[^>]*>", "", str(value or "")))[:500]
@@ -15,60 +17,40 @@ def _url(value):
     return value if parsed.scheme == "https" and parsed.hostname and not parsed.username else ""
 
 
-def _image(url, thumbnail, title, creator, license_name, license_url, source_url):
-    image = {
-        "url": _url(url), "thumbnail": _url(thumbnail), "title": _text(title),
-        "creator": _text(creator) or "Creator not listed", "license": _text(license_name),
-        "license_url": _url(license_url), "source_url": _url(source_url),
-    }
-    return image if all(image[key] for key in ("url", "thumbnail", "license", "license_url", "source_url")) else None
-
-
-async def find_images(query: str, limit: int = 6, *, client_id: str = "", client_secret: str = "") -> list[dict]:
+async def find_images(query: str, limit: int = 6, *, api_key: str = "") -> list[dict]:
     query = query.strip()[:200]
     if not query:
         return []
-    limit = max(1, min(6, limit))
-    async with httpx.AsyncClient(timeout=12, headers={"User-Agent": "TheHumanOption/0.1 (https://xdd44.xyz/thehumanoption)"}) as client:
-        try:
-            headers = {}
-            if client_id and client_secret:
-                token = await client.post("https://api.openverse.org/v1/auth_tokens/token/", data={
-                    "grant_type": "client_credentials", "client_id": client_id, "client_secret": client_secret,
-                })
-                token.raise_for_status()
-                headers["Authorization"] = f"Bearer {token.json()['access_token']}"
-            response = await client.get("https://api.openverse.org/v1/images/", params={"q": query, "page_size": limit, "mature": "false"}, headers=headers)
+    if not api_key:
+        record("source_search_failed", "image_source", source="brave", reason="missing_api_key")
+        return []
+    limit = max(1, min(80, limit))
+    record("source_search_started", "image_source", source="brave", query=query, limit=limit)
+    images = []
+    try:
+        async with httpx.AsyncClient(timeout=12) as client:
+            response = await client.get(
+                "https://api.search.brave.com/res/v1/images/search",
+                params={"q": query, "count": limit, "safesearch": "strict", "country": "ALL"},
+                headers={"X-Subscription-Token": api_key, "Accept": "application/json"},
+            )
             response.raise_for_status()
-            images = []
-            for item in response.json().get("results", [])[:limit]:
-                image = _image(item.get("url"), item.get("thumbnail"), item.get("title"), item.get("creator"),
-                               f"{item.get('license', '')} {item.get('license_version', '')}".strip(), item.get("license_url"), item.get("foreign_landing_url"))
-                if image:
-                    images.append(image)
-            if images:
-                return images
-        except (httpx.HTTPError, ValueError, KeyError, TypeError):
-            pass
-        try:
-            response = await client.get("https://commons.wikimedia.org/w/api.php", params={
-                "action": "query", "format": "json", "generator": "search", "gsrsearch": query,
-                "gsrnamespace": 6, "gsrlimit": limit, "prop": "imageinfo",
-                "iiprop": "url|extmetadata", "iiurlwidth": 600,
-            })
-            response.raise_for_status()
-            images = []
-            for page in response.json().get("query", {}).get("pages", {}).values():
-                info = page.get("imageinfo", [{}])[0]
-                metadata = info.get("extmetadata", {})
-                value = lambda name: metadata.get(name, {}).get("value", "")
-                license_url = value("LicenseUrl")
-                if license_url.startswith("//"):
-                    license_url = "https:" + license_url
-                image = _image(info.get("url"), info.get("thumburl"), page.get("title"), value("Artist"),
-                               value("LicenseShortName"), license_url, info.get("descriptionurl"))
-                if image:
-                    images.append(image)
-            return images[:limit]
-        except (httpx.HTTPError, ValueError, KeyError, TypeError):
-            return []
+            for item in response.json().get("results", []):
+                image = {
+                    "url": _url((item.get("properties") or {}).get("url")),
+                    "thumbnail": _url((item.get("thumbnail") or {}).get("src")),
+                    "title": _text(item.get("title")), "creator": "",
+                    "source": _text(item.get("source")),
+                    "license": "", "license_url": "",
+                    "source_url": _url(item.get("url")),
+                }
+                if all(image[key] for key in ("url", "thumbnail", "source_url")):
+                    if not any(found["url"] == image["url"] for found in images):
+                        images.append(image)
+        record("source_search_finished", "image_source", source="brave", query=query,
+               usable_count=len(images))
+    except (httpx.HTTPError, ValueError, KeyError, TypeError) as error:
+        record("source_search_failed", "image_source", source="brave", query=query,
+               error_type=type(error).__name__,
+               status_code=error.response.status_code if isinstance(error, httpx.HTTPStatusError) else None)
+    return images[:limit]

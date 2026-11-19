@@ -126,14 +126,15 @@ class Store:
             self.db.execute('INSERT INTO reservations VALUES (?,?,?)', (sid, self.day(), s.reply_reservation_usd))
         return json.loads(row['history'])
 
-    def finish(self, sid, result=None):
+    def finish(self, sid, result=None, *, cost_usd=None):
         with self.db:
             reservation = self.db.execute('SELECT * FROM reservations WHERE id=?', (sid,)).fetchone()
             if not reservation:
                 return
-            if result is not None:
-                cost = max(0, result['cost_usd'])
+            if result is not None or cost_usd is not None:
+                cost = max(0, result['cost_usd'] if result is not None else cost_usd)
                 self.db.execute('UPDATE budget SET spent=MAX(0,spent+?) WHERE day=?', (cost - reservation['amount'], reservation['day']))
+            if result is not None:
                 self.db.execute('UPDATE sessions SET history=?,tokens=?,turns=turns+1,touched=? WHERE id=?', (json.dumps(result['history']), result['tokens'], time.time(), sid))
             self.db.execute('DELETE FROM reservations WHERE id=?', (sid,))
 

@@ -12,7 +12,9 @@
     "preview": "vite preview --config vite.preview.config.mjs --host 127.0.0.1"
   },
   "dependencies": {
-    "astro": "^7.4.12"
+    "astro": "^7.4.12",
+    "micromark": "4.0.3",
+    "micromark-extension-gfm": "3.0.0"
   },
   "devDependencies": {
     "vite": "^8.3.8"

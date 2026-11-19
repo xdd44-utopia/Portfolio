@@ -1,0 +1,30 @@
+[Unit]
+Description=The Human Option chat
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=thehumanoption
+Group=thehumanoption
+WorkingDirectory=/opt/thehumanoption
+EnvironmentFile=/etc/thehumanoption/env
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/thehumanoption/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8787 --workers 1 --no-proxy-headers --no-access-log
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/thehumanoption
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

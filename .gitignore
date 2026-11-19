@@ -2,8 +2,16 @@
 
 .vscode
 
-debug
+scratchpad
 *.log
 node_modules/
 dist/
 .astro/
+.env
+.env.*
+!.env.example
+server/thehumanoption/prompt.md
+server/thehumanoption/.venv/
+server/thehumanoption/OFF
+__pycache__/
+*.sqlite*

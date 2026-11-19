@@ -8,6 +8,7 @@ export default defineConfig({
     trailingSlash: 'ignore',
     devToolbar: { enabled: false },
     vite: {
+        server: { proxy: { '/api': 'http://127.0.0.1:8787' } },
         plugins: [legacyUrls(new URL('./public/', import.meta.url), new URL('./dist/', import.meta.url))],
     },
 });

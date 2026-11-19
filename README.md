@@ -11,6 +11,8 @@ npm ci
 npm run dev
 ```
 
+The standalone **The Human Option** chat page at `/thehumanoption` also needs a Python backend. See its [setup and development instructions](server/thehumanoption/README.md) for Python installation, keys, and running both servers.
+
 Build and preview:
 
 ```sh

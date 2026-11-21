@@ -13,32 +13,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  changes:
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-24.04
-    outputs:
-      backend: ${{ steps.paths.outputs.backend }}
-    steps:
-      - name: Check out source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-      - name: Check backend changes
-        id: paths
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          BEFORE: ${{ github.event.before }}
-          AFTER: ${{ github.sha }}
-        run: |
-          if [ "$EVENT_NAME" = workflow_dispatch ] || [ "$BEFORE" = 0000000000000000000000000000000000000000 ]; then
-            echo 'backend=true' >> "$GITHUB_OUTPUT"
-          elif ! git diff --quiet "$BEFORE" "$AFTER" -- server/thehumanoption/; then
-            echo 'backend=true' >> "$GITHUB_OUTPUT"
-          else
-            echo 'backend=false' >> "$GITHUB_OUTPUT"
-          fi
-
   deploy:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-24.04
@@ -56,8 +30,6 @@ jobs:
           cache: npm
 
       - name: Install and build
-        env:
-          PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
         run: |
           npm ci
           npm run build
@@ -88,45 +60,3 @@ jobs:
           curl --fail --silent --show-error --retry 3 --retry-delay 2 --max-time 30 \
             https://xdd44.xyz/ -o "$RUNNER_TEMP/live-index.html"
           cmp dist/index.html "$RUNNER_TEMP/live-index.html"
-
-  deploy-backend:
-    needs: changes
-    if: github.ref == 'refs/heads/master' && needs.changes.outputs.backend == 'true'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    steps:
-      - name: Check out source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          persist-credentials: false
-
-      - name: Upload and restart backend
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          BACKEND_DEPLOY_USER: ${{ secrets.BACKEND_DEPLOY_USER }}
-          BACKEND_DEPLOY_SSH_KEY: ${{ secrets.BACKEND_DEPLOY_SSH_KEY }}
-          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
-        run: |
-          : "${DEPLOY_HOST:?Missing DEPLOY_HOST}" "${BACKEND_DEPLOY_USER:?Missing BACKEND_DEPLOY_USER}"
-          : "${BACKEND_DEPLOY_SSH_KEY:?Missing BACKEND_DEPLOY_SSH_KEY}" "${DEPLOY_KNOWN_HOSTS:?Missing DEPLOY_KNOWN_HOSTS}"
-          test -s server/thehumanoption/uv.lock
-          umask 077
-          ssh_dir="$RUNNER_TEMP/backend-ssh"
-          mkdir -p "$ssh_dir"
-          trap 'rm -rf "$ssh_dir"' EXIT
-          printf '%s\n' "$BACKEND_DEPLOY_SSH_KEY" > "$ssh_dir/key"
-          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
-          ssh_args=(-i "$ssh_dir/key" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$ssh_dir/known_hosts" -o ConnectTimeout=15)
-          rsync -az --delay-updates --delete-delay --chmod=D755,F644 \
-            --exclude=.venv --exclude=.env --exclude='prompt.md' --exclude=prompts --exclude=evaluation --exclude='*.sqlite*' \
-            --exclude=__pycache__ --exclude='.pytest_cache' --exclude=.DS_Store \
-            -e "ssh -i $ssh_dir/key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$ssh_dir/known_hosts -o ConnectTimeout=15" \
-            server/thehumanoption/ "$BACKEND_DEPLOY_USER@$DEPLOY_HOST:./"
-          ssh "${ssh_args[@]}" "$BACKEND_DEPLOY_USER@$DEPLOY_HOST" sync
-          ssh "${ssh_args[@]}" "$BACKEND_DEPLOY_USER@$DEPLOY_HOST" restart
-
-      - name: Verify live backend
-        run: |
-          curl --fail --silent --show-error --retry 20 --retry-all-errors --retry-delay 3 --max-time 30 \
-            https://xdd44.xyz/api/chat/status -o "$RUNNER_TEMP/chat-status.json"
-          python3 -c 'import json,sys; assert json.load(open(sys.argv[1]))["status"] in {"open", "closed_for_today", "off"}' "$RUNNER_TEMP/chat-status.json"

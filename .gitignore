@@ -10,10 +10,3 @@ dist/
 .env
 .env.*
 !.env.example
-server/thehumanoption/prompt.md
-server/thehumanoption/prompts/
-server/thehumanoption/evaluation/
-server/thehumanoption/.venv/
-server/thehumanoption/OFF
-__pycache__/
-*.sqlite*
